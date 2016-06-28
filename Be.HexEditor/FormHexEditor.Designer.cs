@@ -80,6 +80,7 @@ namespace Be.HexEditor
             this.hexBox = new Be.Windows.Forms.HexBox();
             this.bitControl1 = new Be.HexEditor.BitControl();
             this.RecentFileHandler = new Be.HexEditor.RecentFileHandler(this.components);
+            this.uTF8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -89,12 +90,14 @@ namespace Be.HexEditor
             // menuStrip
             // 
             this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.uTF8ToolStripMenuItem});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
@@ -317,6 +320,7 @@ namespace Be.HexEditor
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.BackColor = System.Drawing.SystemColors.Control;
             this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripButton,
             this.saveToolStripButton,
@@ -432,6 +436,7 @@ namespace Be.HexEditor
             // statusStrip
             // 
             this.statusStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel,
             this.fileSizeToolStripStatusLabel,
@@ -483,7 +488,6 @@ namespace Be.HexEditor
             this.hexBox.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.SelectAllMenuItemText");
             this.hexBox.ColumnInfoVisible = true;
             this.hexBox.HexCasing = Be.Windows.Forms.HexCasing.Lower;
-            this.hexBox.InfoForeColor = System.Drawing.Color.Gray;
             this.hexBox.LineInfoVisible = true;
             this.hexBox.Name = "hexBox";
             this.hexBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
@@ -509,6 +513,11 @@ namespace Be.HexEditor
             // RecentFileHandler
             // 
             this.RecentFileHandler.RecentFileToolStripItem = this.recentFilesToolStripMenuItem;
+            // 
+            // uTF8ToolStripMenuItem
+            // 
+            this.uTF8ToolStripMenuItem.Name = "uTF8ToolStripMenuItem";
+            resources.ApplyResources(this.uTF8ToolStripMenuItem, "uTF8ToolStripMenuItem");
             // 
             // FormHexEditor
             // 
@@ -586,5 +595,6 @@ namespace Be.HexEditor
 		private Core.ToolStripMenuItemEx bitsToolStripMenuItem;
 		private BitControl bitControl1;
 		private System.Windows.Forms.Panel bodyPanel;
+        private System.Windows.Forms.ToolStripMenuItem uTF8ToolStripMenuItem;
     }
 }
