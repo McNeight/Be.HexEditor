@@ -67,11 +67,19 @@ namespace Be.HexEditor
 			miEbcdic.Tag = ebcdicConverter;
 			miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
 
+            var utf8Converter = new UTF8ByteCharProvider();
+            ToolStripMenuItem miutf8 = new ToolStripMenuItem();
+            miutf8.Text = utf8Converter.ToString();
+            miutf8.Tag = utf8Converter;
+            miutf8.Click += new EventHandler(encodingMenuItem_Clicked);
+
 			encodingToolStripComboBox.Items.Add(defConverter);
 			encodingToolStripComboBox.Items.Add(ebcdicConverter);
+            encodingToolStripComboBox.Items.Add(utf8Converter);
 
 			encodingToolStripMenuItem.DropDownItems.Add(miDefault);
 			encodingToolStripMenuItem.DropDownItems.Add(miEbcdic);
+            encodingToolStripMenuItem.DropDownItems.Add(miutf8);
 			encodingToolStripComboBox.SelectedIndex = 0;
 
             UpdateFormWidth();
@@ -588,6 +596,11 @@ namespace Be.HexEditor
         void UpdateFormWidth()
         {
             this.Width = this.hexBox.RequiredWidth + 70;
+        }
+
+        private void uTF8ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+     
         }
 	}
 }

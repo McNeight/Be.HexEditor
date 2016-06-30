@@ -80,7 +80,6 @@ namespace Be.HexEditor
             this.hexBox = new Be.Windows.Forms.HexBox();
             this.bitControl1 = new Be.HexEditor.BitControl();
             this.RecentFileHandler = new Be.HexEditor.RecentFileHandler(this.components);
-            this.uTF8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -96,8 +95,7 @@ namespace Be.HexEditor
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem,
-            this.uTF8ToolStripMenuItem});
+            this.helpToolStripMenuItem});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
@@ -514,11 +512,6 @@ namespace Be.HexEditor
             // 
             this.RecentFileHandler.RecentFileToolStripItem = this.recentFilesToolStripMenuItem;
             // 
-            // uTF8ToolStripMenuItem
-            // 
-            this.uTF8ToolStripMenuItem.Name = "uTF8ToolStripMenuItem";
-            resources.ApplyResources(this.uTF8ToolStripMenuItem, "uTF8ToolStripMenuItem");
-            // 
             // FormHexEditor
             // 
             resources.ApplyResources(this, "$this");
@@ -594,7 +587,6 @@ namespace Be.HexEditor
 		private Core.ToolStripMenuItemEx encodingToolStripMenuItem;
 		private Core.ToolStripMenuItemEx bitsToolStripMenuItem;
 		private BitControl bitControl1;
-		private System.Windows.Forms.Panel bodyPanel;
-        private System.Windows.Forms.ToolStripMenuItem uTF8ToolStripMenuItem;
+        private System.Windows.Forms.Panel bodyPanel;
     }
 }
