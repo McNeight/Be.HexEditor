@@ -167,7 +167,7 @@ namespace Be.Windows.Forms
                         fileBlock.Length - (index - blockOffset + 1));
                 }
 
-				block = _dataMap.Replace(block, new MemoryDataBlock(value));
+                block = _dataMap.Replace(block, new MemoryDataBlock(value));
 
                 if (prefixBlock != null)
                 {

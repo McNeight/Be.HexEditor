@@ -13,8 +13,8 @@ namespace Be.HexEditor
 {
     public partial class FormHexEditor : Core.FormEx
     {
-		FormFind _formFind;
-		FindOptions _findOptions = new FindOptions();
+        FormFind _formFind;
+        FindOptions _findOptions = new FindOptions();
         FormGoTo _formGoto = new FormGoTo();
         string _fileName;
 
@@ -22,26 +22,26 @@ namespace Be.HexEditor
         {
             InitializeComponent();
 
-			Init();
+            Init();
 
             hexBox.Font = new Font(SystemFonts.MessageBoxFont.FontFamily, SystemFonts.MessageBoxFont.Size, SystemFonts.MessageBoxFont.Style);
 
-			this.toolStrip.Renderer.RenderToolStripBorder += new ToolStripRenderEventHandler(Renderer_RenderToolStripBorder);
+            this.toolStrip.Renderer.RenderToolStripBorder += new ToolStripRenderEventHandler(Renderer_RenderToolStripBorder);
         }
 
-		/// <summary>
-		/// Removes the border on the right of the tool strip
-		/// </summary>
-		/// <param name="sender">the renderer</param>
-		/// <param name="e">the event args</param>
-		void Renderer_RenderToolStripBorder(object sender, ToolStripRenderEventArgs e)
-		{
-			if (e.ToolStrip.GetType() != typeof(ToolStrip))
-				return;
+        /// <summary>
+        /// Removes the border on the right of the tool strip
+        /// </summary>
+        /// <param name="sender">the renderer</param>
+        /// <param name="e">the event args</param>
+        void Renderer_RenderToolStripBorder(object sender, ToolStripRenderEventArgs e)
+        {
+            if (e.ToolStrip.GetType() != typeof(ToolStrip))
+                return;
 
-			e.Graphics.DrawLine(new Pen(new SolidBrush(SystemColors.Control)), new Point(toolStrip.Width - 1, 0),
-				new Point(toolStrip.Width - 1, toolStrip.Height));
-		}
+            e.Graphics.DrawLine(new Pen(new SolidBrush(SystemColors.Control)), new Point(toolStrip.Width - 1, 0),
+                new Point(toolStrip.Width - 1, toolStrip.Height));
+        }
 
         /// <summary>
         /// Initializes the hex editor´s main form
@@ -52,20 +52,20 @@ namespace Be.HexEditor
 
             ManageAbility();
 
-			UpdateBitControlVisibility();
+            UpdateBitControlVisibility();
 
-			//var selected = ;
-			var defConverter = new DefaultByteCharConverter();
-			ToolStripMenuItem miDefault = new ToolStripMenuItem();
-			miDefault.Text = defConverter.ToString();
-			miDefault.Tag = defConverter;
-			miDefault.Click += new EventHandler(encodingMenuItem_Clicked);
+            //var selected = ;
+            var defConverter = new DefaultByteCharConverter();
+            ToolStripMenuItem miDefault = new ToolStripMenuItem();
+            miDefault.Text = defConverter.ToString();
+            miDefault.Tag = defConverter;
+            miDefault.Click += new EventHandler(encodingMenuItem_Clicked);
 
-			var ebcdicConverter = new EbcdicByteCharProvider();
-			ToolStripMenuItem miEbcdic = new ToolStripMenuItem();
-			miEbcdic.Text = ebcdicConverter.ToString();
-			miEbcdic.Tag = ebcdicConverter;
-			miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
+            var ebcdicConverter = new EbcdicByteCharProvider();
+            ToolStripMenuItem miEbcdic = new ToolStripMenuItem();
+            miEbcdic.Text = ebcdicConverter.ToString();
+            miEbcdic.Tag = ebcdicConverter;
+            miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
 
             var utf8Converter = new UTF8ByteCharProvider();
             ToolStripMenuItem miutf8 = new ToolStripMenuItem();
@@ -73,23 +73,23 @@ namespace Be.HexEditor
             miutf8.Tag = utf8Converter;
             miutf8.Click += new EventHandler(encodingMenuItem_Clicked);
 
-			encodingToolStripComboBox.Items.Add(defConverter);
-			encodingToolStripComboBox.Items.Add(ebcdicConverter);
+            encodingToolStripComboBox.Items.Add(defConverter);
+            encodingToolStripComboBox.Items.Add(ebcdicConverter);
             encodingToolStripComboBox.Items.Add(utf8Converter);
 
-			encodingToolStripMenuItem.DropDownItems.Add(miDefault);
-			encodingToolStripMenuItem.DropDownItems.Add(miEbcdic);
+            encodingToolStripMenuItem.DropDownItems.Add(miDefault);
+            encodingToolStripMenuItem.DropDownItems.Add(miEbcdic);
             encodingToolStripMenuItem.DropDownItems.Add(miutf8);
-			encodingToolStripComboBox.SelectedIndex = 0;
+            encodingToolStripComboBox.SelectedIndex = 0;
 
             UpdateFormWidth();
         }
 
-		void encodingMenuItem_Clicked(object sender, EventArgs e)
-		{
-			var converter = ((ToolStripMenuItem)sender).Tag;
-			encodingToolStripComboBox.SelectedItem = converter;
-		}
+        void encodingMenuItem_Clicked(object sender, EventArgs e)
+        {
+            var converter = ((ToolStripMenuItem)sender).Tag;
+            encodingToolStripComboBox.SelectedItem = converter;
+        }
 
         /// <summary>
         /// Updates the File size status label
@@ -329,35 +329,35 @@ namespace Be.HexEditor
         /// </summary>
         void Find()
         {
-			ShowFind();
+            ShowFind();
         }
 
-		/// <summary>
-		/// Creates a new FormFind dialog
-		/// </summary>
-		/// <returns>the form find dialog</returns>
-		FormFind ShowFind()
-		{
-			if (_formFind == null || _formFind.IsDisposed)
-			{
-				_formFind = new FormFind();
-				_formFind.HexBox = this.hexBox;
-				_formFind.FindOptions = _findOptions;
-				_formFind.Show(this);
-			}
-			else
-			{
-				_formFind.Focus();
-			}
-			return _formFind;
-		}
+        /// <summary>
+        /// Creates a new FormFind dialog
+        /// </summary>
+        /// <returns>the form find dialog</returns>
+        FormFind ShowFind()
+        {
+            if (_formFind == null || _formFind.IsDisposed)
+            {
+                _formFind = new FormFind();
+                _formFind.HexBox = this.hexBox;
+                _formFind.FindOptions = _findOptions;
+                _formFind.Show(this);
+            }
+            else
+            {
+                _formFind.Focus();
+            }
+            return _formFind;
+        }
 
         /// <summary>
         /// Find next match
         /// </summary>
         void FindNext()
         {
-			ShowFind().FindNext();
+            ShowFind().FindNext();
         }
 
         /// <summary>
@@ -429,26 +429,26 @@ namespace Be.HexEditor
             this.toolStripStatusLabel.Text = string.Format("Ln {0}    Col {1}",
                 hexBox.CurrentLine, hexBox.CurrentPositionInLine);
 
-			string bitPresentation = string.Empty;
+            string bitPresentation = string.Empty;
 
-			byte? currentByte = hexBox.ByteProvider != null && hexBox.ByteProvider.Length > hexBox.SelectionStart
-				? hexBox.ByteProvider.ReadByte(hexBox.SelectionStart)
-				: (byte?)null;
+            byte? currentByte = hexBox.ByteProvider != null && hexBox.ByteProvider.Length > hexBox.SelectionStart
+                ? hexBox.ByteProvider.ReadByte(hexBox.SelectionStart)
+                : (byte?)null;
 
-			BitInfo bitInfo = currentByte != null ? new BitInfo((byte)currentByte, hexBox.SelectionStart) : null;
+            BitInfo bitInfo = currentByte != null ? new BitInfo((byte)currentByte, hexBox.SelectionStart) : null;
 
-			if (bitInfo != null)
-			{
-				byte currentByteNotNull = (byte)currentByte;
-				bitPresentation = string.Format("Bits of Byte {0}: {1}"
-					, hexBox.SelectionStart
-					, bitInfo.ToString()
-					);
-			}
+            if (bitInfo != null)
+            {
+                byte currentByteNotNull = (byte)currentByte;
+                bitPresentation = string.Format("Bits of Byte {0}: {1}"
+                    , hexBox.SelectionStart
+                    , bitInfo.ToString()
+                    );
+            }
 
-			this.bitToolStripStatusLabel.Text = bitPresentation;
+            this.bitToolStripStatusLabel.Text = bitPresentation;
 
-			this.bitControl1.BitInfo = bitInfo;
+            this.bitControl1.BitInfo = bitInfo;
         }
 
         void byteProvider_Changed(object sender, EventArgs e)
@@ -542,46 +542,46 @@ namespace Be.HexEditor
             var result = CloseFile();
             if (result == DialogResult.Cancel)
                 e.Cancel = true;
-		}
+        }
 
-		void toolStripEncoding_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			hexBox.ByteCharConverter = encodingToolStripComboBox.SelectedItem as IByteCharConverter;
+        void toolStripEncoding_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hexBox.ByteCharConverter = encodingToolStripComboBox.SelectedItem as IByteCharConverter;
 
-			foreach (ToolStripMenuItem encodingMenuItem in encodingToolStripMenuItem.DropDownItems)
-				encodingMenuItem.Checked = (encodingMenuItem.Tag == hexBox.ByteCharConverter);
-		}
+            foreach (ToolStripMenuItem encodingMenuItem in encodingToolStripMenuItem.DropDownItems)
+                encodingMenuItem.Checked = (encodingMenuItem.Tag == hexBox.ByteCharConverter);
+        }
 
-		void bitsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-		{
-			UpdateBitControlVisibility();
-		}
+        void bitsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateBitControlVisibility();
+        }
 
-		void UpdateBitControlVisibility()
-		{
+        void UpdateBitControlVisibility()
+        {
             if (Util.DesignMode)
                 return;
-			//if (this.bitControl1.Visible == bitsToolStripMenuItem.Checked)
-			//{
-			//    return;
-			//}
-			if (bitsToolStripMenuItem.Checked)
-			{
+            //if (this.bitControl1.Visible == bitsToolStripMenuItem.Checked)
+            //{
+            //    return;
+            //}
+            if (bitsToolStripMenuItem.Checked)
+            {
                 hexBox.Height -= bitControl1.Height;
-				bitControl1.Visible = true;
-			}
-			else
-			{
+                bitControl1.Visible = true;
+            }
+            else
+            {
                 hexBox.Height += bitControl1.Height;
-				bitControl1.Visible = false;
-			}
-		}
+                bitControl1.Visible = false;
+            }
+        }
 
-		void bitControl1_BitChanged(object sender, EventArgs e)
-		{
-			hexBox.ByteProvider.WriteByte(bitControl1.BitInfo.Position, bitControl1.BitInfo.Value);
-			hexBox.Invalidate();
-		}
+        void bitControl1_BitChanged(object sender, EventArgs e)
+        {
+            hexBox.ByteProvider.WriteByte(bitControl1.BitInfo.Position, bitControl1.BitInfo.Value);
+            hexBox.Invalidate();
+        }
 
         void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -602,5 +602,5 @@ namespace Be.HexEditor
         {
      
         }
-	}
+    }
 }

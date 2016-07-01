@@ -91,14 +91,14 @@ namespace Be.Windows.Forms
                 throw new InvalidOperationException("The collection is empty.");
             }
             RemoveInternal(GetLastBlock());
-		}
+        }
 
-		public DataBlock Replace(DataBlock block, DataBlock newBlock)
-		{
-			AddAfterInternal(block, newBlock);
-			RemoveInternal(block);
-			return newBlock;
-		}
+        public DataBlock Replace(DataBlock block, DataBlock newBlock)
+        {
+            AddAfterInternal(block, newBlock);
+            RemoveInternal(block);
+            return newBlock;
+        }
 
         public void Clear()
         {

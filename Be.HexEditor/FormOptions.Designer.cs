@@ -151,6 +151,7 @@
             this.Name = "FormOptions";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.FormOptions_Load);
             this.tabControl.ResumeLayout(false);
             this.generalTabPage.ResumeLayout(false);
             this.languageSettingsGroupBox.ResumeLayout(false);

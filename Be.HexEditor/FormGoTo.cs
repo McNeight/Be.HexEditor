@@ -6,57 +6,57 @@ using System.Windows.Forms;
 
 namespace Be.HexEditor
 {
-	/// <summary>
-	/// Summary description for FormGoTo.
-	/// </summary>
+    /// <summary>
+    /// Summary description for FormGoTo.
+    /// </summary>
     public class FormGoTo : Core.FormEx
-	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.Button btnOK;
+    {
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.NumericUpDown nup;
-		private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label2;
         private Panel line;
         private FlowLayoutPanel flowLayoutPanel1;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		public FormGoTo()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        public FormGoTo()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
-			//
-			// TODO: Add any constructor code after InitializeComponent call
-			//
-		}
+            //
+            // TODO: Add any constructor code after InitializeComponent call
+            //
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose( bool disposing )
+        {
+            if( disposing )
+            {
+                if(components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose( disposing );
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGoTo));
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -138,43 +138,49 @@ namespace Be.HexEditor
             this.Name = "FormGoTo";
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.FormGoTo_Activated);
+            this.Load += new System.EventHandler(this.FormGoTo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nup)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
-		}
-		#endregion
+        }
+        #endregion
 
-		public void SetDefaultValue(long byteIndex)
-		{
-			nup.Value = byteIndex + 1;
-		}
+        public void SetDefaultValue(long byteIndex)
+        {
+            nup.Value = byteIndex + 1;
+        }
 
-		public void SetMaxByteIndex(long maxByteIndex)
-		{
-			nup.Maximum = maxByteIndex + 1;
-		}
+        public void SetMaxByteIndex(long maxByteIndex)
+        {
+            nup.Maximum = maxByteIndex + 1;
+        }
 
-		public long GetByteIndex()
-		{
-			return Convert.ToInt64(nup.Value) - 1;
-		}
+        public long GetByteIndex()
+        {
+            return Convert.ToInt64(nup.Value) - 1;
+        }
 
-		private void FormGoTo_Activated(object sender, System.EventArgs e)
-		{
-			nup.Focus();
-			nup.Select(0, nup.Value.ToString().Length);
-		}
+        private void FormGoTo_Activated(object sender, System.EventArgs e)
+        {
+            nup.Focus();
+            nup.Select(0, nup.Value.ToString().Length);
+        }
 
-		private void btnOK_Click(object sender, System.EventArgs e)
-		{
-			DialogResult = DialogResult.OK;
-		}
+        private void btnOK_Click(object sender, System.EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
 
-		private void btnCancel_Click(object sender, System.EventArgs e)
-		{
-			DialogResult = DialogResult.OK;
-		}
-	}
+        private void btnCancel_Click(object sender, System.EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void FormGoTo_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
