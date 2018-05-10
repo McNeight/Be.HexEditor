@@ -177,43 +177,45 @@ namespace Be.HexEditor.Core
             int widthDiff = (int)(this.ClientSize.Width * factor) - this.ClientSize.Width;
             int heightDiff = (int)(this.ClientSize.Height * factor) - this.ClientSize.Height;
 
-            List<W32.RECT> rectList = new List<W32.RECT>();
-
-            // Left-Top corner
-            rectList.Add(new W32.RECT
+            List<W32.RECT> rectList = new List<W32.RECT>
             {
-                left = this.Bounds.Left,
-                top = this.Bounds.Top,
-                right = this.Bounds.Right + widthDiff,
-                bottom = this.Bounds.Bottom + heightDiff
-            });
 
-            // Right-Top corner
-            rectList.Add(new W32.RECT
-            {
-                left = this.Bounds.Left - widthDiff,
-                top = this.Bounds.Top,
-                right = this.Bounds.Right,
-                bottom = this.Bounds.Bottom + heightDiff
-            });
+                // Left-Top corner
+                new W32.RECT
+                {
+                    left = this.Bounds.Left,
+                    top = this.Bounds.Top,
+                    right = this.Bounds.Right + widthDiff,
+                    bottom = this.Bounds.Bottom + heightDiff
+                },
 
-            // Left-Bottom corner
-            rectList.Add(new W32.RECT
-            {
-                left = this.Bounds.Left,
-                top = this.Bounds.Top - heightDiff,
-                right = this.Bounds.Right + widthDiff,
-                bottom = this.Bounds.Bottom
-            });
+                // Right-Top corner
+                new W32.RECT
+                {
+                    left = this.Bounds.Left - widthDiff,
+                    top = this.Bounds.Top,
+                    right = this.Bounds.Right,
+                    bottom = this.Bounds.Bottom + heightDiff
+                },
 
-            // Right-Bottom corner
-            rectList.Add(new W32.RECT
-            {
-                left = this.Bounds.Left - widthDiff,
-                top = this.Bounds.Top - heightDiff,
-                right = this.Bounds.Right,
-                bottom = this.Bounds.Bottom
-            });
+                // Left-Bottom corner
+                new W32.RECT
+                {
+                    left = this.Bounds.Left,
+                    top = this.Bounds.Top - heightDiff,
+                    right = this.Bounds.Right + widthDiff,
+                    bottom = this.Bounds.Bottom
+                },
+
+                // Right-Bottom corner
+                new W32.RECT
+                {
+                    left = this.Bounds.Left - widthDiff,
+                    top = this.Bounds.Top - heightDiff,
+                    right = this.Bounds.Right,
+                    bottom = this.Bounds.Bottom
+                }
+            };
 
             // Get handle to monitor that has the largest intersection with each rectangle.
             for (int i = 0; i <= rectList.Count - 1; i++)
