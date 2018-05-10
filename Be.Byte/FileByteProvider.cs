@@ -99,7 +99,8 @@ namespace Be.Byte
         /// </summary>
         ~FileByteProvider()
         {
-            Dispose();
+            // Finalizer calls Dispose(false)
+            Dispose(false);
         }
 
         /// <summary>
@@ -251,19 +252,29 @@ namespace Be.Byte
 
         #region IDisposable Members
         /// <summary>
-        /// Releases the file handle used by the FileByteProvider.
+        /// Dispose() calls Dispose(true)
         /// </summary>
         public void Dispose()
         {
-            if (_fileStream != null)
-            {
-                _fileName = null;
-
-                _fileStream.Close();
-                _fileStream = null;
-            }
-
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases the file handle used by the FileByteProvider.
+        /// </summary>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_fileStream != null)
+                {
+                    _fileName = null;
+
+                    _fileStream.Close();
+                    _fileStream = null;
+                }
+            }
         }
         #endregion
     }
