@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Be.HexEditor
 {
     // Win32 API for P/Invoke
-    class W32
+    internal static class NativeMethods
     {
         // Get handle to monitor that has the largest intersection with a specified window.
         [DllImport("User32.dll", SetLastError = true)]

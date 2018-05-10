@@ -157,12 +157,12 @@
     <Compile Include="Core\ToolStripSplitButtonEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="ScalingImages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ScalingImages.resx</DependentUpon>
     </Compile>
-    <Compile Include="W32.cs" />
     <EmbeddedResource Include="App.ico" />
     <EmbeddedResource Include="BitControl.de.resx">
       <DependentUpon>BitControl.cs</DependentUpon>

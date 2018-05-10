@@ -97,10 +97,10 @@ namespace Be.HexEditor.Core
             if (m.Msg == WM_DPICHANGED)
             {
                 // wParam
-                short lo = W32.GetLoWord(m.WParam.ToInt32());
+                short lo = NativeMethods.GetLoWord(m.WParam.ToInt32());
 
                 // lParam
-                W32.RECT r = (W32.RECT)Marshal.PtrToStructure(m.LParam, typeof(W32.RECT));
+                NativeMethods.RECT r = (NativeMethods.RECT)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.RECT));
 
                 // Hold new DPI as target for adjustment.
                 dpiNew = lo;
@@ -177,11 +177,11 @@ namespace Be.HexEditor.Core
             int widthDiff = (int)(this.ClientSize.Width * factor) - this.ClientSize.Width;
             int heightDiff = (int)(this.ClientSize.Height * factor) - this.ClientSize.Height;
 
-            List<W32.RECT> rectList = new List<W32.RECT>
+            List<NativeMethods.RECT> rectList = new List<NativeMethods.RECT>
             {
 
                 // Left-Top corner
-                new W32.RECT
+                new NativeMethods.RECT
                 {
                     left = this.Bounds.Left,
                     top = this.Bounds.Top,
@@ -190,7 +190,7 @@ namespace Be.HexEditor.Core
                 },
 
                 // Right-Top corner
-                new W32.RECT
+                new NativeMethods.RECT
                 {
                     left = this.Bounds.Left - widthDiff,
                     top = this.Bounds.Top,
@@ -199,7 +199,7 @@ namespace Be.HexEditor.Core
                 },
 
                 // Left-Bottom corner
-                new W32.RECT
+                new NativeMethods.RECT
                 {
                     left = this.Bounds.Left,
                     top = this.Bounds.Top - heightDiff,
@@ -208,7 +208,7 @@ namespace Be.HexEditor.Core
                 },
 
                 // Right-Bottom corner
-                new W32.RECT
+                new NativeMethods.RECT
                 {
                     left = this.Bounds.Left - widthDiff,
                     top = this.Bounds.Top - heightDiff,
@@ -220,15 +220,15 @@ namespace Be.HexEditor.Core
             // Get handle to monitor that has the largest intersection with each rectangle.
             for (int i = 0; i <= rectList.Count - 1; i++)
             {
-                W32.RECT rectBuf = rectList[i];
+                NativeMethods.RECT rectBuf = rectList[i];
 
-                IntPtr handleMonitor = W32.MonitorFromRect(ref rectBuf, W32.MONITOR_DEFAULTTONULL);
+                IntPtr handleMonitor = NativeMethods.MonitorFromRect(ref rectBuf, NativeMethods.MONITOR_DEFAULTTONULL);
 
                 if (handleMonitor != IntPtr.Zero)
                 {
                     // Check if at least Left-Top corner or Right-Top corner is inside monitors.
-                    IntPtr handleLeftTop = W32.MonitorFromPoint(new W32.POINT(rectBuf.left, rectBuf.top), W32.MONITOR_DEFAULTTONULL);
-                    IntPtr handleRightTop = W32.MonitorFromPoint(new W32.POINT(rectBuf.right, rectBuf.top), W32.MONITOR_DEFAULTTONULL);
+                    IntPtr handleLeftTop = NativeMethods.MonitorFromPoint(new NativeMethods.POINT(rectBuf.left, rectBuf.top), NativeMethods.MONITOR_DEFAULTTONULL);
+                    IntPtr handleRightTop = NativeMethods.MonitorFromPoint(new NativeMethods.POINT(rectBuf.right, rectBuf.top), NativeMethods.MONITOR_DEFAULTTONULL);
 
                     if ((handleLeftTop != IntPtr.Zero) || (handleRightTop != IntPtr.Zero))
                     {
@@ -257,7 +257,7 @@ namespace Be.HexEditor.Core
             int widthDiff = (int)(this.ClientSize.Width * factor) - this.ClientSize.Width;
             int heightDiff = (int)(this.ClientSize.Height * factor) - this.ClientSize.Height;
 
-            W32.RECT rect = new W32.RECT()
+            NativeMethods.RECT rect = new NativeMethods.RECT()
             {
                 left = this.Bounds.Left,
                 top = this.Bounds.Top,
@@ -266,7 +266,7 @@ namespace Be.HexEditor.Core
             };
 
             // Get handle to monitor that has the largest intersection with the rectangle.
-            IntPtr handleMonitor = W32.MonitorFromRect(ref rect, W32.MONITOR_DEFAULTTONULL);
+            IntPtr handleMonitor = NativeMethods.MonitorFromRect(ref rect, NativeMethods.MONITOR_DEFAULTTONULL);
 
             if (handleMonitor != IntPtr.Zero)
             {
@@ -366,7 +366,7 @@ namespace Be.HexEditor.Core
             IntPtr handleWindow = Process.GetCurrentProcess().MainWindowHandle;
 
             // Get handle to monitor.
-            IntPtr handleMonitor = W32.MonitorFromWindow(handleWindow, W32.MONITOR_DEFAULTTOPRIMARY);
+            IntPtr handleMonitor = NativeMethods.MonitorFromWindow(handleWindow, NativeMethods.MONITOR_DEFAULTTOPRIMARY);
 
             // Get DPI.
             return GetDpiSpecifiedMonitor(handleMonitor);
@@ -379,7 +379,7 @@ namespace Be.HexEditor.Core
             if (!IsEightOneOrNewer())
                 return this.CurrentAutoScaleDimensions.Width;
 
-            int result = W32.GetDpiForMonitor(handleMonitor, W32.Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint dpiY);
+            int result = NativeMethods.GetDpiForMonitor(handleMonitor, NativeMethods.Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint dpiY);
 
             if (result != 0) // If not S_OK (= 0)
             {
@@ -397,14 +397,14 @@ namespace Be.HexEditor.Core
 
             try
             {
-                screen = W32.GetDC(IntPtr.Zero);
-                dpiX = W32.GetDeviceCaps(screen, W32.LOGPIXELSX);
+                screen = NativeMethods.GetDC(IntPtr.Zero);
+                dpiX = NativeMethods.GetDeviceCaps(screen, NativeMethods.LOGPIXELSX);
             }
             finally
             {
                 if (screen != IntPtr.Zero)
                 {
-                    W32.ReleaseDC(IntPtr.Zero, screen);
+                    NativeMethods.ReleaseDC(IntPtr.Zero, screen);
                 }
             }
 
