@@ -1,6 +1,4 @@
-using System;
-
-namespace Be.Windows.Forms
+namespace Be.Byte
 {
     internal abstract class DataBlock
     {

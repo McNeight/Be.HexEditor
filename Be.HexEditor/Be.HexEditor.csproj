@@ -19,8 +19,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Be.HexEditor</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>Be.HexEditor.Program</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -72,7 +71,7 @@
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -97,8 +96,9 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>5282C77035188F0544204E779C3587A1D0FE131C</ManifestCertificateThumbprint>
@@ -304,7 +304,6 @@
     <Compile Include="BitControl.designer.cs">
       <DependentUpon>BitControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="BitInfo.cs" />
     <Compile Include="FormOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -440,6 +439,10 @@
     <EmbeddedResource Include="Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Be.Byte\Be.Byte.csproj">
+      <Project>{d64fb126-5f80-47aa-ab83-ed9298884368}</Project>
+      <Name>Be.Byte</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
       <Project>{26c5f25f-b450-4caf-ad8b-b8d11ae73457}</Project>
       <Name>Be.Windows.Forms.HexBox</Name>

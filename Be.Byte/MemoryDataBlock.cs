@@ -1,6 +1,6 @@
 using System;
 
-namespace Be.Windows.Forms
+namespace Be.Byte
 {
     internal sealed class MemoryDataBlock : DataBlock
     {

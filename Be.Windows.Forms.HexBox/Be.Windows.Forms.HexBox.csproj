@@ -69,6 +69,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -91,8 +92,9 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -113,47 +115,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInfo.cs">
+    <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BuiltInContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ByteCollection.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="BytePositionInfo.cs" />
     <Compile Include="Caret.cs" />
-    <Compile Include="DataBlock.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DynamicByteProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DynamicFileByteProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FileByteProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FileDataBlock.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="FindOptions.cs" />
     <Compile Include="HexBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="HexCasing.cs" />
-    <Compile Include="ByteCharConverters.cs" />
-    <Compile Include="IByteProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MemoryDataBlock.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="NativeMethods.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -200,6 +174,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Be.Byte\Be.Byte.csproj">
+      <Project>{D64FB126-5F80-47AA-AB83-ED9298884368}</Project>
+      <Name>Be.Byte</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
