@@ -1556,7 +1556,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        int ToScrollMax(long value)
+        static int ToScrollMax(long value)
         {
             long max = 65535;
             if (value > max)
@@ -3620,7 +3620,7 @@ namespace Be.Windows.Forms
         /// </summary>
         /// <param name="hex">the hex string separated by ' '. For example: "0A 0B 0C"</param>
         /// <returns>the byte array. null if hex is invalid or empty</returns>
-        byte[] ConvertHexToBytes(string hex)
+        static byte[] ConvertHexToBytes(string hex)
         {
             if (string.IsNullOrEmpty(hex))
                 return null;
@@ -3641,7 +3641,7 @@ namespace Be.Windows.Forms
             return byteArray;
         }
 
-        bool ConvertHexToByte(string hex, out byte b)
+        static bool ConvertHexToByte(string hex, out byte b)
         {
             bool isByte = byte.TryParse(hex, System.Globalization.NumberStyles.HexNumber, System.Threading.Thread.CurrentThread.CurrentCulture, out b);
             return isByte;

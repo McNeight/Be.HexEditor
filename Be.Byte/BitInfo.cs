@@ -59,7 +59,7 @@ namespace Be.Byte
             }
         }
 
-        byte ConvertToByte(BitArray bits)
+        static byte ConvertToByte(BitArray bits)
         {
             if (bits.Count != 8)
             {
@@ -69,6 +69,5 @@ namespace Be.Byte
             bits.CopyTo(bytes, 0);
             return bytes[0];
         }
-
     }
 }

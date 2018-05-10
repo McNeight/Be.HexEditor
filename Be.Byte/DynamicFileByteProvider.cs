@@ -470,7 +470,7 @@ namespace Be.Byte
             return null;
         }
 
-        FileDataBlock GetNextFileDataBlock(DataBlock block, long dataOffset, out long nextDataOffset)
+        static FileDataBlock GetNextFileDataBlock(DataBlock block, long dataOffset, out long nextDataOffset)
         {
             // Iterate over the remaining blocks until a file block is encountered.
             nextDataOffset = dataOffset + block.Length;

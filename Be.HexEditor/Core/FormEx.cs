@@ -390,7 +390,7 @@ namespace Be.HexEditor.Core
         }
 
         // Get DPI for all monitors by GetDeviceCaps.
-        float GetDpiDeviceMonitor()
+        static float GetDpiDeviceMonitor()
         {
             int dpiX = 0;
             IntPtr screen = IntPtr.Zero;
@@ -417,14 +417,14 @@ namespace Be.HexEditor.Core
         #region OS Version
 
         // Check if OS is Windows 8.1 or newer.
-        bool IsEightOneOrNewer()
+        static bool IsEightOneOrNewer()
         {
             // To get this value correctly, it is required to include ID of Windows 8.1 in the manifest file.
             return (6.3 <= GetVersion());
         }
 
         // Get OS version in Double.
-        private double GetVersion()
+        private static double GetVersion()
         {
             OperatingSystem os = Environment.OSVersion;
 

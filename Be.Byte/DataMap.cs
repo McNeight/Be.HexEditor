@@ -185,7 +185,7 @@ namespace Be.Byte
             return lastBlock;
         }
 
-        void InvalidateBlock(DataBlock block)
+        static void InvalidateBlock(DataBlock block)
         {
             block._map = null;
             block._nextBlock = null;

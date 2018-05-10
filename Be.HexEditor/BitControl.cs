@@ -157,7 +157,7 @@ namespace Be.HexEditor
                 txt.TextChanged += new EventHandler(txt_TextChanged);
         }
 
-        int GetBitSetInt(byte b, int pos)
+        static int GetBitSetInt(byte b, int pos)
         {
             if (IsBitSet(b, pos))
                 return 1;
@@ -165,12 +165,12 @@ namespace Be.HexEditor
                 return 0;
         }
 
-        bool IsBitSet(byte b, int pos)
+        static bool IsBitSet(byte b, int pos)
         {
             return (b & (1 << pos)) != 0;
         }
 
-        byte SetBit(byte b, int BitNumber)
+        static byte SetBit(byte b, int BitNumber)
         {
             //Kleine Fehlerbehandlung
             if (BitNumber < 8 && BitNumber > -1)
@@ -272,7 +272,7 @@ namespace Be.HexEditor
             UpdateSelection(txt);
         }
 
-        void UpdateSelection(RichTextBox txt)
+        static void UpdateSelection(RichTextBox txt)
         {
             txt.SelectionStart = 0;
             if (txt.SelectionLength == 0)

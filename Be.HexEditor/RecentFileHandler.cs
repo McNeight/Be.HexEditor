@@ -97,7 +97,7 @@ namespace Be.HexEditor
             Settings.Default.Save();
         }
 
-        int GetIndexOfRecentFile(string filename)
+        static int GetIndexOfRecentFile(string filename)
         {
             for (int i = 0; i < Settings.Default.RecentFiles.Count; i++)
             {
