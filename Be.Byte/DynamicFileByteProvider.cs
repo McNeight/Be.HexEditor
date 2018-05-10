@@ -183,6 +183,11 @@ namespace Be.Byte
         /// </summary>
         public void InsertBytes(long index, byte[] bs)
         {
+            if (bs == null)
+            {
+                throw new ArgumentNullException(nameof(bs));
+            }
+
             try
             {
                 // Find the block affected.
