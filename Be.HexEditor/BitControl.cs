@@ -25,14 +25,18 @@ namespace Be.HexEditor
 
         public BitControl()
         {
-            _innerBorderHeaderPanel = new Panel();
-            _innerBorderHeaderPanel.Dock = DockStyle.Fill;
-            _innerBorderHeaderPanel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            _innerBorderHeaderPanel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Margin = new System.Windows.Forms.Padding(3, 1, 3, 1)
+            };
 
-            _innerBorderPanel = new Panel();
-            _innerBorderPanel.BackColor = Color.White;
-            _innerBorderPanel.Dock = DockStyle.Fill;
-            _innerBorderPanel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            _innerBorderPanel = new Panel
+            {
+                BackColor = Color.White,
+                Dock = DockStyle.Fill,
+                Margin = new System.Windows.Forms.Padding(3, 1, 3, 1)
+            };
 
             InitializeComponent();
 
@@ -46,18 +50,20 @@ namespace Be.HexEditor
             int pos = 5;
             for (int i = 7; i > -1; i--)
             {
-                Label lbl = new Label();
-                lbl.Tag = i;
-                lbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                lbl.Font = new System.Drawing.Font("Consolas", SystemFonts.MessageBoxFont.Size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                lbl.Margin = new System.Windows.Forms.Padding(0);
+                Label lbl = new Label
+                {
+                    Tag = i,
+                    BorderStyle = System.Windows.Forms.BorderStyle.None,
+                    Font = new System.Drawing.Font("Consolas", SystemFonts.MessageBoxFont.Size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                    Margin = new System.Windows.Forms.Padding(0),
 
-                lbl.Name = "lbl" + i.ToString();
+                    Name = "lbl" + i.ToString(),
 
-                //lbl.Size = new System.Drawing.Size(14, 14);
+                    //lbl.Size = new System.Drawing.Size(14, 14);
 
-                lbl.AutoSize = true;
-                lbl.Text = i.ToString();
+                    AutoSize = true,
+                    Text = i.ToString()
+                };
                 lbl.Enter += new System.EventHandler(this.txt_Enter);
                 lbl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
                 _innerBorderHeaderPanel.Controls.Add(lbl);
@@ -79,19 +85,21 @@ namespace Be.HexEditor
             pos = 8;
             for (int i = 7; i > -1; i--)
             {
-                RichTextBox txt = new RichTextBox();
-                txt.Tag = i;
-                txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                txt.Font = new System.Drawing.Font("Consolas", SystemFonts.MessageBoxFont.Size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                txt.Margin = new System.Windows.Forms.Padding(0);
+                RichTextBox txt = new RichTextBox
+                {
+                    Tag = i,
+                    BorderStyle = System.Windows.Forms.BorderStyle.None,
+                    Font = new System.Drawing.Font("Consolas", SystemFonts.MessageBoxFont.Size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                    Margin = new System.Windows.Forms.Padding(0),
 
-                txt.MaxLength = 1;
-                txt.Multiline = false;
-                txt.Name = "txt" + i.ToString();
-                //txt.Size = new System.Drawing.Size(14, 14);
-                txt.Size = size;
-                txt.Left = pos;
-                txt.Top = 6;
+                    MaxLength = 1,
+                    Multiline = false,
+                    Name = "txt" + i.ToString(),
+                    //txt.Size = new System.Drawing.Size(14, 14);
+                    Size = size,
+                    Left = pos,
+                    Top = 6
+                };
                 pos += size.Width;
                 txt.TabIndex = 10 - i + 7;
                 txt.Text = "0";

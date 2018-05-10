@@ -53,15 +53,19 @@ namespace Be.HexEditor
 
             //var selected = ;
             var defConverter = new DefaultByteCharConverter();
-            ToolStripMenuItem miDefault = new ToolStripMenuItem();
-            miDefault.Text = defConverter.ToString();
-            miDefault.Tag = defConverter;
+            ToolStripMenuItem miDefault = new ToolStripMenuItem
+            {
+                Text = defConverter.ToString(),
+                Tag = defConverter
+            };
             miDefault.Click += new EventHandler(encodingMenuItem_Clicked);
 
             var ebcdicConverter = new EbcdicByteCharProvider();
-            ToolStripMenuItem miEbcdic = new ToolStripMenuItem();
-            miEbcdic.Text = ebcdicConverter.ToString();
-            miEbcdic.Tag = ebcdicConverter;
+            ToolStripMenuItem miEbcdic = new ToolStripMenuItem
+            {
+                Text = ebcdicConverter.ToString(),
+                Tag = ebcdicConverter
+            };
             miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
 
             encodingToolStripComboBox.Items.Add(defConverter);
@@ -329,9 +333,11 @@ namespace Be.HexEditor
         {
             if (_formFind == null || _formFind.IsDisposed)
             {
-                _formFind = new FormFind();
-                _formFind.HexBox = this.hexBox;
-                _formFind.FindOptions = _findOptions;
+                _formFind = new FormFind
+                {
+                    HexBox = this.hexBox,
+                    FindOptions = _findOptions
+                };
                 _formFind.Show(this);
             }
             else
