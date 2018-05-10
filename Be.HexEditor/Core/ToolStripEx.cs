@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Be.HexEditor.Core
@@ -38,7 +35,7 @@ namespace Be.HexEditor.Core
         {
             _form = CoreUtil.GetParent<FormEx>(this);
 
-            if(_form != null)
+            if (_form != null)
             {
                 CoreUtil.AdjustImages(this, ref _dpiOld, _form.DpiNew);
             }

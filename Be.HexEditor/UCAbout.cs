@@ -1,44 +1,40 @@
 using System;
-using System.Collections;
-using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Diagnostics;
 using System.Reflection;
-using System.IO;
+using System.Windows.Forms;
 
 namespace Be.HexEditor
 {
-	/// <summary>
-	/// Summary description for UCAbout.
-	/// </summary>
-	public class UCAbout : System.Windows.Forms.UserControl
-	{
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label lblAuthor;
-		private System.Windows.Forms.Label lblVersion;
-		private System.Windows.Forms.TabPage tabLicense;
-		private System.Windows.Forms.RichTextBox txtLicense;
-		private System.Windows.Forms.TabPage tabChanges;
-		private System.Windows.Forms.RichTextBox txtChanges;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.LinkLabel lnkWorkspace;
-		private System.Windows.Forms.TabControl tabControl;
-		private System.Windows.Forms.TabPage tabThanksTo;
-		private System.Windows.Forms.RichTextBox txtThanksTo;
-		/// <summary> 
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+    /// <summary>
+    /// Summary description for UCAbout.
+    /// </summary>
+    public class UCAbout : System.Windows.Forms.UserControl
+    {
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblAuthor;
+        private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.TabPage tabLicense;
+        private System.Windows.Forms.RichTextBox txtLicense;
+        private System.Windows.Forms.TabPage tabChanges;
+        private System.Windows.Forms.RichTextBox txtChanges;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.LinkLabel lnkWorkspace;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabThanksTo;
+        private System.Windows.Forms.RichTextBox txtThanksTo;
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		public UCAbout()
-		{
-			// This call is required by the Windows.Forms Form Designer.
-			InitializeComponent();
+        public UCAbout()
+        {
+            // This call is required by the Windows.Forms Form Designer.
+            InitializeComponent();
 
-			// TODO: Add any initialization after the InitializeComponent call
+            // TODO: Add any initialization after the InitializeComponent call
 
             try
             {
@@ -59,36 +55,36 @@ namespace Be.HexEditor
             {
                 return;
             }
-		}
+        }
 
         protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
         {
-            
+
             base.ScaleControl(factor, specified);
         }
 
-		/// <summary> 
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Component Designer generated code
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Component Designer generated code
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCAbout));
             this.label1 = new System.Windows.Forms.Label();
             this.lblAuthor = new System.Windows.Forms.Label();
@@ -227,20 +223,20 @@ namespace Be.HexEditor
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private void lnkCompany_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-		{
-			try
-			{
-				System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(this.lnkWorkspace.Text));
-			}
-			catch (Exception ex1)
-			{
-				MessageBox.Show(ex1.Message);
-			}
-		}
+        private void lnkCompany_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(this.lnkWorkspace.Text));
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show(ex1.Message);
+            }
+        }
 
         private void UCAbout_Load(object sender, EventArgs e)
         {
@@ -250,5 +246,5 @@ namespace Be.HexEditor
             this.lnkWorkspace.Width = this.Width - this.lnkWorkspace.Left - 10;
             this.lblVersion.Width = this.Width - this.lblVersion.Left - 10;
         }
-	}
+    }
 }

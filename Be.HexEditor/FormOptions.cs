@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Globalization;
+using System.Windows.Forms;
+
 using Be.HexEditor.Properties;
 
 namespace Be.HexEditor
@@ -17,14 +14,14 @@ namespace Be.HexEditor
         public int RecentFilesMax
         {
             get { return recentFilesMax; }
-            set 
+            set
             {
                 if (recentFilesMax == value)
                     return;
                 if (value < 0 || value > RecentFileHandler.MaxRecentFiles)
                     return;
 
-                recentFilesMax = value; 
+                recentFilesMax = value;
             }
         }
 
@@ -47,14 +44,14 @@ namespace Be.HexEditor
             this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
 
             if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
-                Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName; 
+                Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Value", typeof(string));
             dt.Rows.Add(strings.English, "en");
             dt.Rows.Add(strings.German, "de");
-			dt.Rows.Add(strings.Italian, "it");
+            dt.Rows.Add(strings.Italian, "it");
             dt.Rows.Add(strings.Japanese, "ja");
             dt.Rows.Add(strings.Russian, "ru");
             dt.Rows.Add(strings.SimplifiedChinese, "zh-CN");
@@ -93,7 +90,7 @@ namespace Be.HexEditor
                 changed = true;
             }
 
-            if(changed)
+            if (changed)
                 Settings.Default.Save();
 
             this.DialogResult = DialogResult.OK;

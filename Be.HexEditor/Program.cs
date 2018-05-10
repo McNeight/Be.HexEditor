@@ -1,10 +1,11 @@
 using System;
-using System.Windows.Forms;
-using System.Threading;
 using System.Globalization;
-using Be.HexEditor.Properties;
-using Be.Windows.Forms;
+using System.Threading;
+using System.Windows.Forms;
 
+using Be.HexEditor.Properties;
+
+[assembly: CLSCompliant(true)]
 namespace Be.HexEditor
 {
     class Program

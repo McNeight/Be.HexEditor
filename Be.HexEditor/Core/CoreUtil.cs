@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Be.HexEditor.Core
@@ -18,14 +14,16 @@ namespace Be.HexEditor.Core
 
         public static void AdjustImages(ToolStrip toolStrip, ref float dpiOld, float dpiNew)
         {
-            if (Util.DesignMode) return;
+            if (Util.DesignMode)
+                return;
 
             //var newDpi = _form.DpiNew;
             var factor = dpiNew / dpiOld;
 
             //MessageBox.Show(factor.ToString());
 
-            if ((dpiNew == 0) || (dpiOld == dpiNew)) return; // Abort.
+            if ((dpiNew == 0) || (dpiOld == dpiNew))
+                return; // Abort.
 
             //float factor = _form.DpiNew / _dpiOld;
 

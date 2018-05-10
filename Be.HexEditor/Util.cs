@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Globalization;
 
 namespace Be.HexEditor
@@ -45,9 +43,9 @@ namespace Be.HexEditor
         {
             const long multi = 1024;
             long kb = multi;
-            long mb = kb*multi;
-            long gb = mb*multi;
-            long tb = gb*multi;
+            long mb = kb * multi;
+            long gb = mb * multi;
+            long tb = gb * multi;
 
             const string BYTES = "Bytes";
             const string KB = "KB";
@@ -58,13 +56,13 @@ namespace Be.HexEditor
             string result;
             if (size < kb)
                 result = string.Format("{0} {1}", size, BYTES);
-            else if(size < mb)
-                result = string.Format("{0} {1} ({2} Bytes)", 
+            else if (size < mb)
+                result = string.Format("{0} {1} ({2} Bytes)",
                     ConvertToOneDigit(size, kb), KB, ConvertBytesDisplay(size));
-            else if(size < gb)
+            else if (size < gb)
                 result = string.Format("{0} {1} ({2} Bytes)",
                     ConvertToOneDigit(size, mb), MB, ConvertBytesDisplay(size));
-            else if(size < tb)
+            else if (size < tb)
                 result = string.Format("{0} {1} ({2} Bytes)",
                     ConvertToOneDigit(size, gb), GB, ConvertBytesDisplay(size));
             else

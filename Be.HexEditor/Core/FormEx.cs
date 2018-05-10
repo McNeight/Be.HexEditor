@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -25,7 +24,7 @@ namespace Be.HexEditor.Core
 
         // New (current) DPI
         float dpiNew = 0;
-        [DefaultValue(0), DesignerSerializationVisibility( DesignerSerializationVisibility.Hidden)]
+        [DefaultValue(0), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float DpiNew
         {
             get { return dpiNew; }
@@ -68,7 +67,7 @@ namespace Be.HexEditor.Core
 
         void MainForm_Load(object sender, EventArgs e)
         {
-            if(!Util.DesignMode)
+            if (!Util.DesignMode)
                 AdjustWindowInitial();
         }
 
@@ -90,7 +89,8 @@ namespace Be.HexEditor.Core
             base.WndProc(ref m);
 
             // Check if Windows 8.1 or newer and if not, ignore message.
-            if (!IsEightOneOrNewer()) return;
+            if (!IsEightOneOrNewer())
+                return;
 
             const int WM_DPICHANGED = 0x02e0; // 0x02E0 from WinUser.h
 
@@ -165,9 +165,11 @@ namespace Be.HexEditor.Core
         // Get new location of this window after DPI change.
         void MoveWindow()
         {
-            if (Util.DesignMode) return;
+            if (Util.DesignMode)
+                return;
 
-            if (dpiOld == 0) return; // Abort.
+            if (dpiOld == 0)
+                return; // Abort.
 
             float factor = dpiNew / dpiOld;
 
@@ -233,7 +235,7 @@ namespace Be.HexEditor.Core
                         {
                             // Move this window.
                             this.Location = new Point(rectBuf.left, rectBuf.top);
-                            
+
                             break;
                         }
                     }
@@ -244,7 +246,8 @@ namespace Be.HexEditor.Core
         // Check if current location of this window is good for delayed adjustment.
         bool IsLocationGood()
         {
-            if (dpiOld == 0) return false; // Abort.
+            if (dpiOld == 0)
+                return false; // Abort.
 
             float factor = dpiNew / dpiOld;
 
@@ -280,14 +283,13 @@ namespace Be.HexEditor.Core
         public float Factor
         {
             get { return _factor; }
-            private set 
+            private set
             {
                 if (_factor == value)
                     return;
                 _factor = value;
 
-                if (FactorChanged != null)
-                    FactorChanged(this, EventArgs.Empty);
+                FactorChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -296,9 +298,11 @@ namespace Be.HexEditor.Core
         // Adjust this window.
         protected virtual void AdjustWindow()
         {
-            if (Util.DesignMode) return;
+            if (Util.DesignMode)
+                return;
 
-            if ((dpiOld == 0) || (dpiOld == dpiNew)) return; // Abort.
+            if ((dpiOld == 0) || (dpiOld == dpiNew))
+                return; // Abort.
 
             float factor = dpiNew / dpiOld;
 
@@ -315,13 +319,14 @@ namespace Be.HexEditor.Core
 
         protected virtual void AdjustFont(float factor)
         {
-            if (Util.DesignMode) return;
+            if (Util.DesignMode)
+                return;
 
             var dic = GetChildControlFontSizes(this);
 
             CoreUtil.ScaleFont(this, factor);
 
-            foreach(var item in dic)
+            foreach (var item in dic)
             {
                 // not affected by parent font?
                 if (item.Key.Font.Size == item.Value)
@@ -369,7 +374,8 @@ namespace Be.HexEditor.Core
         float GetDpiSpecifiedMonitor(IntPtr handleMonitor)
         {
             // Check if GetDpiForMonitor function is available.
-            if (!IsEightOneOrNewer()) return this.CurrentAutoScaleDimensions.Width;
+            if (!IsEightOneOrNewer())
+                return this.CurrentAutoScaleDimensions.Width;
 
             // Get DPI.
             uint dpiX = 0;

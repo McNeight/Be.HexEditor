@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Be.HexEditor.Core
@@ -11,7 +7,7 @@ namespace Be.HexEditor.Core
     {
         public ToolStripButtonEx()
         {
-            
+
         }
 
         System.Drawing.Image _image16;
@@ -38,6 +34,6 @@ namespace Be.HexEditor.Core
             set { _image32 = value; }
         }
 
-        
+
     }
 }

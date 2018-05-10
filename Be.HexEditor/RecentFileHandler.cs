@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
 using System.Windows.Forms;
+
 using Be.HexEditor.Properties;
 
 namespace Be.HexEditor
@@ -32,7 +30,7 @@ namespace Be.HexEditor
                 {
                     ToolStripMenuItem parent = (ToolStripMenuItem)this.OwnerItem;
                     int index = parent.DropDownItems.IndexOf(this);
-                    return string.Format("{0} {1}", index+1, fileName);
+                    return string.Format("{0} {1}", index + 1, fileName);
                 }
                 set
                 {
@@ -73,7 +71,7 @@ namespace Be.HexEditor
             if (alreadyIn > 0) // remove it
             {
                 Settings.Default.RecentFiles.RemoveAt(alreadyIn);
-                if(recentFileToolStripItem.DropDownItems.Count > alreadyIn)
+                if (recentFileToolStripItem.DropDownItems.Count > alreadyIn)
                     recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);
             }
             else if (alreadyIn == 0) // it´s the latest file so return
@@ -117,7 +115,7 @@ namespace Be.HexEditor
         public ToolStripMenuItem RecentFileToolStripItem
         {
             get { return recentFileToolStripItem; }
-            set 
+            set
             {
                 if (recentFileToolStripItem == value)
                     return;
@@ -148,7 +146,7 @@ namespace Be.HexEditor
             recentFileToolStripItem.Enabled = (Settings.Default.RecentFiles.Count > 0);
 
             int fileItemCount = Math.Min(Settings.Default.RecentFilesMax, Settings.Default.RecentFiles.Count);
-            for(int i = 0; i < fileItemCount; i++)
+            for (int i = 0; i < fileItemCount; i++)
             {
                 string file = Settings.Default.RecentFiles[i];
                 recentFileToolStripItem.DropDownItems.Add(new FileMenuItem(file));
