@@ -377,11 +377,7 @@ namespace Be.HexEditor.Core
             if (!IsEightOneOrNewer())
                 return this.CurrentAutoScaleDimensions.Width;
 
-            // Get DPI.
-            uint dpiX = 0;
-            uint dpiY = 0;
-
-            int result = W32.GetDpiForMonitor(handleMonitor, W32.Monitor_DPI_Type.MDT_Default, out dpiX, out dpiY);
+            int result = W32.GetDpiForMonitor(handleMonitor, W32.Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint dpiY);
 
             if (result != 0) // If not S_OK (= 0)
             {

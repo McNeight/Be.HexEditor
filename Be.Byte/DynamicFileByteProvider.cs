@@ -84,8 +84,7 @@ namespace Be.Byte
         /// </summary>
         public byte ReadByte(long index)
         {
-            long blockOffset;
-            DataBlock block = GetDataBlock(index, out blockOffset);
+            DataBlock block = GetDataBlock(index, out long blockOffset);
             FileDataBlock fileBlock = block as FileDataBlock;
             if (fileBlock != null)
             {
@@ -106,8 +105,7 @@ namespace Be.Byte
             try
             {
                 // Find the block affected.
-                long blockOffset;
-                DataBlock block = GetDataBlock(index, out blockOffset);
+                DataBlock block = GetDataBlock(index, out long blockOffset);
 
                 // If the byte is already in a memory block, modify it.
                 MemoryDataBlock memoryBlock = block as MemoryDataBlock;
@@ -192,8 +190,7 @@ namespace Be.Byte
             try
             {
                 // Find the block affected.
-                long blockOffset;
-                DataBlock block = GetDataBlock(index, out blockOffset);
+                DataBlock block = GetDataBlock(index, out long blockOffset);
 
                 // If the insertion point is in a memory block, just insert it.
                 MemoryDataBlock memoryBlock = block as MemoryDataBlock;
@@ -261,8 +258,7 @@ namespace Be.Byte
                 long bytesToDelete = length;
 
                 // Find the first block affected.
-                long blockOffset;
-                DataBlock block = GetDataBlock(index, out blockOffset);
+                DataBlock block = GetDataBlock(index, out long blockOffset);
 
                 // Truncate or remove each block as necessary.
                 while ((bytesToDelete > 0) && (block != null))
@@ -508,8 +504,7 @@ namespace Be.Byte
         void MoveFileBlock(FileDataBlock fileBlock, long dataOffset)
         {
             // First, determine whether the next file block needs to move before this one.
-            long nextDataOffset;
-            FileDataBlock nextFileBlock = GetNextFileDataBlock(fileBlock, dataOffset, out nextDataOffset);
+            FileDataBlock nextFileBlock = GetNextFileDataBlock(fileBlock, dataOffset, out long nextDataOffset);
             if (nextFileBlock != null && dataOffset + fileBlock.Length > nextFileBlock.FileOffset)
             {
                 // The next block needs to move first, so do that now.
