@@ -85,8 +85,7 @@ namespace Be.Byte
         public byte ReadByte(long index)
         {
             DataBlock block = GetDataBlock(index, out long blockOffset);
-            FileDataBlock fileBlock = block as FileDataBlock;
-            if (fileBlock != null)
+            if (block is FileDataBlock fileBlock)
             {
                 return ReadByteFromFile(fileBlock.FileOffset + index - blockOffset);
             }
@@ -108,8 +107,7 @@ namespace Be.Byte
                 DataBlock block = GetDataBlock(index, out long blockOffset);
 
                 // If the byte is already in a memory block, modify it.
-                MemoryDataBlock memoryBlock = block as MemoryDataBlock;
-                if (memoryBlock != null)
+                if (block is MemoryDataBlock memoryBlock)
                 {
                     memoryBlock.Data[index - blockOffset] = value;
                     return;
@@ -120,8 +118,7 @@ namespace Be.Byte
                 // If the byte changing is the first byte in the block and the previous block is a memory block, extend that.
                 if (blockOffset == index && block.PreviousBlock != null)
                 {
-                    MemoryDataBlock previousMemoryBlock = block.PreviousBlock as MemoryDataBlock;
-                    if (previousMemoryBlock != null)
+                    if (block.PreviousBlock is MemoryDataBlock previousMemoryBlock)
                     {
                         previousMemoryBlock.AddByteToEnd(value);
                         fileBlock.RemoveBytesFromStart(1);
@@ -136,8 +133,7 @@ namespace Be.Byte
                 // If the byte changing is the last byte in the block and the next block is a memory block, extend that.
                 if (blockOffset + fileBlock.Length - 1 == index && block.NextBlock != null)
                 {
-                    MemoryDataBlock nextMemoryBlock = block.NextBlock as MemoryDataBlock;
-                    if (nextMemoryBlock != null)
+                    if (block.NextBlock is MemoryDataBlock nextMemoryBlock)
                     {
                         nextMemoryBlock.AddByteToStart(value);
                         fileBlock.RemoveBytesFromEnd(1);
@@ -193,8 +189,7 @@ namespace Be.Byte
                 DataBlock block = GetDataBlock(index, out long blockOffset);
 
                 // If the insertion point is in a memory block, just insert it.
-                MemoryDataBlock memoryBlock = block as MemoryDataBlock;
-                if (memoryBlock != null)
+                if (block is MemoryDataBlock memoryBlock)
                 {
                     memoryBlock.InsertBytes(index - blockOffset, bs);
                     return;
@@ -205,8 +200,7 @@ namespace Be.Byte
                 // If the insertion point is at the start of a file block, and the previous block is a memory block, append it to that block.
                 if (blockOffset == index && block.PreviousBlock != null)
                 {
-                    MemoryDataBlock previousMemoryBlock = block.PreviousBlock as MemoryDataBlock;
-                    if (previousMemoryBlock != null)
+                    if (block.PreviousBlock is MemoryDataBlock previousMemoryBlock)
                     {
                         previousMemoryBlock.InsertBytes(previousMemoryBlock.Length, bs);
                         return;
@@ -356,8 +350,7 @@ namespace Be.Byte
             long dataOffset = 0;
             for (DataBlock block = _dataMap.FirstBlock; block != null; block = block.NextBlock)
             {
-                FileDataBlock fileBlock = block as FileDataBlock;
-                if (fileBlock != null && fileBlock.FileOffset != dataOffset)
+                if (block is FileDataBlock fileBlock && fileBlock.FileOffset != dataOffset)
                 {
                     MoveFileBlock(fileBlock, dataOffset);
                 }
@@ -368,8 +361,7 @@ namespace Be.Byte
             dataOffset = 0;
             for (DataBlock block = _dataMap.FirstBlock; block != null; block = block.NextBlock)
             {
-                MemoryDataBlock memoryBlock = block as MemoryDataBlock;
-                if (memoryBlock != null)
+                if (block is MemoryDataBlock memoryBlock)
                 {
                     _stream.Position = dataOffset;
                     for (int memoryOffset = 0; memoryOffset < memoryBlock.Length; memoryOffset += COPY_BLOCK_SIZE)
@@ -480,8 +472,7 @@ namespace Be.Byte
             block = block.NextBlock;
             while (block != null)
             {
-                FileDataBlock fileBlock = block as FileDataBlock;
-                if (fileBlock != null)
+                if (block is FileDataBlock fileBlock)
                 {
                     return fileBlock;
                 }

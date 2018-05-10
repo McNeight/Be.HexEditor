@@ -308,8 +308,7 @@ namespace Be.HexEditor
         {
             if (hexBox.ByteProvider != null)
             {
-                IDisposable byteProvider = hexBox.ByteProvider as IDisposable;
-                if (byteProvider != null)
+                if (hexBox.ByteProvider is IDisposable byteProvider)
                     byteProvider.Dispose();
                 hexBox.ByteProvider = null;
             }

@@ -58,8 +58,7 @@ namespace Be.HexEditor.Core
 
             var parent = c.Parent;
 
-            var found = parent as T;
-            if (found != null)
+            if (parent is T found)
                 return found;
 
             return GetParent<T>(parent);
