@@ -169,7 +169,7 @@
     <value>ucAbout1</value>
   </data>
   <data name="&gt;&gt;ucAbout1.Type" xml:space="preserve">
-    <value>Be.HexEditor.UCAbout, Be.HexEditor, Version=1.5.0.27139, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.HexEditor.UCAbout, Be.HexEditor, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ucAbout1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -199,6 +199,6 @@
     <value>FormAbout</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Be.HexEditor.Core.FormEx, Be.HexEditor, Version=1.5.0.27139, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.HexEditor.Core.FormEx, Be.HexEditor, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

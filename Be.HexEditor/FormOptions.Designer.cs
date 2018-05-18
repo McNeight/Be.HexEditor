@@ -1,24 +1,11 @@
 ﻿namespace Be.HexEditor
 {
-    partial class FormOptions
+    public partial class FormOptions
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
         #region Windows Form Designer generated code
 
@@ -28,6 +15,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOptions));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.generalTabPage = new System.Windows.Forms.TabPage();
@@ -144,8 +132,8 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.cancelButton;
-            this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.flowLayoutPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormOptions";
@@ -153,6 +141,7 @@
             this.ShowInTaskbar = false;
             this.tabControl.ResumeLayout(false);
             this.generalTabPage.ResumeLayout(false);
+            this.generalTabPage.PerformLayout();
             this.languageSettingsGroupBox.ResumeLayout(false);
             this.languageSettingsGroupBox.PerformLayout();
             this.recentFilesGroupBox.ResumeLayout(false);

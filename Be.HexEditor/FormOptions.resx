@@ -124,6 +124,9 @@
   <data name="languageSettingsGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="languageSettingsGroupBox.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="selectLanguageLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -133,7 +136,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="selectLanguageLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 74</value>
+    <value>8, 47</value>
   </data>
   <data name="selectLanguageLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -160,7 +163,7 @@
     <value>0</value>
   </data>
   <data name="languageComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 69</value>
+    <value>114, 44</value>
   </data>
   <data name="languageComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -187,7 +190,7 @@
     <value>True</value>
   </data>
   <data name="useSystemLanguageCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 34</value>
+    <value>8, 25</value>
   </data>
   <data name="useSystemLanguageCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -214,7 +217,7 @@
     <value>2</value>
   </data>
   <data name="languageSettingsGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 11</value>
+    <value>4, 5</value>
   </data>
   <data name="languageSettingsGroupBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -223,13 +226,13 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="languageSettingsGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>594, 133</value>
+    <value>352, 90</value>
   </data>
   <data name="languageSettingsGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="languageSettingsGroupBox.Text" xml:space="preserve">
-    <value>Language settings</value>
+    <value>Language Settings</value>
   </data>
   <data name="&gt;&gt;languageSettingsGroupBox.Name" xml:space="preserve">
     <value>languageSettingsGroupBox</value>
@@ -246,17 +249,23 @@
   <data name="recentFilesGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="recentFilesGroupBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="recentFilesGroupBox.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="clearRecentFilesButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="clearRecentFilesButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 80</value>
+    <value>4, 52</value>
   </data>
   <data name="clearRecentFilesButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="clearRecentFilesButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 46</value>
+    <value>102, 23</value>
   </data>
   <data name="clearRecentFilesButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -280,7 +289,7 @@
     <value>True</value>
   </data>
   <data name="recentFilesMaxlabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 39</value>
+    <value>78, 23</value>
   </data>
   <data name="recentFilesMaxlabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -307,7 +316,7 @@
     <value>1</value>
   </data>
   <data name="recentFilesMaxTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 34</value>
+    <value>8, 25</value>
   </data>
   <data name="recentFilesMaxTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -331,16 +340,16 @@
     <value>2</value>
   </data>
   <data name="recentFilesGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 154</value>
+    <value>4, 97</value>
   </data>
   <data name="recentFilesGroupBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="recentFilesGroupBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="recentFilesGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>594, 136</value>
+    <value>282, 100</value>
   </data>
   <data name="recentFilesGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -370,7 +379,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="generalTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 311</value>
+    <value>613, 311</value>
   </data>
   <data name="generalTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -391,13 +400,13 @@
     <value>0</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 14</value>
+    <value>13, 14</value>
   </data>
   <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 337</value>
+    <value>621, 337</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -412,19 +421,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="okButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 5</value>
+    <value>521, 5</value>
   </data>
   <data name="okButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="okButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 42</value>
+    <value>32, 23</value>
   </data>
   <data name="okButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -451,13 +460,13 @@
     <value>NoControl</value>
   </data>
   <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>468, 5</value>
+    <value>561, 5</value>
   </data>
   <data name="cancelButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 42</value>
+    <value>51, 23</value>
   </data>
   <data name="cancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -502,7 +511,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -529,6 +538,6 @@
     <value>FormOptions</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Be.HexEditor.Core.FormEx, Be.HexEditor, Version=1.5.0.25748, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.HexEditor.Core.FormEx, Be.HexEditor, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
