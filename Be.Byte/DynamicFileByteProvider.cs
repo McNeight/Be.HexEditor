@@ -18,7 +18,7 @@ namespace Be.Byte
         Stream _stream;
         DataMap _dataMap;
         long _totalLength;
-        bool _readOnly;
+        readonly bool _readOnly;
 
         /// <summary>
         /// Constructs a new <see cref="DynamicFileByteProvider" /> instance.

@@ -1127,7 +1127,7 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Contains string format information for text drawing
         /// </summary>
-        StringFormat _stringFormat;
+        readonly StringFormat _stringFormat;
         /// <summary>
         /// Contains the maximum of visible horizontal bytes
         /// </summary>
@@ -3555,7 +3555,7 @@ namespace Be.Windows.Forms
         {
             get { return _builtInContextMenu; }
         }
-        BuiltInContextMenu _builtInContextMenu;
+        readonly BuiltInContextMenu _builtInContextMenu;
 
 
         /// <summary>

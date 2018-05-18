@@ -15,12 +15,12 @@
         {
             get { return _characterPosition; }
         }
-        int _characterPosition;
+        readonly int _characterPosition;
 
         public long Index
         {
             get { return _index; }
         }
-        long _index;
+        readonly long _index;
     }
 }

@@ -251,7 +251,7 @@ namespace Be.Byte
             DataMap _map;
             DataBlock _current;
             int _index;
-            int _version;
+            readonly int _version;
 
             internal Enumerator(DataMap map)
             {

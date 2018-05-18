@@ -64,7 +64,7 @@ namespace Be.Byte
         /// <summary>
         /// Read-only access.
         /// </summary>
-        bool _readOnly;
+        readonly bool _readOnly;
 
         /// <summary>
         /// Initializes a new instance of the FileByteProvider class.

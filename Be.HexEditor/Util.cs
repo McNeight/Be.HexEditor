@@ -8,7 +8,7 @@ namespace Be.HexEditor
         /// <summary>
         /// Contains true, if we are in design mode of Visual Studio
         /// </summary>
-        private static bool _designMode;
+        private static readonly bool _designMode;
 
         /// <summary>
         /// Initializes an instance of Util class
