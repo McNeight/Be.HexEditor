@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Windows.Forms.HexBox", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Byte", "Be.Byte\Be.Byte.csproj", "{D64FB126-5F80-47AA-AB83-ED9298884368}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplifiedHexEditor", "SimplifiedHexEditor\SimplifiedHexEditor.csproj", "{0E10CC4C-4C6E-4701-99BB-DFFA8C7276DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{D64FB126-5F80-47AA-AB83-ED9298884368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D64FB126-5F80-47AA-AB83-ED9298884368}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{D64FB126-5F80-47AA-AB83-ED9298884368}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{0E10CC4C-4C6E-4701-99BB-DFFA8C7276DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E10CC4C-4C6E-4701-99BB-DFFA8C7276DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E10CC4C-4C6E-4701-99BB-DFFA8C7276DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E10CC4C-4C6E-4701-99BB-DFFA8C7276DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

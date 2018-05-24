@@ -355,6 +355,7 @@
         <PropertyValue name="Style_PreferObjectInitializer">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_PreferPatternMatchingOverAsWithNullCheck">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_PreferPatternMatchingOverIsWithCastCheck">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
+        <PropertyValue name="Style_PreferReadonly">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_PreferThrowExpression">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_QualifyEventAccess">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="false" DiagnosticSeverity="Hidden" /&gt;</PropertyValue>
         <PropertyValue name="Style_QualifyFieldAccess">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="false" DiagnosticSeverity="Hidden" /&gt;</PropertyValue>
