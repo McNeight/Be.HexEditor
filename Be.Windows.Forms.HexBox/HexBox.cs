@@ -880,13 +880,13 @@ namespace Be.Windows.Forms
 
             byte[] buffer1 = null;
             byte[] buffer2 = null;
-            if (options.Type == FindType.Text && options.MatchCase)
+            if (options.FindType == FindType.Text && options.MatchCase)
             {
                 if (options.FindBuffer == null || options.FindBuffer.Length == 0)
                     throw new ArgumentException("FindBuffer can not be null when Type: Text and MatchCase: false");
                 buffer1 = options.FindBuffer;
             }
-            else if (options.Type == FindType.Text && !options.MatchCase)
+            else if (options.FindType == FindType.Text && !options.MatchCase)
             {
                 if (options.FindBufferLowerCase == null || options.FindBufferLowerCase.Length == 0)
                     throw new ArgumentException("FindBufferLowerCase can not be null when Type is Text and MatchCase is true");
@@ -898,7 +898,7 @@ namespace Be.Windows.Forms
                 buffer2 = options.FindBufferUpperCase;
 
             }
-            else if (options.Type == FindType.Hex)
+            else if (options.FindType == FindType.Hex)
             {
                 if (options.Hex == null || options.Hex.Length == 0)
                     throw new ArgumentException("Hex can not be null when Type is Hex");

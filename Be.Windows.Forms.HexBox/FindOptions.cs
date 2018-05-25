@@ -78,7 +78,7 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Gets or sets the type what should be searched.
         /// </summary>
-        public FindType Type { get; set; }
+        public FindType FindType { get; set; }
         /// <summary>
         /// Updates the find buffer.
         /// </summary>
