@@ -870,6 +870,11 @@ namespace Be.Windows.Forms
         /// -2 if Find was aborted.</returns>
         public long Find(FindOptions options)
         {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
             var startIndex = this.SelectionStart + this.SelectionLength;
             int match = 0;
 
@@ -1209,6 +1214,11 @@ namespace Be.Windows.Forms
         /// <param name="e">A PaintEventArgs that contains the event data.</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             switch (_borderStyle)
             {
                 case BorderStyle.Fixed3D:
@@ -1273,6 +1283,11 @@ namespace Be.Windows.Forms
         /// <param name="e">A PaintEventArgs that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             base.OnPaint(e);
 
             if (_byteProvider == null)
@@ -2838,6 +2853,11 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             System.Diagnostics.Debug.WriteLine("OnMouseDown()", "HexBox");
 
             if (!Focused)
@@ -2855,6 +2875,11 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnMouseWheel(MouseEventArgs e)
         {
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             int linesToScroll = -(e.Delta * SystemInformation.MouseWheelScrollLines / 120);
             this.PerformScrollLines(linesToScroll);
 
