@@ -38,8 +38,7 @@ namespace Be.HexEditor.Core
 
             foreach (ToolStripItem item in toolStrip.Items)
             {
-                var scalingItem = item as IScalingItem;
-                if (scalingItem == null)
+                if (!(item is IScalingItem scalingItem))
                     continue;
 
                 if (width < 17 && scalingItem.Image16 != null)

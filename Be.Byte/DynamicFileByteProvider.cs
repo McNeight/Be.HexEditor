@@ -318,8 +318,7 @@ namespace Be.Byte
             long offset = 0;
             for (DataBlock block = _dataMap.FirstBlock; block != null; block = block.NextBlock)
             {
-                FileDataBlock fileBlock = block as FileDataBlock;
-                if (fileBlock == null)
+                if (!(block is FileDataBlock fileBlock))
                 {
                     return true;
                 }
