@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Be.Byte
 {
@@ -16,13 +16,13 @@ namespace Be.Byte
         /// <summary>
         /// Contains a byte collection.
         /// </summary>
-        List<byte> _bytes;
+        ByteCollection _bytes;
 
         /// <summary>
         /// Initializes a new instance of the DynamicByteProvider class.
         /// </summary>
         /// <param name="data"></param>
-        public DynamicByteProvider(byte[] data) : this(new List<byte>(data))
+        public DynamicByteProvider(byte[] data) : this(new ByteCollection(data))
         {
         }
 
@@ -30,7 +30,7 @@ namespace Be.Byte
         /// Initializes a new instance of the DynamicByteProvider class.
         /// </summary>
         /// <param name="bytes"></param>
-        public DynamicByteProvider(List<byte> bytes)
+        public DynamicByteProvider(ByteCollection bytes)
         {
             _bytes = bytes;
         }
@@ -56,7 +56,7 @@ namespace Be.Byte
         /// <summary>
         /// Gets the byte collection.
         /// </summary>
-        public List<byte> Bytes
+        public ByteCollection Bytes
         {
             get { return _bytes; }
         }
