@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace Be.Windows.Forms
 {
@@ -85,8 +86,8 @@ namespace Be.Windows.Forms
         {
             string text = Text ?? string.Empty;
             FindBuffer = ASCIIEncoding.ASCII.GetBytes(text);
-            FindBufferLowerCase = ASCIIEncoding.ASCII.GetBytes(text.ToLower());
-            FindBufferUpperCase = ASCIIEncoding.ASCII.GetBytes(text.ToUpper());
+            FindBufferLowerCase = ASCIIEncoding.ASCII.GetBytes(text.ToLower(CultureInfo.InvariantCulture));
+            FindBufferUpperCase = ASCIIEncoding.ASCII.GetBytes(text.ToUpper(CultureInfo.InvariantCulture));
         }
     }
 }

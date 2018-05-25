@@ -19,7 +19,7 @@ namespace Be.HexEditor
             var designerHosts = new List<string>() { "devenv", "vcsexpress", "vbexpress", "vcexpress", "sharpdevelop" };
             using (var process = System.Diagnostics.Process.GetCurrentProcess())
             {
-                var processName = process.ProcessName.ToLower();
+                var processName = process.ProcessName.ToLower(CultureInfo.CurrentCulture);
                 _designMode = designerHosts.Contains(processName);
             }
         }
