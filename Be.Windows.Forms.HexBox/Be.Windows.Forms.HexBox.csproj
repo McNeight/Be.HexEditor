@@ -115,6 +115,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HexBox.EmptyKeyInterpreter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HexBox.IKeyInterpreter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HexBox.KeyInterpreter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HexBox.StringKeyInterpreter.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
