@@ -3271,7 +3271,7 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Gets or sets the hex box´s border style.
         /// </summary>
-        [DefaultValue(typeof(BorderStyle), "Fixed3D"), Category("Hex"), Description("Gets or sets the hex box´s border style.")]
+        [DefaultValue(typeof(BorderStyle), "Fixed3D"), Category("Appearance"), Description("Gets or sets the hex box´s border style.")]
         public BorderStyle BorderStyle
         {
             get { return _borderStyle; }
