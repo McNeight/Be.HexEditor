@@ -89,6 +89,7 @@ namespace Be.HexEditor
             // menuStrip
             // 
             this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
@@ -317,6 +318,7 @@ namespace Be.HexEditor
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.BackColor = System.Drawing.SystemColors.Control;
             this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripButton,
             this.saveToolStripButton,
@@ -432,6 +434,7 @@ namespace Be.HexEditor
             // statusStrip
             // 
             this.statusStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel,
             this.fileSizeToolStripStatusLabel,
@@ -483,7 +486,6 @@ namespace Be.HexEditor
             this.hexBox.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.SelectAllMenuItemText");
             this.hexBox.ColumnInfoVisible = true;
             this.hexBox.HexCasing = Be.Windows.Forms.HexCasing.Lower;
-            this.hexBox.InfoForeColor = System.Drawing.Color.Gray;
             this.hexBox.LineInfoVisible = true;
             this.hexBox.Name = "hexBox";
             this.hexBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
@@ -579,12 +581,12 @@ namespace Be.HexEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private Core.ToolStripMenuItemEx selectAllToolStripMenuItem;
         public RecentFileHandler RecentFileHandler;
-		private System.Windows.Forms.ToolStripStatusLabel bitToolStripStatusLabel;
-		private System.Windows.Forms.ToolStripComboBox encodingToolStripComboBox;
-		private Core.ToolStripMenuItemEx viewToolStripMenuItem;
-		private Core.ToolStripMenuItemEx encodingToolStripMenuItem;
-		private Core.ToolStripMenuItemEx bitsToolStripMenuItem;
-		private BitControl bitControl1;
-		private System.Windows.Forms.Panel bodyPanel;
+        private System.Windows.Forms.ToolStripStatusLabel bitToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripComboBox encodingToolStripComboBox;
+        private Core.ToolStripMenuItemEx viewToolStripMenuItem;
+        private Core.ToolStripMenuItemEx encodingToolStripMenuItem;
+        private Core.ToolStripMenuItemEx bitsToolStripMenuItem;
+        private BitControl bitControl1;
+        private System.Windows.Forms.Panel bodyPanel;
     }
 }
