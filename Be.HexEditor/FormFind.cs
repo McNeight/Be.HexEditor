@@ -52,11 +52,11 @@ namespace Be.HexEditor
 
         private void Reinitialize()
         {
-            rbString.Checked = _findOptions.Type == FindType.Text;
+            rbString.Checked = _findOptions.FindType == FindType.Text;
             txtFind.Text = _findOptions.Text;
             chkMatchCase.Checked = _findOptions.MatchCase;
 
-            rbHex.Checked = _findOptions.Type == FindType.Hex;
+            rbHex.Checked = _findOptions.FindType == FindType.Hex;
 
             if (hexFind.ByteProvider != null)
                 hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
@@ -102,7 +102,7 @@ namespace Be.HexEditor
             var provider = this.hexFind.ByteProvider as DynamicByteProvider;
             _findOptions.Hex = provider.Bytes.ToArray();
             _findOptions.Text = txtFind.Text;
-            _findOptions.Type = rbHex.Checked ? FindType.Hex : FindType.Text;
+            _findOptions.FindType = rbHex.Checked ? FindType.Hex : FindType.Text;
             _findOptions.MatchCase = chkMatchCase.Checked;
             _findOptions.IsValid = true;
 

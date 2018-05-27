@@ -126,7 +126,7 @@
     <value>26, 81</value>
   </data>
   <data name="txtFind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>495, 20</value>
+    <value>495, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtFind.TabIndex" type="System.Int32, mscorlib">
@@ -154,7 +154,7 @@
     <value>26, 59</value>
   </data>
   <data name="rbString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 17</value>
+    <value>56, 21</value>
   </data>
   <data name="rbString.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -184,7 +184,7 @@
     <value>26, 131</value>
   </data>
   <data name="rbHex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>53, 21</value>
   </data>
   <data name="rbHex.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -214,7 +214,7 @@
     <value>3, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
+    <value>35, 17</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -361,7 +361,7 @@
     <value>384, 57</value>
   </data>
   <data name="chkMatchCase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
+    <value>102, 21</value>
   </data>
   <data name="chkMatchCase.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -390,11 +390,57 @@
   <data name="hexFind.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="hexFind.BuiltInContextMenu.CopyMenuItemImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB/UlE
+        QVQ4T6WR30tTYRjH3z/FlCHljTd25U1E+QMDhcKLhAItutqFXnUlKQpZzpjgdFuo8xfb7ExPRDpRmTrn
+        L6bOlTVxKegGUzlHp3N6Zt/e9x3TWkuFHvich/O+7/fz8pxDAPwXRJz4BoYw7uWYh9zoEmfwxiAWpAok
+        wwXJZRp04XlND24XVmTT15TBBMQ25qX9omJnP9HSOwK704vHlU1XSoh5eJF2wO4DhCXA45fRbPoMYUqG
+        dUKCxSGhY1iCdmCP86QxkJsIM0iX6GJ5XienMcgHUQRCYS5Irrq+HeQ8czLOJcRodfDNducpNEMyXgnb
+        qOr0o3d0l6//XpX6EMRZGVmlgwwuITo6L5v7KKJgR4pgI7CPr/5dGD8FeahBiHE8a/t4qgniVulH3HzY
+        j8zibrZNCJv3OKqc36w2+vBC9wXvLBtckCj5UMHa1jGcKwfQCwtQPXjPluMCORzF6o8QFr8H4PJsYnx+
+        HTXt8d9b3ReGWhdE2VsfSmqXOXphDqrC1gtBTkH5X1Rpl7lAoeOFJAUr/iOMuWXYJvfQ1u9CRp42LmCP
+        VFTUzdKGP25O0GqdRvo9Ddv+t+DRSwciJ2cwDrhhsC1A/2GO38zCOvMUbtx9TY9dIshT2+nXtnAyi01Q
+        FRmQkd+C9PtNNNyAtDv19NglguuScvH6gPwCW2kOoaPzmfwAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="hexFind.BuiltInContextMenu.CopyMenuItemText" xml:space="preserve">
     <value>Copy</value>
   </data>
+  <data name="hexFind.BuiltInContextMenu.CutMenuItemImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHTSURBVDhPYyAG/P//nwXKJAxWbNzXPXvpxidQLsO/f//0
+        b99/+q66dfIGqBB+MHnOapPuqYv+VbXMkATxv37/3rpq4+5/yTmVMWAFxICJs1f+mjxn1WKg0/mfvnjz
+        Mi2/5p84P78iVJowWLFx76euyQt+Hj99seHgsXO/Q+Oy/goJcUpDpQmDBSu3b+6avPBf79SF+8sbev/5
+        BEa/gkoRBzonLnAsqe/9l5xX9y8kJuOvm3fQKqgU8SAhr/ldWELh/+C01j9+8a0RUGHCIKr9rW5Ex+vN
+        wc0PfnqXnlzrU3b2t1/lpe/epafnu2Tt8oIqww4i2l8ZRna/+xzUcPu7VdTcL6aBvXfd8va98a+++t81
+        e+d/q5j5E6BKsYPQtmcbwtqe/ndM2/DfNKj3h0lQ7xbvkpO/vEquSDilb0wwCer7BVWKHYQ0P/oV3HTf
+        0D5li4GRf9cvi5BeIaDtv7yqzhuYRUzL1nLI/A1Vih0ENd775V9yxcAuaXWSgU8z2Dav4uNn7ZJW/de0
+        Sf4vI6/xBawQF/CtvHjOPmn1f+OArv/qpmGPgULM9imrIzWtEt6pm4e/N/Zry4CoxAGcMjZHmIZMeqxu
+        GfvOwKsqDypMS8DAAAAG+MyAFo+kWwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="hexFind.BuiltInContextMenu.CutMenuItemText" xml:space="preserve">
     <value>Cut</value>
+  </data>
+  <data name="hexFind.BuiltInContextMenu.PasteMenuItemImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACX0lE
+        QVQ4T6WSa0hTYRjHD/TBvhRdqE99Koi+RFFB9SGjUAsvLYzEjMxFTKVkk6XpSC1N0eVtadqMvAw1b5Uo
+        KUUiJI7uGs7oIpEauZa1s3nP4tc5RwZNBgW98OPA+77/3/O8D0cA/gufmz3tOXTdzqS1KhVtTMh2X3c8
+        CC21RXoJPFQVHMdpr2PSfoORwXySNUEUZeu5ZjRgyk6SCVwsYEZsZs7VxIyzHku5nqnxGpJjVbbXvSlc
+        OBtKinoH9p6TjHesRxt9SMotEsjhOVcDZTkn6LPmI34qYWzQwAfrKdoqVMRG+VOXto4XRQLxx0K8BU01
+        BQsC8RbGtGgy9JEYEiI4Hx+OXqNCpw4lLiqAYu0GRRAZ7O8tqK80Mis2MuswMzWai+NVAraa1QoD1avo
+        K1/GU5OfEpYJ2L3VW2Ax5zDtqGJ6OIupN2eYfHkEsX05hdUd5JpbuXi1kRSjBV1mBbGpJqIT87wFlaWZ
+        TIyYmBzUMPEsFPejbXy5u0YJe9bc/E+crhmGx5xExF0iLMYgby8IKgrTEd9m4X4ShLt7M67OtYxUC0pl
+        eVXe6VEwN3QxMGRXwg96bRwIV8vHglCal8q3/nO4ujYh3luJo9mPoZuC0vaP+V98d0uVPzsZeG/H2v+R
+        4CgdQVJ4/8HD+O/Zi1B8OQnH4zgpvIKvLUsZrV2CrUxAK71ZbtvTwXWpgxJLJ23dNuUrs2vLRoQrGYnK
+        D+KZsgeNNLA/Kz+0vlPCzff7aOh47iUILEw/Lf1hKtThgYTt26kcyNOW3+yp5gtFIA/CF0elacsX/obP
+        8L+D8Bsb4cocWY3wtQAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="hexFind.BuiltInContextMenu.PasteMenuItemText" xml:space="preserve">
     <value>Paste</value>
@@ -421,7 +467,7 @@
     <value>hexFind</value>
   </data>
   <data name="&gt;&gt;hexFind.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.HexBox, Be.Windows.Forms.HexBox, Version=1.5.0.25652, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>Be.Windows.Forms.HexBox, Be.Windows.Forms.HexBox, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hexFind.Parent" xml:space="preserve">
     <value>$this</value>
@@ -433,7 +479,7 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="line.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 10</value>
+    <value>44, 10</value>
   </data>
   <data name="line.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 10, 3, 3</value>
@@ -514,10 +560,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
+    <value>120, 120</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>533, 369</value>
+    <value>666, 461</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -547,6 +593,6 @@
     <value>FormFind</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Be.HexEditor.Core.FormEx, Be.HexEditor, Version=1.5.0.25668, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.HexEditor.Core.FormEx, Be.HexEditor, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
