@@ -5,7 +5,6 @@ using System.Windows.Forms;
 
 using Be.HexEditor.Properties;
 
-[assembly: CLSCompliant(true)]
 namespace Be.HexEditor
 {
     class Program
