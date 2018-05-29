@@ -11,17 +11,12 @@ namespace Be.HexEditor
     {
         public class FileMenuItem : ToolStripMenuItem
         {
-            string fileName;
 
-            public string FileName
-            {
-                get { return fileName; }
-                set { fileName = value; }
-            }
+            public string FileName { get; set; }
 
             public FileMenuItem(string fileName)
             {
-                this.fileName = fileName;
+                this.FileName = fileName;
             }
 
             public override string Text
@@ -30,7 +25,7 @@ namespace Be.HexEditor
                 {
                     ToolStripMenuItem parent = (ToolStripMenuItem)this.OwnerItem;
                     int index = parent.DropDownItems.IndexOf(this);
-                    return string.Format("{0} {1}", index + 1, fileName);
+                    return string.Format("{0} {1}", index + 1, FileName);
                 }
                 set
                 {

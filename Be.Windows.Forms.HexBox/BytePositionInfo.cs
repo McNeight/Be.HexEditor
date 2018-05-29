@@ -7,20 +7,12 @@
     {
         public BytePositionInfo(long index, int characterPosition)
         {
-            _index = index;
-            _characterPosition = characterPosition;
+            Index = index;
+            CharacterPosition = characterPosition;
         }
 
-        public int CharacterPosition
-        {
-            get { return _characterPosition; }
-        }
-        readonly int _characterPosition;
+        public int CharacterPosition { get; }
 
-        public long Index
-        {
-            get { return _index; }
-        }
-        readonly long _index;
+        public long Index { get; }
     }
 }

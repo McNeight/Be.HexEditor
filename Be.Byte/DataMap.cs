@@ -5,7 +5,6 @@ namespace Be.Byte
 {
     internal class DataMap : ICollection, IEnumerable
     {
-        readonly object _syncRoot = new object();
         internal int _count;
         internal DataBlock _firstBlock;
         internal int _version;
@@ -229,13 +228,7 @@ namespace Be.Byte
             }
         }
 
-        public object SyncRoot
-        {
-            get
-            {
-                return _syncRoot;
-            }
-        }
+        public object SyncRoot { get; } = new object();
         #endregion
 
         #region IEnumerable Members

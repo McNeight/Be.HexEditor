@@ -17,8 +17,6 @@ namespace Be.Byte
         string _fileName;
         Stream _stream;
         DataMap _dataMap;
-        long _totalLength;
-        readonly bool _readOnly;
 
         /// <summary>
         /// Constructs a new <see cref="DynamicFileByteProvider" /> instance.
@@ -44,7 +42,7 @@ namespace Be.Byte
                 _stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             }
 
-            _readOnly = readOnly;
+            ReadOnly = readOnly;
 
             ReInitialize();
         }
@@ -64,7 +62,7 @@ namespace Be.Byte
                 throw new ArgumentException("stream must supported seek operations(CanSeek)");
 
             _stream = stream;
-            _readOnly = !stream.CanWrite;
+            ReadOnly = !stream.CanWrite;
             ReInitialize();
         }
 
@@ -241,7 +239,7 @@ namespace Be.Byte
             }
             finally
             {
-                _totalLength += bs.Length;
+                Length += bs.Length;
                 OnLengthChanged(EventArgs.Empty);
                 OnChanged(EventArgs.Empty);
             }
@@ -285,7 +283,7 @@ namespace Be.Byte
             }
             finally
             {
-                _totalLength -= length;
+                Length -= length;
                 OnLengthChanged(EventArgs.Empty);
                 OnChanged(EventArgs.Empty);
             }
@@ -294,23 +292,17 @@ namespace Be.Byte
         /// <summary>
         /// See <see cref="IByteProvider.Length" /> for more information.
         /// </summary>
-        public long Length
-        {
-            get
-            {
-                return _totalLength;
-            }
-        }
+        public long Length { get; private set; }
 
         /// <summary>
         /// See <see cref="IByteProvider.HasChanges" /> for more information.
         /// </summary>
         public bool HasChanges()
         {
-            if (_readOnly)
+            if (ReadOnly)
                 return false;
 
-            if (_totalLength != _stream.Length)
+            if (Length != _stream.Length)
             {
                 return true;
             }
@@ -338,16 +330,16 @@ namespace Be.Byte
         /// </summary>
         public void ApplyChanges()
         {
-            if (_readOnly)
+            if (ReadOnly)
                 throw new OperationCanceledException("File is in read-only mode");
 
             // This method is implemented to efficiently save the changes to the same file stream opened for reading.
             // Saving to a separate file would be a much simpler implementation.
 
             // Firstly, extend the file length (if necessary) to ensure that there is enough disk space.
-            if (_totalLength > _stream.Length)
+            if (Length > _stream.Length)
             {
-                _stream.SetLength(_totalLength);
+                _stream.SetLength(Length);
             }
 
             // Secondly, shift around any file sections that have moved.
@@ -377,7 +369,7 @@ namespace Be.Byte
             }
 
             // Finally, if the file has shortened, truncate the stream.
-            _stream.SetLength(_totalLength);
+            _stream.SetLength(Length);
             ReInitialize();
         }
 
@@ -386,7 +378,7 @@ namespace Be.Byte
         /// </summary>
         public bool SupportsWriteByte()
         {
-            return !_readOnly;
+            return !ReadOnly;
         }
 
         /// <summary>
@@ -394,7 +386,7 @@ namespace Be.Byte
         /// </summary>
         public bool SupportsInsertBytes()
         {
-            return !_readOnly;
+            return !ReadOnly;
         }
 
         /// <summary>
@@ -402,7 +394,7 @@ namespace Be.Byte
         /// </summary>
         public bool SupportsDeleteBytes()
         {
-            return !_readOnly;
+            return !ReadOnly;
         }
         #endregion
 
@@ -434,10 +426,7 @@ namespace Be.Byte
         /// <summary>
         /// Gets a value, if the file is opened in read-only mode.
         /// </summary>
-        public bool ReadOnly
-        {
-            get { return _readOnly; }
-        }
+        public bool ReadOnly { get; }
 
         void OnLengthChanged(EventArgs e)
         {
@@ -451,7 +440,7 @@ namespace Be.Byte
 
         DataBlock GetDataBlock(long findOffset, out long blockOffset)
         {
-            if (findOffset < 0 || findOffset > _totalLength)
+            if (findOffset < 0 || findOffset > Length)
             {
                 throw new ArgumentOutOfRangeException("findOffset");
             }
@@ -548,7 +537,7 @@ namespace Be.Byte
         {
             _dataMap = new DataMap();
             _dataMap.AddFirst(new FileDataBlock(0, _stream.Length));
-            _totalLength = _stream.Length;
+            Length = _stream.Length;
         }
     }
 }

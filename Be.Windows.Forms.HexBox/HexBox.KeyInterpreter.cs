@@ -176,7 +176,7 @@ namespace Be.Windows.Forms
 
                 if (!(pos == 0 && cp == 0))
                 {
-                    pos = Math.Max(-1, pos - _hexBox._iHexMaxHBytes);
+                    pos = Math.Max(-1, pos - _hexBox.HorizontalByteCount);
                     if (pos == -1)
                         return true;
 
@@ -210,7 +210,7 @@ namespace Be.Windows.Forms
                 if (pos == _hexBox._byteProvider.Length && cp == 0)
                     return true;
 
-                pos = Math.Min(_hexBox._byteProvider.Length, pos + _hexBox._iHexMaxHBytes);
+                pos = Math.Min(_hexBox._byteProvider.Length, pos + _hexBox.HorizontalByteCount);
 
                 if (pos == _hexBox._byteProvider.Length)
                     cp = 0;
@@ -314,19 +314,19 @@ namespace Be.Windows.Forms
                 long pos = _hexBox._bytePos;
                 long sel = _hexBox._selectionLength;
 
-                if (pos - _hexBox._iHexMaxHBytes < 0 && pos <= _bpiStart.Index)
+                if (pos - _hexBox.HorizontalByteCount < 0 && pos <= _bpiStart.Index)
                     return true;
 
                 if (_bpiStart.Index >= pos + sel)
                 {
-                    pos = pos - _hexBox._iHexMaxHBytes;
-                    sel += _hexBox._iHexMaxHBytes;
+                    pos = pos - _hexBox.HorizontalByteCount;
+                    sel += _hexBox.HorizontalByteCount;
                     _hexBox.InternalSelect(pos, sel);
                     _hexBox.ScrollByteIntoView();
                 }
                 else
                 {
-                    sel -= _hexBox._iHexMaxHBytes;
+                    sel -= _hexBox.HorizontalByteCount;
                     if (sel < 0)
                     {
                         pos = _bpiStart.Index + sel;
@@ -336,7 +336,7 @@ namespace Be.Windows.Forms
                     }
                     else
                     {
-                        sel -= _hexBox._iHexMaxHBytes;
+                        sel -= _hexBox.HorizontalByteCount;
                         _hexBox.InternalSelect(pos, sel);
                         _hexBox.ScrollByteIntoView(pos + sel);
                     }
@@ -377,18 +377,18 @@ namespace Be.Windows.Forms
 
                 long max = _hexBox._byteProvider.Length;
 
-                if (pos + sel + _hexBox._iHexMaxHBytes > max)
+                if (pos + sel + _hexBox.HorizontalByteCount > max)
                     return true;
 
                 if (_bpiStart.Index <= pos)
                 {
-                    sel += _hexBox._iHexMaxHBytes;
+                    sel += _hexBox.HorizontalByteCount;
                     _hexBox.InternalSelect(pos, sel);
                     _hexBox.ScrollByteIntoView(pos + sel);
                 }
                 else
                 {
-                    sel -= _hexBox._iHexMaxHBytes;
+                    sel -= _hexBox.HorizontalByteCount;
                     if (sel < 0)
                     {
                         pos = _bpiStart.Index;
@@ -396,7 +396,7 @@ namespace Be.Windows.Forms
                     }
                     else
                     {
-                        pos += _hexBox._iHexMaxHBytes;
+                        pos += _hexBox.HorizontalByteCount;
                         //sel -= _hexBox._iHexMaxHBytes;
                     }
 

@@ -5,19 +5,14 @@ namespace Be.Byte
 {
     public class BitInfo
     {
-        private byte _value;
 
-        public byte Value
-        {
-            get { return _value; }
-            set { _value = value; }
-        }
+        public byte Value { get; set; }
 
         public long Position { get; set; }
 
         public BitInfo(byte value, long position)
         {
-            _value = value;
+            Value = value;
             Position = position;
         }
 
@@ -48,14 +43,14 @@ namespace Be.Byte
         {
             get
             {
-                return (_value & (1 << index)) != 0;
+                return (Value & (1 << index)) != 0;
             }
             set
             {
                 if (value)
-                    _value |= (byte)(1 << index); //set bit index 1
+                    Value |= (byte)(1 << index); //set bit index 1
                 else
-                    _value &= (byte)(~(1 << index)); //set bit index 0
+                    Value &= (byte)(~(1 << index)); //set bit index 0
             }
         }
 

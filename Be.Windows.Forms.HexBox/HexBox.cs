@@ -42,14 +42,7 @@ namespace Be.Windows.Forms
         /// Contains string format information for text drawing
         /// </summary>
         readonly StringFormat _stringFormat;
-        /// <summary>
-        /// Contains the maximum of visible horizontal bytes
-        /// </summary>
-        int _iHexMaxHBytes;
-        /// <summary>
-        /// Contains the maximum of visible vertical bytes
-        /// </summary>
-        int _iHexMaxVBytes;
+
         /// <summary>
         /// Contains the maximum of visible bytes.
         /// </summary>
@@ -159,10 +152,6 @@ namespace Be.Windows.Forms
         /// Contains true, if the find (Find method) should be aborted.
         /// </summary>
         bool _abortFind;
-        /// <summary>
-        /// Contains a value of the current finding position.
-        /// </summary>
-        long _findingPos;
 
         /// <summary>
         /// Contains a state value about Insert or Write mode. When this value is true and the ByteProvider SupportsInsert is true bytes are inserted instead of overridden.
@@ -297,7 +286,7 @@ namespace Be.Windows.Forms
             this._vScrollBar = new VScrollBar();
             this._vScrollBar.Scroll += new ScrollEventHandler(_vScrollBar_Scroll);
 
-            this._builtInContextMenu = new BuiltInContextMenu(this);
+            this.BuiltInContextMenu = new BuiltInContextMenu(this);
 
             BackColor = Color.White;
             Font = SystemFonts.MessageBoxFont;
@@ -385,12 +374,12 @@ namespace Be.Windows.Forms
             System.Diagnostics.Debug.WriteLine("UpdateScrollSize()", "HexBox");
 
             // calc scroll bar info
-            if (VScrollBarVisible && _byteProvider != null && _byteProvider.Length > 0 && _iHexMaxHBytes != 0)
+            if (VScrollBarVisible && _byteProvider != null && _byteProvider.Length > 0 && HorizontalByteCount != 0)
             {
-                long scrollmax = (long)Math.Ceiling((double)(_byteProvider.Length + 1) / (double)_iHexMaxHBytes - (double)_iHexMaxVBytes);
+                long scrollmax = (long)Math.Ceiling((double)(_byteProvider.Length + 1) / (double)HorizontalByteCount - (double)VerticalByteCount);
                 scrollmax = Math.Max(0, scrollmax);
 
-                long scrollpos = _startByte / _iHexMaxHBytes;
+                long scrollpos = _startByte / HorizontalByteCount;
 
                 if (scrollmax < _scrollVmax)
                 {
@@ -521,12 +510,12 @@ namespace Be.Windows.Forms
 
         void PerformScrollPageDown()
         {
-            this.PerformScrollLines(_iHexMaxVBytes);
+            this.PerformScrollLines(VerticalByteCount);
         }
 
         void PerformScrollPageUp()
         {
-            this.PerformScrollLines(-_iHexMaxVBytes);
+            this.PerformScrollLines(-VerticalByteCount);
         }
 
         void PerformScrollThumpPosition(long pos)
@@ -565,13 +554,13 @@ namespace Be.Windows.Forms
 
             if (index < _startByte)
             {
-                long line = (long)Math.Floor((double)index / (double)_iHexMaxHBytes);
+                long line = (long)Math.Floor((double)index / (double)HorizontalByteCount);
                 PerformScrollThumpPosition(line);
             }
             else if (index > _endByte)
             {
-                long line = (long)Math.Floor((double)index / (double)_iHexMaxHBytes);
-                line -= _iHexMaxVBytes - 1;
+                long line = (long)Math.Floor((double)index / (double)HorizontalByteCount);
+                line -= VerticalByteCount - 1;
                 PerformScrollThumpPosition(line);
             }
         }
@@ -795,7 +784,7 @@ namespace Be.Windows.Forms
             int hPos = (iX / 3 + 1);
 
             bytePos = Math.Min(_byteProvider.Length,
-                _startByte + (_iHexMaxHBytes * (iY + 1) - _iHexMaxHBytes) + hPos - 1);
+                _startByte + (HorizontalByteCount * (iY + 1) - HorizontalByteCount) + hPos - 1);
             byteCharaterPos = (iX % 3);
             if (byteCharaterPos > 1)
                 byteCharaterPos = 1;
@@ -823,7 +812,7 @@ namespace Be.Windows.Forms
             int hPos = iX + 1;
 
             bytePos = Math.Min(_byteProvider.Length,
-                _startByte + (_iHexMaxHBytes * (iY + 1) - _iHexMaxHBytes) + hPos - 1);
+                _startByte + (HorizontalByteCount * (iY + 1) - HorizontalByteCount) + hPos - 1);
             byteCharacterPos = 0;
 
             if (bytePos < 0)
@@ -926,7 +915,7 @@ namespace Be.Windows.Forms
                 {
                     pos -= match;
                     match = 0;
-                    _findingPos = pos;
+                    CurrentFindingPosition = pos;
                     continue;
                 }
 
@@ -956,15 +945,10 @@ namespace Be.Windows.Forms
 
         /// <summary>
         /// Gets a value that indicates the current position during Find method execution.
+        /// Contains a value of the current finding position. 
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public long CurrentFindingPosition
-        {
-            get
-            {
-                return _findingPos;
-            }
-        }
+        public long CurrentFindingPosition { get; private set; }
         #endregion
 
         #region Copy, Cut and Paste methods
@@ -1334,7 +1318,7 @@ namespace Be.Windows.Forms
 
             for (int i = 0; i < maxLine; i++)
             {
-                long firstLineByte = (startByte + (_iHexMaxHBytes) * i) + _lineInfoOffset;
+                long firstLineByte = (startByte + (HorizontalByteCount) * i) + _lineInfoOffset;
 
                 PointF bytePointF = GetBytePointF(new Point(0, 0 + i));
                 string info = firstLineByte.ToString(_hexStringFormat, System.Threading.Thread.CurrentThread.CurrentCulture);
@@ -1356,7 +1340,7 @@ namespace Be.Windows.Forms
         void PaintHeaderRow(Graphics g)
         {
             Brush brush = new SolidBrush(this.InfoForeColor);
-            for (int col = 0; col < _iHexMaxHBytes; col++)
+            for (int col = 0; col < HorizontalByteCount; col++)
             {
                 PaintColumnInfo(g, (byte)col, brush, col);
             }
@@ -1364,7 +1348,7 @@ namespace Be.Windows.Forms
 
         void PaintColumnSeparator(Graphics g)
         {
-            for (int col = GroupSize; col < _iHexMaxHBytes; col += GroupSize)
+            for (int col = GroupSize; col < HorizontalByteCount; col += GroupSize)
             {
                 var pen = new Pen(new SolidBrush(this.InfoForeColor), 1);
                 PointF headerPointF = GetColumnInfoPointF(col);
@@ -1386,7 +1370,7 @@ namespace Be.Windows.Forms
             Brush selBrushBack = new SolidBrush(_selectionBackColor);
 
             int counter = -1;
-            long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
+            long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + HorizontalByteCount);
 
             bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
 
@@ -1439,7 +1423,7 @@ namespace Be.Windows.Forms
 
             PointF bytePointF = GetBytePointF(gridPoint);
 
-            bool isLastLineChar = (gridPoint.X + 1 == _iHexMaxHBytes);
+            bool isLastLineChar = (gridPoint.X + 1 == HorizontalByteCount);
             float bcWidth = (isLastLineChar) ? _charSize.Width * 2 : _charSize.Width * 3;
 
             g.FillRectangle(brushBack, bytePointF.X, bytePointF.Y, bcWidth, _charSize.Height);
@@ -1455,7 +1439,7 @@ namespace Be.Windows.Forms
             Brush selBrushBack = new SolidBrush(_selectionBackColor);
 
             int counter = -1;
-            long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
+            long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + HorizontalByteCount);
 
             bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
             bool isStringKeyInterpreterActive = _keyInterpreter != null && _keyInterpreter.GetType() == typeof(StringKeyInterpreter);
@@ -1686,7 +1670,7 @@ namespace Be.Windows.Forms
             if (_byteProvider == null || _byteProvider.Length == 0)
                 return;
 
-            _startByte = (_scrollVpos + 1) * _iHexMaxHBytes - _iHexMaxHBytes;
+            _startByte = (_scrollVpos + 1) * HorizontalByteCount - HorizontalByteCount;
             _endByte = (long)Math.Min(_byteProvider.Length - 1, _startByte + _iHexMaxBytes);
         }
         #endregion
@@ -1759,7 +1743,7 @@ namespace Be.Windows.Forms
             if (UseFixedBytesPerLine)
             {
                 SetHorizontalByteCount(_bytesPerLine);
-                _recHex.Width = (int)Math.Floor(((double)_iHexMaxHBytes) * _charSize.Width * 3 + (2 * _charSize.Width));
+                _recHex.Width = (int)Math.Floor(((double)HorizontalByteCount) * _charSize.Width * 3 + (2 * _charSize.Width));
                 requiredWidth += _recHex.Width;
             }
             else
@@ -1780,7 +1764,7 @@ namespace Be.Windows.Forms
                     else
                         SetHorizontalByteCount(1);
                 }
-                _recHex.Width = (int)Math.Floor(((double)_iHexMaxHBytes) * _charSize.Width * 3 + (2 * _charSize.Width));
+                _recHex.Width = (int)Math.Floor(((double)HorizontalByteCount) * _charSize.Width * 3 + (2 * _charSize.Width));
                 requiredWidth += _recHex.Width;
             }
 
@@ -1788,7 +1772,7 @@ namespace Be.Windows.Forms
             {
                 _recStringView = new Rectangle(_recHex.X + _recHex.Width,
                     _recHex.Y,
-                    (int)(_charSize.Width * _iHexMaxHBytes),
+                    (int)(_charSize.Width * HorizontalByteCount),
                     _recHex.Height);
                 requiredWidth += _recStringView.Width;
             }
@@ -1802,7 +1786,7 @@ namespace Be.Windows.Forms
             int vmax = (int)Math.Floor((double)_recHex.Height / (double)_charSize.Height);
             SetVerticalByteCount(vmax);
 
-            _iHexMaxBytes = _iHexMaxHBytes * _iHexMaxVBytes;
+            _iHexMaxBytes = HorizontalByteCount * VerticalByteCount;
 
             UpdateScrollSize();
         }
@@ -1840,8 +1824,8 @@ namespace Be.Windows.Forms
 
         Point GetGridBytePoint(long byteIndex)
         {
-            int row = (int)Math.Floor((double)byteIndex / (double)_iHexMaxHBytes);
-            int column = (int)(byteIndex + _iHexMaxHBytes - _iHexMaxHBytes * (row + 1));
+            int row = (int)Math.Floor((double)byteIndex / (double)HorizontalByteCount);
+            int column = (int)(byteIndex + HorizontalByteCount - HorizontalByteCount * (row + 1));
 
             Point res = new Point(column, row);
             return res;
@@ -1923,18 +1907,7 @@ namespace Be.Windows.Forms
         /// Gets or sets the background color for the disabled control.
         /// </summary>
         [Category("Appearance"), DefaultValue(typeof(Color), "WhiteSmoke")]
-        public Color BackColorDisabled
-        {
-            get
-            {
-                return _backColorDisabled;
-            }
-            set
-            {
-                _backColorDisabled = value;
-            }
-        }
-        Color _backColorDisabled = Color.FromName("WhiteSmoke");
+        public Color BackColorDisabled { get; set; } = Color.FromName("WhiteSmoke");
 
         /// <summary>
         /// Gets or sets if the count of bytes in one line is fix.
@@ -2416,31 +2389,23 @@ namespace Be.Windows.Forms
 
         /// <summary>
         /// Gets the number bytes drawn horizontally.
+        /// Contains the maximum of visible horizontal bytes 
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int HorizontalByteCount
-        {
-            get { return _iHexMaxHBytes; }
-        }
+        public int HorizontalByteCount { get; private set; }
 
         /// <summary>
         /// Gets the number bytes drawn vertically.
+        /// Contains the maximum of visible vertical bytes
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int VerticalByteCount
-        {
-            get { return _iHexMaxVBytes; }
-        }
+        public int VerticalByteCount { get; private set; }
 
         /// <summary>
         /// Gets the current line
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public long CurrentLine
-        {
-            get { return _currentLine; }
-        }
-        long _currentLine;
+        public long CurrentLine { get; private set; }
 
         /// <summary>
         /// Gets the current position in the current line
@@ -2479,11 +2444,7 @@ namespace Be.Windows.Forms
         /// Gets or sets the built-in context menu.
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public BuiltInContextMenu BuiltInContextMenu
-        {
-            get { return _builtInContextMenu; }
-        }
-        readonly BuiltInContextMenu _builtInContextMenu;
+        public BuiltInContextMenu BuiltInContextMenu { get; }
 
 
         /// <summary>
@@ -2608,34 +2569,34 @@ namespace Be.Windows.Forms
 
         void SetHorizontalByteCount(int value)
         {
-            if (_iHexMaxHBytes == value)
+            if (HorizontalByteCount == value)
                 return;
 
-            _iHexMaxHBytes = value;
+            HorizontalByteCount = value;
             OnHorizontalByteCountChanged(EventArgs.Empty);
         }
 
         void SetVerticalByteCount(int value)
         {
-            if (_iHexMaxVBytes == value)
+            if (VerticalByteCount == value)
                 return;
 
-            _iHexMaxVBytes = value;
+            VerticalByteCount = value;
             OnVerticalByteCountChanged(EventArgs.Empty);
         }
 
         void CheckCurrentLineChanged()
         {
-            long currentLine = (long)Math.Floor((double)_bytePos / (double)_iHexMaxHBytes) + 1;
+            long currentLine = (long)Math.Floor((double)_bytePos / (double)HorizontalByteCount) + 1;
 
-            if (_byteProvider == null && _currentLine != 0)
+            if (_byteProvider == null && CurrentLine != 0)
             {
-                _currentLine = 0;
+                CurrentLine = 0;
                 OnCurrentLineChanged(EventArgs.Empty);
             }
-            else if (currentLine != _currentLine)
+            else if (currentLine != CurrentLine)
             {
-                _currentLine = currentLine;
+                CurrentLine = currentLine;
                 OnCurrentLineChanged(EventArgs.Empty);
             }
         }

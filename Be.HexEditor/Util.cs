@@ -5,10 +5,6 @@ namespace Be.HexEditor
 {
     static class Util
     {
-        /// <summary>
-        /// Contains true, if we are in design mode of Visual Studio
-        /// </summary>
-        private static readonly bool _designMode;
 
         /// <summary>
         /// Initializes an instance of Util class
@@ -20,7 +16,7 @@ namespace Be.HexEditor
             using (var process = System.Diagnostics.Process.GetCurrentProcess())
             {
                 var processName = process.ProcessName.ToLower(CultureInfo.CurrentCulture);
-                _designMode = designerHosts.Contains(processName);
+                DesignMode = designerHosts.Contains(processName);
             }
         }
 
@@ -31,13 +27,7 @@ namespace Be.HexEditor
         /// In Visual Studio 2008 SP1 the designer is crashing sometimes on windows forms. 
         /// The DesignMode property of Control class is buggy and cannot be used, so use our own implementation instead.
         /// </remarks>
-        public static bool DesignMode
-        {
-            get
-            {
-                return _designMode;
-            }
-        }
+        public static bool DesignMode { get; private set; }
 
         public static string GetDisplayBytes(long size)
         {

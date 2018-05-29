@@ -589,8 +589,8 @@ namespace Be.Byte
         }
 
         /// <summary>
-        /// /// Helper to raise a PropertyChanged event for the Indexer property
-        /// /// </summary>
+        /// Helper to raise a PropertyChanged event for the Indexer property
+        /// </summary>
         private void OnIndexerPropertyChanged() =>
           OnPropertyChanged(EventArgsCache.IndexerPropertyChanged);
 

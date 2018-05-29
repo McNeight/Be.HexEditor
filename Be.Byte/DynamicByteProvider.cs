@@ -14,11 +14,6 @@ namespace Be.Byte
         bool _hasChanges;
 
         /// <summary>
-        /// Contains a byte collection.
-        /// </summary>
-        ByteCollection _bytes;
-
-        /// <summary>
         /// Initializes a new instance of the DynamicByteProvider class.
         /// </summary>
         /// <param name="data"></param>
@@ -32,7 +27,7 @@ namespace Be.Byte
         /// <param name="bytes"></param>
         public DynamicByteProvider(ByteCollection bytes)
         {
-            _bytes = bytes;
+            Bytes = bytes;
         }
 
         /// <summary>
@@ -56,10 +51,7 @@ namespace Be.Byte
         /// <summary>
         /// Gets the byte collection.
         /// </summary>
-        public ByteCollection Bytes
-        {
-            get { return _bytes; }
-        }
+        public ByteCollection Bytes { get; }
 
         #region IByteProvider Members
         /// <summary>
@@ -95,7 +87,7 @@ namespace Be.Byte
         /// <param name="index">the index of the byte to read</param>
         /// <returns>the byte</returns>
         public byte ReadByte(long index)
-        { return _bytes[(int)index]; }
+        { return Bytes[(int)index]; }
 
         /// <summary>
         /// Write a byte into the byte collection.
@@ -104,7 +96,7 @@ namespace Be.Byte
         /// <param name="value">the byte</param>
         public void WriteByte(long index, byte value)
         {
-            _bytes[(int)index] = value;
+            Bytes[(int)index] = value;
             OnChanged(EventArgs.Empty);
         }
 
@@ -117,7 +109,7 @@ namespace Be.Byte
         {
             int internal_index = (int)Math.Max(0, index);
             int internal_length = (int)Math.Min((int)Length, length);
-            _bytes.RemoveRange(internal_index, internal_length);
+            Bytes.RemoveRange(internal_index, internal_length);
 
             OnLengthChanged(EventArgs.Empty);
             OnChanged(EventArgs.Empty);
@@ -130,7 +122,7 @@ namespace Be.Byte
         /// <param name="bs">the byte array to insert</param>
         public void InsertBytes(long index, byte[] bs)
         {
-            _bytes.InsertRange((int)index, bs);
+            Bytes.InsertRange((int)index, bs);
 
             OnLengthChanged(EventArgs.Empty);
             OnChanged(EventArgs.Empty);
@@ -143,7 +135,7 @@ namespace Be.Byte
         {
             get
             {
-                return _bytes.Count;
+                return Bytes.Count;
             }
         }
 

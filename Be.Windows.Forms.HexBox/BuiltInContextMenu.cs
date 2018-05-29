@@ -125,45 +125,25 @@ namespace Be.Windows.Forms
         /// Gets or sets the custom text of the "Copy" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string CopyMenuItemText
-        {
-            get { return _copyMenuItemText; }
-            set { _copyMenuItemText = value; }
-        }
-        string _copyMenuItemText;
+        public string CopyMenuItemText { get; set; }
 
         /// <summary>
         /// Gets or sets the custom text of the "Cut" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string CutMenuItemText
-        {
-            get { return _cutMenuItemText; }
-            set { _cutMenuItemText = value; }
-        }
-        string _cutMenuItemText;
+        public string CutMenuItemText { get; set; }
 
         /// <summary>
         /// Gets or sets the custom text of the "Paste" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string PasteMenuItemText
-        {
-            get { return _pasteMenuItemText; }
-            set { _pasteMenuItemText = value; }
-        }
-        string _pasteMenuItemText;
+        public string PasteMenuItemText { get; set; }
 
         /// <summary>
         /// Gets or sets the custom text of the "Select All" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string SelectAllMenuItemText
-        {
-            get { return _selectAllMenuItemText; }
-            set { _selectAllMenuItemText = value; }
-        }
-        string _selectAllMenuItemText = null;
+        public string SelectAllMenuItemText { get; set; } = null;
 
         /// <summary>
         /// Gets the text of the "Cut" ContextMenuStrip item.
@@ -186,41 +166,24 @@ namespace Be.Windows.Forms
         /// Gets or sets the image of the "Cut" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image CutMenuItemImage
-        {
-            get { return _cutMenuItemImage; }
-            set { _cutMenuItemImage = value; }
-        }
-        Image _cutMenuItemImage = null;
+        public Image CutMenuItemImage { get; set; } = null;
+
         /// <summary>
         /// Gets or sets the image of the "Copy" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image CopyMenuItemImage
-        {
-            get { return _copyMenuItemImage; }
-            set { _copyMenuItemImage = value; }
-        }
-        Image _copyMenuItemImage = null;
+        public Image CopyMenuItemImage { get; set; } = null;
+
         /// <summary>
         /// Gets or sets the image of the "Paste" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image PasteMenuItemImage
-        {
-            get { return _pasteMenuItemImage; }
-            set { _pasteMenuItemImage = value; }
-        }
-        Image _pasteMenuItemImage = null;
+        public Image PasteMenuItemImage { get; set; } = null;
+
         /// <summary>
         /// Gets or sets the image of the "Select All" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image SelectAllMenuItemImage
-        {
-            get { return _selectAllMenuItemImage; }
-            set { _selectAllMenuItemImage = value; }
-        }
-        Image _selectAllMenuItemImage = null;
+        public Image SelectAllMenuItemImage { get; set; } = null;
     }
 }

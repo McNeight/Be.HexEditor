@@ -25,14 +25,7 @@ namespace Be.HexEditor
             }
         }
 
-
-        bool useSystemLanguage;
-
-        public bool UseSystemLanguage
-        {
-            get { return useSystemLanguage; }
-            set { useSystemLanguage = value; }
-        }
+        public bool UseSystemLanguage { get; set; }
 
         public FormOptions()
         {
@@ -40,7 +33,7 @@ namespace Be.HexEditor
 
             this.recentFilesMax = Settings.Default.RecentFilesMax;
             this.recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
-            this.useSystemLanguage = Settings.Default.UseSystemLanguage;
+            this.UseSystemLanguage = Settings.Default.UseSystemLanguage;
             this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
 
             if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
@@ -79,7 +72,7 @@ namespace Be.HexEditor
                 changed = true;
             }
 
-            if (Settings.Default.UseSystemLanguage != this.useSystemLanguage ||
+            if (Settings.Default.UseSystemLanguage != this.UseSystemLanguage ||
                 Settings.Default.SelectedLanguage != (string)this.languageComboBox.SelectedValue)
             {
                 Settings.Default.UseSystemLanguage = this.UseSystemLanguage;

@@ -12,24 +12,10 @@ namespace Be.HexEditor.Core
     {
         // DPI at design time
         public const float DpiAtDesign = 96F;
-
-        // Old (previous) DPI
-        float dpiOld = 0;
         [DefaultValue(0), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public float DpiOld
-        {
-            get { return dpiOld; }
-            set { dpiOld = value; }
-        }
-
-        // New (current) DPI
-        float dpiNew = 0;
+        public float DpiOld { get; set; } = 0;
         [DefaultValue(0), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public float DpiNew
-        {
-            get { return dpiNew; }
-            set { dpiNew = value; }
-        }
+        public float DpiNew { get; set; } = 0;
 
         // Flag to set whether this window is being moved by user
         bool isBeingMoved = false;
@@ -103,12 +89,12 @@ namespace Be.HexEditor.Core
                 NativeMethods.RECT r = (NativeMethods.RECT)Marshal.PtrToStructure(m.LParam, typeof(NativeMethods.RECT));
 
                 // Hold new DPI as target for adjustment.
-                dpiNew = lo;
+                DpiNew = lo;
 
                 switch (method)
                 {
                     case ResizeMethod.Immediate:
-                        if (dpiOld != lo)
+                        if (DpiOld != lo)
                         {
                             MoveWindow();
                             AdjustWindow();
@@ -116,7 +102,7 @@ namespace Be.HexEditor.Core
                         break;
 
                     case ResizeMethod.Delayed:
-                        if (dpiOld != lo)
+                        if (DpiOld != lo)
                         {
                             if (isBeingMoved)
                             {
@@ -168,10 +154,10 @@ namespace Be.HexEditor.Core
             if (Util.DesignMode)
                 return;
 
-            if (dpiOld == 0)
+            if (DpiOld == 0)
                 return; // Abort.
 
-            float factor = dpiNew / dpiOld;
+            float factor = DpiNew / DpiOld;
 
             // Prepare new rectangles shrinked or expanded sticking four corners.
             int widthDiff = (int)(this.ClientSize.Width * factor) - this.ClientSize.Width;
@@ -233,7 +219,7 @@ namespace Be.HexEditor.Core
                     if ((handleLeftTop != IntPtr.Zero) || (handleRightTop != IntPtr.Zero))
                     {
                         // Check if DPI of the monitor matches.
-                        if (GetDpiSpecifiedMonitor(handleMonitor) == dpiNew)
+                        if (GetDpiSpecifiedMonitor(handleMonitor) == DpiNew)
                         {
                             // Move this window.
                             this.Location = new Point(rectBuf.left, rectBuf.top);
@@ -248,10 +234,10 @@ namespace Be.HexEditor.Core
         // Check if current location of this window is good for delayed adjustment.
         bool IsLocationGood()
         {
-            if (dpiOld == 0)
+            if (DpiOld == 0)
                 return false; // Abort.
 
-            float factor = dpiNew / dpiOld;
+            float factor = DpiNew / DpiOld;
 
             // Prepare new rectangle shrinked or expanded sticking Left-Top corner.
             int widthDiff = (int)(this.ClientSize.Width * factor) - this.ClientSize.Width;
@@ -271,7 +257,7 @@ namespace Be.HexEditor.Core
             if (handleMonitor != IntPtr.Zero)
             {
                 // Check if DPI of the monitor matches.
-                if (GetDpiSpecifiedMonitor(handleMonitor) == dpiNew)
+                if (GetDpiSpecifiedMonitor(handleMonitor) == DpiNew)
                 {
                     return true;
                 }
@@ -303,14 +289,14 @@ namespace Be.HexEditor.Core
             if (Util.DesignMode)
                 return;
 
-            if ((dpiOld == 0) || (dpiOld == dpiNew))
+            if ((DpiOld == 0) || (DpiOld == DpiNew))
                 return; // Abort.
 
-            float factor = dpiNew / dpiOld;
+            float factor = DpiNew / DpiOld;
 
             //MessageBox.Show(string.Format("new{0}, old{1}, factor: {2}", dpiNew, dpiOld, factor));
 
-            dpiOld = dpiNew;
+            DpiOld = DpiNew;
 
             // Adjust location and size of Controls (except location of this window itself).
             this.Scale(new SizeF(factor, factor));

@@ -54,10 +54,6 @@ namespace Be.Byte
         WriteCollection _writes = new WriteCollection();
 
         /// <summary>
-        /// Contains the file name.
-        /// </summary>
-        string _fileName;
-        /// <summary>
         /// Contains the file stream.
         /// </summary>
         FileStream _fileStream;
@@ -72,7 +68,7 @@ namespace Be.Byte
         /// <param name="fileName"></param>
         public FileByteProvider(string fileName)
         {
-            _fileName = fileName;
+            FileName = fileName;
 
             try
             {
@@ -115,10 +111,7 @@ namespace Be.Byte
         /// <summary>
         /// Gets the name of the file the byte provider is using.
         /// </summary>
-        public string FileName
-        {
-            get { return _fileName; }
-        }
+        public string FileName { get; private set; }
 
         /// <summary>
         /// Returns a value if there are some changes.
@@ -269,7 +262,7 @@ namespace Be.Byte
             {
                 if (_fileStream != null)
                 {
-                    _fileName = null;
+                    FileName = null;
 
                     _fileStream.Close();
                     _fileStream = null;
