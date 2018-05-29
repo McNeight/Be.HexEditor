@@ -14,10 +14,7 @@ namespace Be.HexEditor
 
             public string FileName { get; set; }
 
-            public FileMenuItem(string fileName)
-            {
-                FileName = fileName;
-            }
+            public FileMenuItem(string fileName) => FileName = fileName;
 
             public override string Text
             {

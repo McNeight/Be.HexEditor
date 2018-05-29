@@ -12,10 +12,7 @@ namespace Be.Windows.Forms
         {
             #region Ctors
             public StringKeyInterpreter(HexBox hexBox)
-                : base(hexBox)
-            {
-                _hexBox._byteCharacterPos = 0;
-            }
+                : base(hexBox) => _hexBox._byteCharacterPos = 0;
             #endregion
 
             #region PreProcessWmKeyDown methods

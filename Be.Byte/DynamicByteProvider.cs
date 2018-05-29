@@ -25,10 +25,7 @@ namespace Be.Byte
         /// Initializes a new instance of the DynamicByteProvider class.
         /// </summary>
         /// <param name="bytes"></param>
-        public DynamicByteProvider(ByteCollection bytes)
-        {
-            Bytes = bytes;
-        }
+        public DynamicByteProvider(ByteCollection bytes) => Bytes = bytes;
 
         /// <summary>
         /// Raises the Changed event.

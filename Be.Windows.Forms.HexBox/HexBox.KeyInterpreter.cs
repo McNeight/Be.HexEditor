@@ -48,10 +48,7 @@ namespace Be.Windows.Forms
             #endregion
 
             #region Ctors
-            public KeyInterpreter(HexBox hexBox)
-            {
-                _hexBox = hexBox;
-            }
+            public KeyInterpreter(HexBox hexBox) => _hexBox = hexBox;
             #endregion
 
             #region Activate, Deactive methods

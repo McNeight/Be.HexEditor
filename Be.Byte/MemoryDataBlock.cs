@@ -4,10 +4,7 @@ namespace Be.Byte
 {
     internal sealed class MemoryDataBlock : DataBlock
     {
-        public MemoryDataBlock(byte data)
-        {
-            Data = new byte[] { data };
-        }
+        public MemoryDataBlock(byte data) => Data = new byte[] { data };
 
         public MemoryDataBlock(byte[] data)
         {

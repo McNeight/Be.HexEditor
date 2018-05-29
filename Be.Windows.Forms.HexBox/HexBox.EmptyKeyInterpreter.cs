@@ -13,10 +13,7 @@ namespace Be.Windows.Forms
         {
             HexBox _hexBox;
 
-            public EmptyKeyInterpreter(HexBox hexBox)
-            {
-                _hexBox = hexBox;
-            }
+            public EmptyKeyInterpreter(HexBox hexBox) => _hexBox = hexBox;
 
             #region IKeyInterpreter Members
             public void Activate() { }
