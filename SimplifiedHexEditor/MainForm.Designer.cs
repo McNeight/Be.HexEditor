@@ -33,15 +33,22 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.hexBox1 = new Be.Windows.Forms.HexBox();
+            this.btnFont = new System.Windows.Forms.Button();
             this.gbColors = new System.Windows.Forms.GroupBox();
+            this.btnForeColor = new System.Windows.Forms.Button();
             this.btnShadowSelectionColor = new System.Windows.Forms.Button();
+            this.btnBackColor = new System.Windows.Forms.Button();
             this.btnSelectionForeColor = new System.Windows.Forms.Button();
             this.btnSelectionBackColor = new System.Windows.Forms.Button();
             this.btnInfoForeColor = new System.Windows.Forms.Button();
             this.btnBackColorDisabled = new System.Windows.Forms.Button();
-            this.btnFont = new System.Windows.Forms.Button();
-            this.btnBackColor = new System.Windows.Forms.Button();
             this.gbIntegers = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbHexCasing = new System.Windows.Forms.ComboBox();
+            this.hexBoxBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.nudLineInfoOffset = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.nudGroupSize = new System.Windows.Forms.NumericUpDown();
@@ -60,13 +67,6 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.nudLineInfoOffset = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbHexCasing = new System.Windows.Forms.ComboBox();
-            this.hexBox1 = new Be.Windows.Forms.HexBox();
-            this.hexBoxBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnForeColor = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,12 +74,12 @@
             this.splitContainer1.SuspendLayout();
             this.gbColors.SuspendLayout();
             this.gbIntegers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hexBoxBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLineInfoOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGroupSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBytesPerLine)).BeginInit();
             this.gbBooleans.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLineInfoOffset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexBoxBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,6 +129,32 @@
             this.splitContainer1.SplitterDistance = 492;
             this.splitContainer1.TabIndex = 2;
             // 
+            // hexBox1
+            // 
+            this.hexBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBox1.Location = new System.Drawing.Point(0, 0);
+            this.hexBox1.Name = "hexBox1";
+            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBox1.Size = new System.Drawing.Size(492, 465);
+            this.hexBox1.TabIndex = 1;
+            this.hexBox1.SelectionStartChanged += new System.EventHandler(this.hexBox1_SelectionStartChanged);
+            this.hexBox1.SelectionLengthChanged += new System.EventHandler(this.hexBox1_SelectionLengthChanged);
+            this.hexBox1.CurrentLineChanged += new System.EventHandler(this.hexBox1_CurrentLineChanged);
+            this.hexBox1.CurrentPositionInLineChanged += new System.EventHandler(this.hexBox1_CurrentPositionInLineChanged);
+            // 
+            // btnFont
+            // 
+            this.btnFont.AutoSize = true;
+            this.btnFont.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnFont.Location = new System.Drawing.Point(176, 3);
+            this.btnFont.Name = "btnFont";
+            this.btnFont.Size = new System.Drawing.Size(98, 23);
+            this.btnFont.TabIndex = 0;
+            this.btnFont.Text = "Font && Text Color";
+            this.btnFont.UseVisualStyleBackColor = true;
+            this.btnFont.Click += new System.EventHandler(this.button1_Click);
+            // 
             // gbColors
             // 
             this.gbColors.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -146,6 +172,18 @@
             this.gbColors.TabStop = false;
             this.gbColors.Text = "HexBox Colors";
             // 
+            // btnForeColor
+            // 
+            this.btnForeColor.AutoSize = true;
+            this.btnForeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnForeColor.Location = new System.Drawing.Point(6, 19);
+            this.btnForeColor.Name = "btnForeColor";
+            this.btnForeColor.Size = new System.Drawing.Size(62, 23);
+            this.btnForeColor.TabIndex = 5;
+            this.btnForeColor.Text = "ForeColor";
+            this.btnForeColor.UseVisualStyleBackColor = true;
+            this.btnForeColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
             // btnShadowSelectionColor
             // 
             this.btnShadowSelectionColor.AutoSize = true;
@@ -156,67 +194,7 @@
             this.btnShadowSelectionColor.TabIndex = 4;
             this.btnShadowSelectionColor.Text = "ShadowSelectionColor";
             this.btnShadowSelectionColor.UseVisualStyleBackColor = true;
-            this.btnShadowSelectionColor.Click += new System.EventHandler(this.btnShadowSelectionColor_Click);
-            // 
-            // btnSelectionForeColor
-            // 
-            this.btnSelectionForeColor.AutoSize = true;
-            this.btnSelectionForeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSelectionForeColor.Location = new System.Drawing.Point(6, 164);
-            this.btnSelectionForeColor.Name = "btnSelectionForeColor";
-            this.btnSelectionForeColor.Size = new System.Drawing.Size(106, 23);
-            this.btnSelectionForeColor.TabIndex = 3;
-            this.btnSelectionForeColor.Text = "SelectionForeColor";
-            this.btnSelectionForeColor.UseVisualStyleBackColor = true;
-            this.btnSelectionForeColor.Click += new System.EventHandler(this.btnSelectionForeColor_Click);
-            // 
-            // btnSelectionBackColor
-            // 
-            this.btnSelectionBackColor.AutoSize = true;
-            this.btnSelectionBackColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSelectionBackColor.Location = new System.Drawing.Point(6, 135);
-            this.btnSelectionBackColor.Name = "btnSelectionBackColor";
-            this.btnSelectionBackColor.Size = new System.Drawing.Size(110, 23);
-            this.btnSelectionBackColor.TabIndex = 2;
-            this.btnSelectionBackColor.Text = "SelectionBackColor";
-            this.btnSelectionBackColor.UseVisualStyleBackColor = true;
-            this.btnSelectionBackColor.Click += new System.EventHandler(this.btnSelectionBackColor_Click);
-            // 
-            // btnInfoForeColor
-            // 
-            this.btnInfoForeColor.AutoSize = true;
-            this.btnInfoForeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnInfoForeColor.Location = new System.Drawing.Point(6, 106);
-            this.btnInfoForeColor.Name = "btnInfoForeColor";
-            this.btnInfoForeColor.Size = new System.Drawing.Size(80, 23);
-            this.btnInfoForeColor.TabIndex = 1;
-            this.btnInfoForeColor.Text = "InfoForeColor";
-            this.btnInfoForeColor.UseVisualStyleBackColor = true;
-            this.btnInfoForeColor.Click += new System.EventHandler(this.btnInfoForeColor_Click);
-            // 
-            // btnBackColorDisabled
-            // 
-            this.btnBackColorDisabled.AutoSize = true;
-            this.btnBackColorDisabled.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBackColorDisabled.Location = new System.Drawing.Point(6, 77);
-            this.btnBackColorDisabled.Name = "btnBackColorDisabled";
-            this.btnBackColorDisabled.Size = new System.Drawing.Size(107, 23);
-            this.btnBackColorDisabled.TabIndex = 0;
-            this.btnBackColorDisabled.Text = "BackColorDisabled";
-            this.btnBackColorDisabled.UseVisualStyleBackColor = true;
-            this.btnBackColorDisabled.Click += new System.EventHandler(this.btnBackColorDisabled_Click);
-            // 
-            // btnFont
-            // 
-            this.btnFont.AutoSize = true;
-            this.btnFont.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnFont.Location = new System.Drawing.Point(176, 3);
-            this.btnFont.Name = "btnFont";
-            this.btnFont.Size = new System.Drawing.Size(98, 23);
-            this.btnFont.TabIndex = 0;
-            this.btnFont.Text = "Font && Text Color";
-            this.btnFont.UseVisualStyleBackColor = true;
-            this.btnFont.Click += new System.EventHandler(this.button1_Click);
+            this.btnShadowSelectionColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // btnBackColor
             // 
@@ -228,7 +206,55 @@
             this.btnBackColor.TabIndex = 1;
             this.btnBackColor.Text = "BackColor";
             this.btnBackColor.UseVisualStyleBackColor = true;
-            this.btnBackColor.Click += new System.EventHandler(this.btnBackColor_Click);
+            this.btnBackColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnSelectionForeColor
+            // 
+            this.btnSelectionForeColor.AutoSize = true;
+            this.btnSelectionForeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSelectionForeColor.Location = new System.Drawing.Point(6, 164);
+            this.btnSelectionForeColor.Name = "btnSelectionForeColor";
+            this.btnSelectionForeColor.Size = new System.Drawing.Size(106, 23);
+            this.btnSelectionForeColor.TabIndex = 3;
+            this.btnSelectionForeColor.Text = "SelectionForeColor";
+            this.btnSelectionForeColor.UseVisualStyleBackColor = true;
+            this.btnSelectionForeColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnSelectionBackColor
+            // 
+            this.btnSelectionBackColor.AutoSize = true;
+            this.btnSelectionBackColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSelectionBackColor.Location = new System.Drawing.Point(6, 135);
+            this.btnSelectionBackColor.Name = "btnSelectionBackColor";
+            this.btnSelectionBackColor.Size = new System.Drawing.Size(110, 23);
+            this.btnSelectionBackColor.TabIndex = 2;
+            this.btnSelectionBackColor.Text = "SelectionBackColor";
+            this.btnSelectionBackColor.UseVisualStyleBackColor = true;
+            this.btnSelectionBackColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnInfoForeColor
+            // 
+            this.btnInfoForeColor.AutoSize = true;
+            this.btnInfoForeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnInfoForeColor.Location = new System.Drawing.Point(6, 106);
+            this.btnInfoForeColor.Name = "btnInfoForeColor";
+            this.btnInfoForeColor.Size = new System.Drawing.Size(80, 23);
+            this.btnInfoForeColor.TabIndex = 1;
+            this.btnInfoForeColor.Text = "InfoForeColor";
+            this.btnInfoForeColor.UseVisualStyleBackColor = true;
+            this.btnInfoForeColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnBackColorDisabled
+            // 
+            this.btnBackColorDisabled.AutoSize = true;
+            this.btnBackColorDisabled.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBackColorDisabled.Location = new System.Drawing.Point(6, 77);
+            this.btnBackColorDisabled.Name = "btnBackColorDisabled";
+            this.btnBackColorDisabled.Size = new System.Drawing.Size(107, 23);
+            this.btnBackColorDisabled.TabIndex = 0;
+            this.btnBackColorDisabled.Text = "BackColorDisabled";
+            this.btnBackColorDisabled.UseVisualStyleBackColor = true;
+            this.btnBackColorDisabled.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // gbIntegers
             // 
@@ -248,6 +274,47 @@
             this.gbIntegers.TabIndex = 4;
             this.gbIntegers.TabStop = false;
             this.gbIntegers.Text = "HexBox Integers";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 95);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Hex Casing";
+            // 
+            // cbHexCasing
+            // 
+            this.cbHexCasing.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.hexBoxBindingSource, "HexCasing", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbHexCasing.FormattingEnabled = true;
+            this.cbHexCasing.Location = new System.Drawing.Point(88, 92);
+            this.cbHexCasing.Name = "cbHexCasing";
+            this.cbHexCasing.Size = new System.Drawing.Size(58, 21);
+            this.cbHexCasing.TabIndex = 0;
+            this.cbHexCasing.Text = "Upper";
+            // 
+            // hexBoxBindingSource
+            // 
+            this.hexBoxBindingSource.DataSource = typeof(Be.Windows.Forms.HexBox);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Line Info Offset";
+            // 
+            // nudLineInfoOffset
+            // 
+            this.nudLineInfoOffset.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.hexBoxBindingSource, "LineInfoOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.nudLineInfoOffset.Hexadecimal = true;
+            this.nudLineInfoOffset.Location = new System.Drawing.Point(88, 66);
+            this.nudLineInfoOffset.Name = "nudLineInfoOffset";
+            this.nudLineInfoOffset.Size = new System.Drawing.Size(58, 20);
+            this.nudLineInfoOffset.TabIndex = 5;
             // 
             // label2
             // 
@@ -416,73 +483,6 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // nudLineInfoOffset
-            // 
-            this.nudLineInfoOffset.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.hexBoxBindingSource, "LineInfoOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.nudLineInfoOffset.Hexadecimal = true;
-            this.nudLineInfoOffset.Location = new System.Drawing.Point(88, 66);
-            this.nudLineInfoOffset.Name = "nudLineInfoOffset";
-            this.nudLineInfoOffset.Size = new System.Drawing.Size(58, 20);
-            this.nudLineInfoOffset.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Line Info Offset";
-            // 
-            // cbHexCasing
-            // 
-            this.cbHexCasing.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.hexBoxBindingSource, "HexCasing", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.cbHexCasing.FormattingEnabled = true;
-            this.cbHexCasing.Location = new System.Drawing.Point(88, 92);
-            this.cbHexCasing.Name = "cbHexCasing";
-            this.cbHexCasing.Size = new System.Drawing.Size(58, 21);
-            this.cbHexCasing.TabIndex = 0;
-            this.cbHexCasing.Text = "Upper";
-            // 
-            // hexBox1
-            // 
-            this.hexBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBox1.Location = new System.Drawing.Point(0, 0);
-            this.hexBox1.Name = "hexBox1";
-            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hexBox1.Size = new System.Drawing.Size(492, 465);
-            this.hexBox1.TabIndex = 1;
-            this.hexBox1.SelectionStartChanged += new System.EventHandler(this.hexBox1_SelectionStartChanged);
-            this.hexBox1.SelectionLengthChanged += new System.EventHandler(this.hexBox1_SelectionLengthChanged);
-            this.hexBox1.CurrentLineChanged += new System.EventHandler(this.hexBox1_CurrentLineChanged);
-            this.hexBox1.CurrentPositionInLineChanged += new System.EventHandler(this.hexBox1_CurrentPositionInLineChanged);
-            // 
-            // hexBoxBindingSource
-            // 
-            this.hexBoxBindingSource.DataSource = typeof(Be.Windows.Forms.HexBox);
-            // 
-            // btnForeColor
-            // 
-            this.btnForeColor.AutoSize = true;
-            this.btnForeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnForeColor.Location = new System.Drawing.Point(6, 19);
-            this.btnForeColor.Name = "btnForeColor";
-            this.btnForeColor.Size = new System.Drawing.Size(62, 23);
-            this.btnForeColor.TabIndex = 5;
-            this.btnForeColor.Text = "ForeColor";
-            this.btnForeColor.UseVisualStyleBackColor = true;
-            this.btnForeColor.Click += new System.EventHandler(this.btnForeColor_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Hex Casing";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,14 +506,14 @@
             this.gbColors.PerformLayout();
             this.gbIntegers.ResumeLayout(false);
             this.gbIntegers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hexBoxBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLineInfoOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGroupSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBytesPerLine)).EndInit();
             this.gbBooleans.ResumeLayout(false);
             this.gbBooleans.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLineInfoOffset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexBoxBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

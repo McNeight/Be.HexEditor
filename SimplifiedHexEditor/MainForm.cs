@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Be.Windows.Forms;
+
 using Be.Byte;
+using Be.Windows.Forms;
 
 namespace SimplifiedHexEditor
 {
@@ -71,103 +67,21 @@ namespace SimplifiedHexEditor
         }
 
 
-        private void btnForeColor_Click(object sender, EventArgs e)
+        private void btnColor_Click(object sender, EventArgs e)
         {
+            // Turn sender into a button
+            Button b = (Button)sender;
             // Keeps the user from selecting a custom color.
             colorDialog1.AllowFullOpen = false;
             // Allows the user to get help. (The default is false.)
             colorDialog1.ShowHelp = true;
             // Sets the initial color select to the current text color.
-            colorDialog1.Color = hexBox1.ForeColor;
-
+            colorDialog1.Color = (Color)hexBox1.GetType().GetProperty(b.Text).GetValue(hexBox1, null);
             // Update the text box color if the user clicks OK 
             if (colorDialog1.ShowDialog() == DialogResult.OK)
-                hexBox1.ForeColor = colorDialog1.Color;
+                hexBox1.GetType().GetProperty(b.Text).SetValue(hexBox1, colorDialog1.Color, null);
         }
 
-        private void btnBackColor_Click(object sender, EventArgs e)
-        {
-            // Keeps the user from selecting a custom color.
-            colorDialog1.AllowFullOpen = false;
-            // Allows the user to get help. (The default is false.)
-            colorDialog1.ShowHelp = true;
-            // Sets the initial color select to the current text color.
-            colorDialog1.Color = hexBox1.BackColor;
-
-            // Update the text box color if the user clicks OK 
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-                hexBox1.BackColor = colorDialog1.Color;
-        }
-
-        private void btnBackColorDisabled_Click(object sender, EventArgs e)
-        {
-            // Keeps the user from selecting a custom color.
-            colorDialog1.AllowFullOpen = false;
-            // Allows the user to get help. (The default is false.)
-            colorDialog1.ShowHelp = true;
-            // Sets the initial color select to the current text color.
-            colorDialog1.Color = hexBox1.BackColorDisabled;
-
-            // Update the text box color if the user clicks OK 
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-                hexBox1.BackColorDisabled = colorDialog1.Color;
-        }
-
-        private void btnInfoForeColor_Click(object sender, EventArgs e)
-        {
-            // Keeps the user from selecting a custom color.
-            colorDialog1.AllowFullOpen = false;
-            // Allows the user to get help. (The default is false.)
-            colorDialog1.ShowHelp = true;
-            // Sets the initial color select to the current text color.
-            colorDialog1.Color = hexBox1.InfoForeColor;
-
-            // Update the text box color if the user clicks OK 
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-                hexBox1.InfoForeColor = colorDialog1.Color;
-        }
-
-        private void btnSelectionBackColor_Click(object sender, EventArgs e)
-        {
-            // Keeps the user from selecting a custom color.
-            colorDialog1.AllowFullOpen = false;
-            // Allows the user to get help. (The default is false.)
-            colorDialog1.ShowHelp = true;
-            // Sets the initial color select to the current text color.
-            colorDialog1.Color = hexBox1.SelectionBackColor;
-
-            // Update the text box color if the user clicks OK 
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-                hexBox1.SelectionBackColor = colorDialog1.Color;
-        }
-
-        private void btnSelectionForeColor_Click(object sender, EventArgs e)
-        {
-            // Keeps the user from selecting a custom color.
-            colorDialog1.AllowFullOpen = false;
-            // Allows the user to get help. (The default is false.)
-            colorDialog1.ShowHelp = true;
-            // Sets the initial color select to the current text color.
-            colorDialog1.Color = hexBox1.SelectionForeColor;
-
-            // Update the text box color if the user clicks OK 
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-                hexBox1.SelectionForeColor = colorDialog1.Color;
-        }
-
-        private void btnShadowSelectionColor_Click(object sender, EventArgs e)
-        {
-            // Keeps the user from selecting a custom color.
-            colorDialog1.AllowFullOpen = false;
-            // Allows the user to get help. (The default is false.)
-            colorDialog1.ShowHelp = true;
-            // Sets the initial color select to the current text color.
-            colorDialog1.Color = hexBox1.ShadowSelectionColor;
-
-            // Update the text box color if the user clicks OK 
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-                hexBox1.ShadowSelectionColor = colorDialog1.Color;
-        }
         private void hexBox1_CurrentLineChanged(object sender, EventArgs e)
         {
             UpdateStatusBar();
