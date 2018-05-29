@@ -1462,7 +1462,7 @@ namespace Be.Windows.Forms
                     PaintHexString(g, b, brush, gridPoint);
                 }
 
-                string s = new String(ByteCharConverter.ToChar(b), 1);
+                string s = new string(ByteCharConverter.ToChar(b), 1);
 
                 if (isSelectedByte && isStringKeyInterpreterActive)
                 {
