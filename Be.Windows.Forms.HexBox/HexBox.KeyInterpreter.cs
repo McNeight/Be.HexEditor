@@ -140,12 +140,12 @@ namespace Be.Windows.Forms
                 Keys keyData = vc | Control.ModifierKeys;
 
                 // detect whether key down event should be raised
-                var hasMessageHandler = this.MessageHandlers.ContainsKey(keyData);
+                var hasMessageHandler = MessageHandlers.ContainsKey(keyData);
                 if (hasMessageHandler && RaiseKeyDown(keyData))
                     return true;
 
                 MessageDelegate messageHandler = hasMessageHandler
-                    ? this.MessageHandlers[keyData]
+                    ? MessageHandlers[keyData]
                     : messageHandler = new MessageDelegate(PreProcessWmKeyDown_Default);
 
                 return messageHandler(ref m);

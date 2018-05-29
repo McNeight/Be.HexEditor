@@ -14,7 +14,7 @@ namespace SimplifiedHexEditor
         {
             InitializeComponent();
 
-            this.hexBox1.ByteProvider = new DynamicByteProvider(new byte[10]);
+            hexBox1.ByteProvider = new DynamicByteProvider(new byte[10]);
         }
 
         internal static void Visualize(byte[] p)

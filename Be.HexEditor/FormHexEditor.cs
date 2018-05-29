@@ -23,7 +23,7 @@ namespace Be.HexEditor
 
             hexBox.Font = new Font(SystemFonts.MessageBoxFont.FontFamily, SystemFonts.MessageBoxFont.Size, SystemFonts.MessageBoxFont.Style);
 
-            this.toolStrip.Renderer.RenderToolStripBorder += new ToolStripRenderEventHandler(Renderer_RenderToolStripBorder);
+            toolStrip.Renderer.RenderToolStripBorder += new ToolStripRenderEventHandler(Renderer_RenderToolStripBorder);
         }
 
         /// <summary>
@@ -97,10 +97,10 @@ namespace Be.HexEditor
         /// </summary>
         void UpdateFileSizeStatus()
         {
-            if (this.hexBox.ByteProvider == null)
-                this.fileSizeToolStripStatusLabel.Text = string.Empty;
+            if (hexBox.ByteProvider == null)
+                fileSizeToolStripStatusLabel.Text = string.Empty;
             else
-                this.fileSizeToolStripStatusLabel.Text = Util.GetDisplayBytes(this.hexBox.ByteProvider.Length);
+                fileSizeToolStripStatusLabel.Text = Util.GetDisplayBytes(hexBox.ByteProvider.Length);
         }
 
         /// <summary>
@@ -115,11 +115,11 @@ namespace Be.HexEditor
                 string readOnly = ((DynamicFileByteProvider)hexBox.ByteProvider).ReadOnly
                     ? strings.Readonly : "";
                 string text = Path.GetFileName(_fileName);
-                this.Text = string.Format(textFormat, text, readOnly, Program.SoftwareName);
+                Text = string.Format(textFormat, text, readOnly, Program.SoftwareName);
             }
             else
             {
-                this.Text = Program.SoftwareName;
+                Text = Program.SoftwareName;
             }
         }
 
@@ -342,7 +342,7 @@ namespace Be.HexEditor
             {
                 _formFind = new FormFind
                 {
-                    HexBox = this.hexBox,
+                    HexBox = hexBox,
                     FindOptions = _findOptions
                 };
                 _formFind.Show(this);
@@ -428,7 +428,7 @@ namespace Be.HexEditor
 
         void Position_Changed(object sender, EventArgs e)
         {
-            this.toolStripStatusLabel.Text = string.Format("Ln {0}    Col {1}",
+            toolStripStatusLabel.Text = string.Format("Ln {0}    Col {1}",
                 hexBox.CurrentLine, hexBox.CurrentPositionInLine);
 
             string bitPresentation = string.Empty;
@@ -448,9 +448,9 @@ namespace Be.HexEditor
                     );
             }
 
-            this.bitToolStripStatusLabel.Text = bitPresentation;
+            bitToolStripStatusLabel.Text = bitPresentation;
 
-            this.bitControl1.BitInfo = bitInfo;
+            bitControl1.BitInfo = bitInfo;
         }
 
         void byteProvider_Changed(object sender, EventArgs e)
@@ -475,52 +475,52 @@ namespace Be.HexEditor
 
         void cut_Click(object sender, EventArgs e)
         {
-            this.hexBox.Cut();
+            hexBox.Cut();
         }
 
         private void copy_Click(object sender, EventArgs e)
         {
-            this.hexBox.Copy();
+            hexBox.Copy();
         }
 
         void paste_Click(object sender, EventArgs e)
         {
-            this.hexBox.Paste();
+            hexBox.Paste();
         }
 
         private void copyHex_Click(object sender, EventArgs e)
         {
-            this.hexBox.CopyHex();
+            hexBox.CopyHex();
         }
 
         private void pasteHex_Click(object sender, EventArgs e)
         {
-            this.hexBox.PasteHex();
+            hexBox.PasteHex();
         }
 
         void find_Click(object sender, EventArgs e)
         {
-            this.Find();
+            Find();
         }
 
         void findNext_Click(object sender, EventArgs e)
         {
-            this.FindNext();
+            FindNext();
         }
 
         void goTo_Click(object sender, EventArgs e)
         {
-            this.Goto();
+            Goto();
         }
 
         void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.hexBox.SelectAll();
+            hexBox.SelectAll();
         }
 
         void exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         void about_Click(object sender, EventArgs e)
@@ -531,7 +531,7 @@ namespace Be.HexEditor
         void recentFiles_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             RecentFileHandler.FileMenuItem fmi = (RecentFileHandler.FileMenuItem)e.ClickedItem;
-            this.OpenFile(fmi.FileName);
+            OpenFile(fmi.FileName);
         }
 
         void options_Click(object sender, EventArgs e)
@@ -597,7 +597,7 @@ namespace Be.HexEditor
 
         void UpdateFormWidth()
         {
-            this.Width = this.hexBox.RequiredWidth + 70;
+            Width = hexBox.RequiredWidth + 70;
         }
     }
 }

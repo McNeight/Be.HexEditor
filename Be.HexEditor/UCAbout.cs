@@ -48,7 +48,7 @@ namespace Be.HexEditor
         {
             try
             {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(this.lnkWorkspace.Text));
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(lnkWorkspace.Text));
             }
             catch (Exception ex1)
             {
@@ -58,11 +58,11 @@ namespace Be.HexEditor
 
         private void UCAbout_Load(object sender, EventArgs e)
         {
-            this.tabControl.Width = this.Width - 10;
-            this.tabControl.Height = this.Height - this.tabControl.Top - 10;
-            this.lblAuthor.Width = this.Width - this.lblAuthor.Left - 10;
-            this.lnkWorkspace.Width = this.Width - this.lnkWorkspace.Left - 10;
-            this.lblVersion.Width = this.Width - this.lblVersion.Left - 10;
+            tabControl.Width = Width - 10;
+            tabControl.Height = Height - tabControl.Top - 10;
+            lblAuthor.Width = Width - lblAuthor.Left - 10;
+            lnkWorkspace.Width = Width - lnkWorkspace.Left - 10;
+            lblVersion.Width = Width - lblVersion.Left - 10;
         }
     }
 }

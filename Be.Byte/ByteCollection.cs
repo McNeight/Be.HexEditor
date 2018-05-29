@@ -490,8 +490,8 @@ namespace Be.Byte
         /// <returns>the array containing all bytes.</returns>
         public byte[] ToArray()
         {
-            byte[] data = new byte[this.Count];
-            this.CopyTo(data, 0);
+            byte[] data = new byte[Count];
+            CopyTo(data, 0);
             return data;
         }
 

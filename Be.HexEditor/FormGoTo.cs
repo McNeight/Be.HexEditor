@@ -60,50 +60,50 @@ namespace Be.HexEditor
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGoTo));
-            this.lblDec = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.nup = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.line = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.rbHex = new System.Windows.Forms.RadioButton();
-            this.rbDec = new System.Windows.Forms.RadioButton();
-            this.lblHex = new System.Windows.Forms.Label();
-            this.txtHex = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nup)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.SuspendLayout();
+            lblDec = new System.Windows.Forms.Label();
+            btnCancel = new System.Windows.Forms.Button();
+            btnOK = new System.Windows.Forms.Button();
+            nup = new System.Windows.Forms.NumericUpDown();
+            label2 = new System.Windows.Forms.Label();
+            line = new System.Windows.Forms.Panel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            rbHex = new System.Windows.Forms.RadioButton();
+            rbDec = new System.Windows.Forms.RadioButton();
+            lblHex = new System.Windows.Forms.Label();
+            txtHex = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(nup)).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // lblDec
             // 
-            resources.ApplyResources(this.lblDec, "lblDec");
-            this.lblDec.Name = "lblDec";
+            resources.ApplyResources(lblDec, "lblDec");
+            lblDec.Name = "lblDec";
             // 
             // btnCancel
             // 
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            resources.ApplyResources(btnCancel, "btnCancel");
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Name = "btnCancel";
+            btnCancel.Click += new System.EventHandler(btnCancel_Click);
             // 
             // btnOK
             // 
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            resources.ApplyResources(btnOK, "btnOK");
+            btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            btnOK.Name = "btnOK";
+            btnOK.Click += new System.EventHandler(btnOK_Click);
             // 
             // nup
             // 
-            resources.ApplyResources(this.nup, "nup");
-            this.nup.Minimum = new decimal(new int[] {
+            resources.ApplyResources(nup, "nup");
+            nup.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nup.Name = "nup";
-            this.nup.Value = new decimal(new int[] {
+            nup.Name = "nup";
+            nup.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -111,75 +111,75 @@ namespace Be.HexEditor
             // 
             // label2
             // 
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            label2.ForeColor = System.Drawing.Color.Blue;
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
             // 
             // line
             // 
-            resources.ApplyResources(this.line, "line");
-            this.line.BackColor = System.Drawing.Color.LightGray;
-            this.line.Name = "line";
+            resources.ApplyResources(line, "line");
+            line.BackColor = System.Drawing.Color.LightGray;
+            line.Name = "line";
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
-            this.flowLayoutPanel1.Controls.Add(this.btnOK);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(btnCancel);
+            flowLayoutPanel1.Controls.Add(btnOK);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // rbHex
             // 
-            resources.ApplyResources(this.rbHex, "rbHex");
-            this.rbHex.Checked = true;
-            this.rbHex.Name = "rbHex";
-            this.rbHex.TabStop = true;
-            this.rbHex.UseVisualStyleBackColor = true;
-            this.rbHex.Click += new System.EventHandler(this.rbDec_Click);
+            resources.ApplyResources(rbHex, "rbHex");
+            rbHex.Checked = true;
+            rbHex.Name = "rbHex";
+            rbHex.TabStop = true;
+            rbHex.UseVisualStyleBackColor = true;
+            rbHex.Click += new System.EventHandler(rbDec_Click);
             // 
             // rbDec
             // 
-            resources.ApplyResources(this.rbDec, "rbDec");
-            this.rbDec.Name = "rbDec";
-            this.rbDec.UseVisualStyleBackColor = true;
-            this.rbDec.Click += new System.EventHandler(this.rbDec_Click);
+            resources.ApplyResources(rbDec, "rbDec");
+            rbDec.Name = "rbDec";
+            rbDec.UseVisualStyleBackColor = true;
+            rbDec.Click += new System.EventHandler(rbDec_Click);
             // 
             // lblHex
             // 
-            resources.ApplyResources(this.lblHex, "lblHex");
-            this.lblHex.Name = "lblHex";
+            resources.ApplyResources(lblHex, "lblHex");
+            lblHex.Name = "lblHex";
             // 
             // txtHex
             // 
-            resources.ApplyResources(this.txtHex, "txtHex");
-            this.txtHex.Name = "txtHex";
+            resources.ApplyResources(txtHex, "txtHex");
+            txtHex.Name = "txtHex";
             // 
             // FormGoTo
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.txtHex);
-            this.Controls.Add(this.lblHex);
-            this.Controls.Add(this.rbDec);
-            this.Controls.Add(this.rbHex);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.line);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.nup);
-            this.Controls.Add(this.lblDec);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormGoTo";
-            this.ShowInTaskbar = false;
-            this.Activated += new System.EventHandler(this.FormGoTo_Activated);
-            this.Shown += new System.EventHandler(this.FormGoTo_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.nup)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            BackColor = System.Drawing.SystemColors.Control;
+            Controls.Add(txtHex);
+            Controls.Add(lblHex);
+            Controls.Add(rbDec);
+            Controls.Add(rbHex);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(line);
+            Controls.Add(label2);
+            Controls.Add(nup);
+            Controls.Add(lblDec);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormGoTo";
+            ShowInTaskbar = false;
+            Activated += new System.EventHandler(FormGoTo_Activated);
+            Shown += new System.EventHandler(FormGoTo_Shown);
+            ((System.ComponentModel.ISupportInitialize)(nup)).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
         #endregion

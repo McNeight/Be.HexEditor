@@ -283,10 +283,10 @@ namespace Be.Windows.Forms
         /// </summary>
         public HexBox()
         {
-            this._vScrollBar = new VScrollBar();
-            this._vScrollBar.Scroll += new ScrollEventHandler(_vScrollBar_Scroll);
+            _vScrollBar = new VScrollBar();
+            _vScrollBar.Scroll += new ScrollEventHandler(_vScrollBar_Scroll);
 
-            this.BuiltInContextMenu = new BuiltInContextMenu(this);
+            BuiltInContextMenu = new BuiltInContextMenu(this);
 
             BackColor = Color.White;
             Font = SystemFonts.MessageBoxFont;
@@ -500,22 +500,22 @@ namespace Be.Windows.Forms
 
         void PerformScrollLineDown()
         {
-            this.PerformScrollLines(1);
+            PerformScrollLines(1);
         }
 
         void PerformScrollLineUp()
         {
-            this.PerformScrollLines(-1);
+            PerformScrollLines(-1);
         }
 
         void PerformScrollPageDown()
         {
-            this.PerformScrollLines(VerticalByteCount);
+            PerformScrollLines(VerticalByteCount);
         }
 
         void PerformScrollPageUp()
         {
-            this.PerformScrollLines(-VerticalByteCount);
+            PerformScrollLines(-VerticalByteCount);
         }
 
         void PerformScrollThumpPosition(long pos)
@@ -589,7 +589,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public bool CanSelectAll()
         {
-            if (!this.Enabled)
+            if (!Enabled)
                 return false;
             if (_byteProvider == null)
                 return false;
@@ -602,9 +602,9 @@ namespace Be.Windows.Forms
         /// </summary>
         public void SelectAll()
         {
-            if (this.ByteProvider == null)
+            if (ByteProvider == null)
                 return;
-            this.Select(0, this.ByteProvider.Length);
+            Select(0, ByteProvider.Length);
         }
 
         /// <summary>
@@ -614,9 +614,9 @@ namespace Be.Windows.Forms
         /// <param name="length">the length of the selection</param>
         public void Select(long start, long length)
         {
-            if (this.ByteProvider == null)
+            if (ByteProvider == null)
                 return;
-            if (!this.Enabled)
+            if (!Enabled)
                 return;
 
             InternalSelect(start, length);
@@ -692,13 +692,13 @@ namespace Be.Windows.Forms
         #region Caret methods
         void CreateCaret()
         {
-            if (_byteProvider == null || _keyInterpreter == null || _caretVisible || !this.Focused)
+            if (_byteProvider == null || _keyInterpreter == null || _caretVisible || !Focused)
                 return;
 
             System.Diagnostics.Debug.WriteLine("CreateCaret()", "HexBox");
 
             // define the caret width depending on InsertActive mode
-            int caretWidth = (this.InsertActive) ? 1 : (int)_charSize.Width;
+            int caretWidth = (InsertActive) ? 1 : (int)_charSize.Width;
             int caretHeight = (int)_charSize.Height;
             Caret.Create(Handle, IntPtr.Zero, caretWidth, caretHeight);
 
@@ -864,7 +864,7 @@ namespace Be.Windows.Forms
                 throw new ArgumentNullException(nameof(options));
             }
 
-            var startIndex = this.SelectionStart + this.SelectionLength;
+            var startIndex = SelectionStart + SelectionLength;
             int match = 0;
 
             byte[] buffer1 = null;
@@ -1033,7 +1033,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public bool CanCut()
         {
-            if (ReadOnly || !this.Enabled)
+            if (ReadOnly || !Enabled)
                 return false;
             if (_byteProvider == null)
                 return false;
@@ -1087,7 +1087,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public bool CanPaste()
         {
-            if (ReadOnly || !this.Enabled)
+            if (ReadOnly || !Enabled)
                 return false;
 
             if (_byteProvider == null || !_byteProvider.SupportsInsertBytes())
@@ -1210,25 +1210,25 @@ namespace Be.Windows.Forms
                         if (TextBoxRenderer.IsSupported)
                         {
                             VisualStyleElement state = VisualStyleElement.TextBox.TextEdit.Normal;
-                            Color backColor = this.BackColor;
+                            Color backColor = BackColor;
 
-                            if (this.Enabled)
+                            if (Enabled)
                             {
-                                if (this.ReadOnly)
+                                if (ReadOnly)
                                     state = VisualStyleElement.TextBox.TextEdit.ReadOnly;
-                                else if (this.Focused)
+                                else if (Focused)
                                     state = VisualStyleElement.TextBox.TextEdit.Focused;
                             }
                             else
                             {
                                 state = VisualStyleElement.TextBox.TextEdit.Disabled;
-                                backColor = this.BackColorDisabled;
+                                backColor = BackColorDisabled;
                             }
 
                             VisualStyleRenderer vsr = new VisualStyleRenderer(state);
-                            vsr.DrawBackground(e.Graphics, this.ClientRectangle);
+                            vsr.DrawBackground(e.Graphics, ClientRectangle);
 
-                            Rectangle rectContent = vsr.GetBackgroundContentRectangle(e.Graphics, this.ClientRectangle);
+                            Rectangle rectContent = vsr.GetBackgroundContentRectangle(e.Graphics, ClientRectangle);
                             e.Graphics.FillRectangle(new SolidBrush(backColor), rectContent);
                         }
                         else
@@ -1311,7 +1311,7 @@ namespace Be.Windows.Forms
             // Ensure endByte isn't > length of array.
             endByte = Math.Min(_byteProvider.Length - 1, endByte);
 
-            Color lineInfoColor = (this.InfoForeColor != Color.Empty) ? this.InfoForeColor : this.ForeColor;
+            Color lineInfoColor = (InfoForeColor != Color.Empty) ? InfoForeColor : ForeColor;
             Brush brush = new SolidBrush(lineInfoColor);
 
             int maxLine = GetGridBytePoint(endByte - startByte).Y + 1;
@@ -1339,7 +1339,7 @@ namespace Be.Windows.Forms
 
         void PaintHeaderRow(Graphics g)
         {
-            Brush brush = new SolidBrush(this.InfoForeColor);
+            Brush brush = new SolidBrush(InfoForeColor);
             for (int col = 0; col < HorizontalByteCount; col++)
             {
                 PaintColumnInfo(g, (byte)col, brush, col);
@@ -1350,7 +1350,7 @@ namespace Be.Windows.Forms
         {
             for (int col = GroupSize; col < HorizontalByteCount; col += GroupSize)
             {
-                var pen = new Pen(new SolidBrush(this.InfoForeColor), 1);
+                var pen = new Pen(new SolidBrush(InfoForeColor), 1);
                 PointF headerPointF = GetColumnInfoPointF(col);
                 headerPointF.X -= _charSize.Width / 2;
                 g.DrawLine(pen, headerPointF, new PointF(headerPointF.X, headerPointF.Y + _recColumnInfo.Height + _recHex.Height));
@@ -1680,9 +1680,9 @@ namespace Be.Windows.Forms
         {
             // calc char size
             SizeF charSize;
-            using (var graphics = this.CreateGraphics())
+            using (var graphics = CreateGraphics())
             {
-                charSize = this.CreateGraphics().MeasureString("A", Font, 100, _stringFormat);
+                charSize = CreateGraphics().MeasureString("A", Font, 100, _stringFormat);
             }
             CharSize = new SizeF((float)Math.Ceiling(charSize.Width), (float)Math.Ceiling(charSize.Height));
 
@@ -1855,8 +1855,8 @@ namespace Be.Windows.Forms
                     return;
 
                 base.Font = value;
-                this.UpdateRectanglePositioning();
-                this.Invalidate();
+                UpdateRectanglePositioning();
+                Invalidate();
             }
         }
 
@@ -1987,7 +1987,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets the visibility of a vertical scroll bar.")]
         public bool VScrollBarVisible
         {
-            get => this._vScrollBarVisible;
+            get => _vScrollBarVisible;
             set
             {
                 if (_vScrollBarVisible == value)
@@ -2821,7 +2821,7 @@ namespace Be.Windows.Forms
             }
 
             int linesToScroll = -(e.Delta * SystemInformation.MouseWheelScrollLines / 120);
-            this.PerformScrollLines(linesToScroll);
+            PerformScrollLines(linesToScroll);
 
             base.OnMouseWheel(e);
         }
@@ -2879,15 +2879,15 @@ namespace Be.Windows.Forms
         {
             base.ScaleControl(factor, specified);
 
-            this.BeginInvoke(new MethodInvoker(() =>
+            BeginInvoke(new MethodInvoker(() =>
             {
-                this.UpdateRectanglePositioning();
+                UpdateRectanglePositioning();
                 if (_caretVisible)
                 {
                     DestroyCaret();
                     CreateCaret();
                 }
-                this.Invalidate();
+                Invalidate();
             }));
         }
         #endregion

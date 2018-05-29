@@ -16,14 +16,14 @@ namespace Be.HexEditor
 
             public FileMenuItem(string fileName)
             {
-                this.FileName = fileName;
+                FileName = fileName;
             }
 
             public override string Text
             {
                 get
                 {
-                    ToolStripMenuItem parent = (ToolStripMenuItem)this.OwnerItem;
+                    ToolStripMenuItem parent = (ToolStripMenuItem)OwnerItem;
                     int index = parent.DropDownItems.IndexOf(this);
                     return string.Format("{0} {1}", index + 1, FileName);
                 }
@@ -58,7 +58,7 @@ namespace Be.HexEditor
 
         public void AddFile(string fileName)
         {
-            if (this.recentFileToolStripItem == null)
+            if (recentFileToolStripItem == null)
                 throw new OperationCanceledException("recentFileToolStripItem can not be null!");
 
             // check if the file is already in the collection
@@ -84,8 +84,8 @@ namespace Be.HexEditor
 // throws exception! (Scott Swift 3/13/16)
 //            if (Settings.Default.RecentFiles.Count > Settings.Default.RecentFilesMax)
 //                this.recentFileToolStripItem.DropDownItems.RemoveAt(Settings.Default.RecentFilesMax);
-            if (this.recentFileToolStripItem.DropDownItems.Count > Settings.Default.RecentFilesMax)
-                this.recentFileToolStripItem.DropDownItems.RemoveAt(Settings.Default.RecentFilesMax);
+            if (recentFileToolStripItem.DropDownItems.Count > Settings.Default.RecentFilesMax)
+                recentFileToolStripItem.DropDownItems.RemoveAt(Settings.Default.RecentFilesMax);
 
             // enable the menu item if it´s disabled
             if (!recentFileToolStripItem.Enabled)

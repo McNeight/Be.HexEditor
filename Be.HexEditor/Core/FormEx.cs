@@ -43,12 +43,12 @@ namespace Be.HexEditor.Core
         public FormEx()
         {
             //this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.Font = SystemFonts.MessageBoxFont;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.ResizeBegin += new System.EventHandler(this.MainForm_ResizeBegin);
-            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
-            this.Move += new System.EventHandler(this.MainForm_Move);
+            Font = SystemFonts.MessageBoxFont;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Load += new System.EventHandler(MainForm_Load);
+            ResizeBegin += new System.EventHandler(MainForm_ResizeBegin);
+            ResizeEnd += new System.EventHandler(MainForm_ResizeEnd);
+            Move += new System.EventHandler(MainForm_Move);
         }
 
         void MainForm_Load(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace Be.HexEditor.Core
         void AdjustWindowInitial()
         {
             // Hold initial DPI used at loading this window.
-            DpiOld = this.CurrentAutoScaleDimensions.Width;
+            DpiOld = CurrentAutoScaleDimensions.Width;
 
             // Check current DPI.
             DpiNew = GetDpiWindowMonitor();
@@ -160,8 +160,8 @@ namespace Be.HexEditor.Core
             float factor = DpiNew / DpiOld;
 
             // Prepare new rectangles shrinked or expanded sticking four corners.
-            int widthDiff = (int)(this.ClientSize.Width * factor) - this.ClientSize.Width;
-            int heightDiff = (int)(this.ClientSize.Height * factor) - this.ClientSize.Height;
+            int widthDiff = (int)(ClientSize.Width * factor) - ClientSize.Width;
+            int heightDiff = (int)(ClientSize.Height * factor) - ClientSize.Height;
 
             List<NativeMethods.RECT> rectList = new List<NativeMethods.RECT>
             {
@@ -169,37 +169,37 @@ namespace Be.HexEditor.Core
                 // Left-Top corner
                 new NativeMethods.RECT
                 {
-                    left = this.Bounds.Left,
-                    top = this.Bounds.Top,
-                    right = this.Bounds.Right + widthDiff,
-                    bottom = this.Bounds.Bottom + heightDiff
+                    left = Bounds.Left,
+                    top = Bounds.Top,
+                    right = Bounds.Right + widthDiff,
+                    bottom = Bounds.Bottom + heightDiff
                 },
 
                 // Right-Top corner
                 new NativeMethods.RECT
                 {
-                    left = this.Bounds.Left - widthDiff,
-                    top = this.Bounds.Top,
-                    right = this.Bounds.Right,
-                    bottom = this.Bounds.Bottom + heightDiff
+                    left = Bounds.Left - widthDiff,
+                    top = Bounds.Top,
+                    right = Bounds.Right,
+                    bottom = Bounds.Bottom + heightDiff
                 },
 
                 // Left-Bottom corner
                 new NativeMethods.RECT
                 {
-                    left = this.Bounds.Left,
-                    top = this.Bounds.Top - heightDiff,
-                    right = this.Bounds.Right + widthDiff,
-                    bottom = this.Bounds.Bottom
+                    left = Bounds.Left,
+                    top = Bounds.Top - heightDiff,
+                    right = Bounds.Right + widthDiff,
+                    bottom = Bounds.Bottom
                 },
 
                 // Right-Bottom corner
                 new NativeMethods.RECT
                 {
-                    left = this.Bounds.Left - widthDiff,
-                    top = this.Bounds.Top - heightDiff,
-                    right = this.Bounds.Right,
-                    bottom = this.Bounds.Bottom
+                    left = Bounds.Left - widthDiff,
+                    top = Bounds.Top - heightDiff,
+                    right = Bounds.Right,
+                    bottom = Bounds.Bottom
                 }
             };
 
@@ -222,7 +222,7 @@ namespace Be.HexEditor.Core
                         if (GetDpiSpecifiedMonitor(handleMonitor) == DpiNew)
                         {
                             // Move this window.
-                            this.Location = new Point(rectBuf.left, rectBuf.top);
+                            Location = new Point(rectBuf.left, rectBuf.top);
 
                             break;
                         }
@@ -240,15 +240,15 @@ namespace Be.HexEditor.Core
             float factor = DpiNew / DpiOld;
 
             // Prepare new rectangle shrinked or expanded sticking Left-Top corner.
-            int widthDiff = (int)(this.ClientSize.Width * factor) - this.ClientSize.Width;
-            int heightDiff = (int)(this.ClientSize.Height * factor) - this.ClientSize.Height;
+            int widthDiff = (int)(ClientSize.Width * factor) - ClientSize.Width;
+            int heightDiff = (int)(ClientSize.Height * factor) - ClientSize.Height;
 
             NativeMethods.RECT rect = new NativeMethods.RECT()
             {
-                left = this.Bounds.Left,
-                top = this.Bounds.Top,
-                right = this.Bounds.Right + widthDiff,
-                bottom = this.Bounds.Bottom + heightDiff
+                left = Bounds.Left,
+                top = Bounds.Top,
+                right = Bounds.Right + widthDiff,
+                bottom = Bounds.Bottom + heightDiff
             };
 
             // Get handle to monitor that has the largest intersection with the rectangle.
@@ -299,10 +299,10 @@ namespace Be.HexEditor.Core
             DpiOld = DpiNew;
 
             // Adjust location and size of Controls (except location of this window itself).
-            this.Scale(new SizeF(factor, factor));
+            Scale(new SizeF(factor, factor));
 
             // Adjust Font size of Controls.
-            this.AdjustFont(factor);
+            AdjustFont(factor);
         }
 
         protected virtual void AdjustFont(float factor)
@@ -363,7 +363,7 @@ namespace Be.HexEditor.Core
         {
             // Check if GetDpiForMonitor function is available.
             if (!IsEightOneOrNewer())
-                return this.CurrentAutoScaleDimensions.Width;
+                return CurrentAutoScaleDimensions.Width;
 
             int result = NativeMethods.GetDpiForMonitor(handleMonitor, NativeMethods.Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint dpiY);
 

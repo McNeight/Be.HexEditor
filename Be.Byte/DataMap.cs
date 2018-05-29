@@ -124,8 +124,8 @@ namespace Be.Byte
             }
             block._nextBlock = newBlock;
 
-            this._version++;
-            this._count++;
+            _version++;
+            _count++;
         }
 
         void AddBeforeInternal(DataBlock block, DataBlock newBlock)
@@ -144,8 +144,8 @@ namespace Be.Byte
             {
                 _firstBlock = newBlock;
             }
-            this._version++;
-            this._count++;
+            _version++;
+            _count++;
         }
 
         void RemoveInternal(DataBlock block)
@@ -268,7 +268,7 @@ namespace Be.Byte
 
             public bool MoveNext()
             {
-                if (this._version != _map._version)
+                if (_version != _map._version)
                 {
                     throw new InvalidOperationException("Collection was modified after the enumerator was instantiated.");
                 }
@@ -292,13 +292,13 @@ namespace Be.Byte
 
             void IEnumerator.Reset()
             {
-                if (this._version != this._map._version)
+                if (_version != _map._version)
                 {
                     throw new InvalidOperationException("Collection was modified after the enumerator was instantiated.");
                 }
 
-                this._index = -1;
-                this._current = null;
+                _index = -1;
+                _current = null;
             }
 
             public void Dispose()

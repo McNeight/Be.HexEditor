@@ -64,8 +64,8 @@ namespace Be.HexEditor
                     AutoSize = true,
                     Text = i.ToString()
                 };
-                lbl.Enter += new System.EventHandler(this.txt_Enter);
-                lbl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
+                lbl.Enter += new System.EventHandler(txt_Enter);
+                lbl.KeyDown += new System.Windows.Forms.KeyEventHandler(txt_KeyDown);
                 _innerBorderHeaderPanel.Controls.Add(lbl);
 
                 if (first)
@@ -104,9 +104,9 @@ namespace Be.HexEditor
                 txt.TabIndex = 10 - i + 7;
                 txt.Text = "0";
                 txt.Visible = false;
-                txt.SelectionChanged += new System.EventHandler(this.txt_SelectionChanged);
-                txt.Enter += new System.EventHandler(this.txt_Enter);
-                txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
+                txt.SelectionChanged += new System.EventHandler(txt_SelectionChanged);
+                txt.Enter += new System.EventHandler(txt_Enter);
+                txt.KeyDown += new System.Windows.Forms.KeyEventHandler(txt_KeyDown);
                 _innerBorderPanel.Controls.Add(txt);
                 _txtBits.Add(txt);
             }
@@ -189,7 +189,7 @@ namespace Be.HexEditor
             var txt = (RichTextBox)sender;
             var index = (int)txt.Tag;
             var value = txt.Text != "0";
-            this.BitInfo[index] = value;
+            BitInfo[index] = value;
             OnBitChanged(EventArgs.Empty);
 
             NavigateRight((RichTextBox)sender);

@@ -31,10 +31,10 @@ namespace Be.HexEditor
         {
             InitializeComponent();
 
-            this.recentFilesMax = Settings.Default.RecentFilesMax;
-            this.recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
-            this.UseSystemLanguage = Settings.Default.UseSystemLanguage;
-            this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
+            recentFilesMax = Settings.Default.RecentFilesMax;
+            recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
+            UseSystemLanguage = Settings.Default.UseSystemLanguage;
+            useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
 
             if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
                 Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
@@ -50,12 +50,12 @@ namespace Be.HexEditor
             dt.Rows.Add(strings.SimplifiedChinese, "zh-CN");
             dt.DefaultView.Sort = "Name";
 
-            this.languageComboBox.DataSource = dt.DefaultView;
-            this.languageComboBox.DisplayMember = "Name";
-            this.languageComboBox.ValueMember = "Value";
-            this.languageComboBox.SelectedValue = Settings.Default.SelectedLanguage;
-            if (this.languageComboBox.SelectedIndex == -1)
-                this.languageComboBox.SelectedIndex = 0;
+            languageComboBox.DataSource = dt.DefaultView;
+            languageComboBox.DisplayMember = "Name";
+            languageComboBox.ValueMember = "Value";
+            languageComboBox.SelectedValue = Settings.Default.SelectedLanguage;
+            if (languageComboBox.SelectedIndex == -1)
+                languageComboBox.SelectedIndex = 0;
         }
 
         void clearRecentFilesButton_Click(object sender, EventArgs e)
@@ -72,11 +72,11 @@ namespace Be.HexEditor
                 changed = true;
             }
 
-            if (Settings.Default.UseSystemLanguage != this.UseSystemLanguage ||
-                Settings.Default.SelectedLanguage != (string)this.languageComboBox.SelectedValue)
+            if (Settings.Default.UseSystemLanguage != UseSystemLanguage ||
+                Settings.Default.SelectedLanguage != (string)languageComboBox.SelectedValue)
             {
-                Settings.Default.UseSystemLanguage = this.UseSystemLanguage;
-                Settings.Default.SelectedLanguage = (string)this.languageComboBox.SelectedValue;
+                Settings.Default.UseSystemLanguage = UseSystemLanguage;
+                Settings.Default.SelectedLanguage = (string)languageComboBox.SelectedValue;
 
                 Program.ShowMessage(strings.ProgramRestartSettings);
 
@@ -86,12 +86,12 @@ namespace Be.HexEditor
             if (changed)
                 Settings.Default.Save();
 
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         void useSystemLanguageCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            this.languageComboBox.Enabled = this.selectLanguageLabel.Enabled = !useSystemLanguageCheckBox.Checked;
+            languageComboBox.Enabled = selectLanguageLabel.Enabled = !useSystemLanguageCheckBox.Checked;
         }
     }
 }

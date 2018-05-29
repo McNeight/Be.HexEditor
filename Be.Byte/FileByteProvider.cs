@@ -20,7 +20,7 @@ namespace Be.Byte
             /// </summary>
             public byte this[long index]
             {
-                get => (byte)this.Dictionary[index];
+                get => (byte)Dictionary[index];
                 set => Dictionary[index] = value;
             }
 
@@ -127,7 +127,7 @@ namespace Be.Byte
         /// </summary>
         public void ApplyChanges()
         {
-            if (this._readOnly)
+            if (_readOnly)
             {
                 throw new Exception("File is in read-only mode.");
             }

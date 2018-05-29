@@ -61,7 +61,7 @@ namespace Be.Windows.Forms
             if (Util.DesignMode)
                 return;
 
-            if (this._contextMenuStrip == null)
+            if (_contextMenuStrip == null)
             {
                 ContextMenuStrip cms = new ContextMenuStrip();
                 _cutToolStripMenuItem = new ToolStripMenuItem(CutMenuItemTextInternal, CutMenuItemImage, new EventHandler(CutMenuItem_Click));
@@ -80,10 +80,10 @@ namespace Be.Windows.Forms
                 _contextMenuStrip = cms;
             }
 
-            if (this._hexBox.ByteProvider == null && this._hexBox.ContextMenuStrip == this._contextMenuStrip)
-                this._hexBox.ContextMenuStrip = null;
-            else if (this._hexBox.ByteProvider != null && this._hexBox.ContextMenuStrip == null)
-                this._hexBox.ContextMenuStrip = _contextMenuStrip;
+            if (_hexBox.ByteProvider == null && _hexBox.ContextMenuStrip == _contextMenuStrip)
+                _hexBox.ContextMenuStrip = null;
+            else if (_hexBox.ByteProvider != null && _hexBox.ContextMenuStrip == null)
+                _hexBox.ContextMenuStrip = _contextMenuStrip;
         }
         /// <summary>
         /// Before opening the ContextMenuStrip, we manage the availability of the items.
@@ -92,35 +92,35 @@ namespace Be.Windows.Forms
         /// <param name="e">the event data</param>
         void BuildInContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
-            _cutToolStripMenuItem.Enabled = this._hexBox.CanCut();
-            _copyToolStripMenuItem.Enabled = this._hexBox.CanCopy();
-            _pasteToolStripMenuItem.Enabled = this._hexBox.CanPaste();
-            _selectAllToolStripMenuItem.Enabled = this._hexBox.CanSelectAll();
+            _cutToolStripMenuItem.Enabled = _hexBox.CanCut();
+            _copyToolStripMenuItem.Enabled = _hexBox.CanCopy();
+            _pasteToolStripMenuItem.Enabled = _hexBox.CanPaste();
+            _selectAllToolStripMenuItem.Enabled = _hexBox.CanSelectAll();
         }
         /// <summary>
         /// The handler for the "Cut"-Click event
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        void CutMenuItem_Click(object sender, EventArgs e) { this._hexBox.Cut(); }
+        void CutMenuItem_Click(object sender, EventArgs e) { _hexBox.Cut(); }
         /// <summary>
         /// The handler for the "Copy"-Click event
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        void CopyMenuItem_Click(object sender, EventArgs e) { this._hexBox.Copy(); }
+        void CopyMenuItem_Click(object sender, EventArgs e) { _hexBox.Copy(); }
         /// <summary>
         /// The handler for the "Paste"-Click event
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        void PasteMenuItem_Click(object sender, EventArgs e) { this._hexBox.Paste(); }
+        void PasteMenuItem_Click(object sender, EventArgs e) { _hexBox.Paste(); }
         /// <summary>
         /// The handler for the "Select All"-Click event
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        void SelectAllMenuItem_Click(object sender, EventArgs e) { this._hexBox.SelectAll(); }
+        void SelectAllMenuItem_Click(object sender, EventArgs e) { _hexBox.SelectAll(); }
         /// <summary>
         /// Gets or sets the custom text of the "Copy" ContextMenuStrip item.
         /// </summary>

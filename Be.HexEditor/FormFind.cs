@@ -58,7 +58,7 @@ namespace Be.HexEditor
             if (hexFind.ByteProvider != null)
                 hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
 
-            var hex = this._findOptions.Hex != null ? _findOptions.Hex : new byte[0];
+            var hex = _findOptions.Hex != null ? _findOptions.Hex : new byte[0];
             hexFind.ByteProvider = new DynamicByteProvider(hex);
             hexFind.ByteProvider.Changed += new EventHandler(ByteProvider_Changed);
         }
@@ -96,7 +96,7 @@ namespace Be.HexEditor
         {
             _findOptions.MatchCase = chkMatchCase.Checked;
 
-            var provider = this.hexFind.ByteProvider as DynamicByteProvider;
+            var provider = hexFind.ByteProvider as DynamicByteProvider;
             _findOptions.Hex = provider.Bytes.ToArray();
             _findOptions.Text = txtFind.Text;
             _findOptions.FindType = rbHex.Checked ? FindType.Hex : FindType.Text;
@@ -133,7 +133,7 @@ namespace Be.HexEditor
             }
             else // something was found
             {
-                this.Close();
+                Close();
 
                 Application.DoEvents();
 
@@ -163,9 +163,9 @@ namespace Be.HexEditor
         private void btnCancel_Click(object sender, System.EventArgs e)
         {
             if (_finding)
-                this.HexBox.AbortFind();
+                HexBox.AbortFind();
             else
-                this.Close();
+                Close();
         }
 
         private void txtString_TextChanged(object sender, EventArgs e)
@@ -180,7 +180,7 @@ namespace Be.HexEditor
                 isValid = true;
             if (rbHex.Checked && hexFind.ByteProvider.Length > 0)
                 isValid = true;
-            this.btnOK.Enabled = isValid;
+            btnOK.Enabled = isValid;
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -193,7 +193,7 @@ namespace Be.HexEditor
 
         private void timerPercent_Tick(object sender, EventArgs e)
         {
-            long pos = this.HexBox.CurrentFindingPosition;
+            long pos = HexBox.CurrentFindingPosition;
             long length = HexBox.ByteProvider.Length;
             double percent = (double)pos / (double)length * (double)100;
 
