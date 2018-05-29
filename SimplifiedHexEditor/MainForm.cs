@@ -26,9 +26,9 @@ namespace SimplifiedHexEditor
 
         private byte[] getSelectedBytes(int len)
         {
-            var p = hexBox1.ByteProvider;
+            IByteProvider p = hexBox1.ByteProvider;
 
-            var b = new byte[len];
+            byte[] b = new byte[len];
 
             for (int i = 0; i < len; i++)
             {
@@ -40,7 +40,7 @@ namespace SimplifiedHexEditor
 
         private void UpdateStatusBar()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
             if (hexBox1.SelectionLength > 0)
             {
@@ -107,7 +107,7 @@ namespace SimplifiedHexEditor
         private void button3_Click(object sender, EventArgs e)
         {
             byte[] b;
-            var r = new Random();
+            Random r = new Random();
 
             b = new byte[r.Next(1024 * 512)];
 

@@ -864,7 +864,7 @@ namespace Be.Windows.Forms
                 throw new ArgumentNullException(nameof(options));
             }
 
-            var startIndex = SelectionStart + SelectionLength;
+            long startIndex = SelectionStart + SelectionLength;
             int match = 0;
 
             byte[] buffer1 = null;
@@ -1350,7 +1350,7 @@ namespace Be.Windows.Forms
         {
             for (int col = GroupSize; col < HorizontalByteCount; col += GroupSize)
             {
-                var pen = new Pen(new SolidBrush(InfoForeColor), 1);
+                Pen pen = new Pen(new SolidBrush(InfoForeColor), 1);
                 PointF headerPointF = GetColumnInfoPointF(col);
                 headerPointF.X -= _charSize.Width / 2;
                 g.DrawLine(pen, headerPointF, new PointF(headerPointF.X, headerPointF.Y + _recColumnInfo.Height + _recHex.Height));
@@ -1680,7 +1680,7 @@ namespace Be.Windows.Forms
         {
             // calc char size
             SizeF charSize;
-            using (var graphics = CreateGraphics())
+            using (Graphics graphics = CreateGraphics())
             {
                 charSize = CreateGraphics().MeasureString("A", Font, 100, _stringFormat);
             }
@@ -2493,14 +2493,14 @@ namespace Be.Windows.Forms
             if (string.IsNullOrEmpty(hex))
                 return null;
             hex = hex.Trim();
-            var hexArray = hex.Split(' ');
-            var byteArray = new byte[hexArray.Length];
+            string[] hexArray = hex.Split(' ');
+            byte[] byteArray = new byte[hexArray.Length];
 
             for (int i = 0; i < hexArray.Length; i++)
             {
-                var hexValue = hexArray[i];
+                string hexValue = hexArray[i];
 
-                var isByte = ConvertHexToByte(hexValue, out byte b);
+                bool isByte = ConvertHexToByte(hexValue, out byte b);
                 if (!isByte)
                     return null;
                 byteArray[i] = b;

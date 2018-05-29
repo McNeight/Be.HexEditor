@@ -12,10 +12,10 @@ namespace Be.HexEditor
         static Util()
         {
             // design mode is true if host process is: Visual Studio, Visual Studio Express Versions (C#, VB, C++) or SharpDevelop
-            var designerHosts = new List<string>() { "devenv", "vcsexpress", "vbexpress", "vcexpress", "sharpdevelop" };
-            using (var process = System.Diagnostics.Process.GetCurrentProcess())
+            List<string> designerHosts = new List<string>() { "devenv", "vcsexpress", "vbexpress", "vcexpress", "sharpdevelop" };
+            using (System.Diagnostics.Process process = System.Diagnostics.Process.GetCurrentProcess())
             {
-                var processName = process.ProcessName.ToLower(CultureInfo.CurrentCulture);
+                string processName = process.ProcessName.ToLower(CultureInfo.CurrentCulture);
                 DesignMode = designerHosts.Contains(processName);
             }
         }

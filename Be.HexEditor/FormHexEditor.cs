@@ -52,7 +52,7 @@ namespace Be.HexEditor
             UpdateBitControlVisibility();
 
             //var selected = ;
-            var defConverter = new DefaultByteCharConverter();
+            DefaultByteCharConverter defConverter = new DefaultByteCharConverter();
             ToolStripMenuItem miDefault = new ToolStripMenuItem
             {
                 Text = defConverter.ToString(),
@@ -60,7 +60,7 @@ namespace Be.HexEditor
             };
             miDefault.Click += new EventHandler(encodingMenuItem_Clicked);
 
-            var ebcdicConverter = new EbcdicByteCharProvider();
+            EbcdicByteCharProvider ebcdicConverter = new EbcdicByteCharProvider();
             ToolStripMenuItem miEbcdic = new ToolStripMenuItem
             {
                 Text = ebcdicConverter.ToString(),
@@ -68,7 +68,7 @@ namespace Be.HexEditor
             };
             miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
 
-            var utf8Converter = new UTF8ByteCharProvider();
+            UTF8ByteCharProvider utf8Converter = new UTF8ByteCharProvider();
             ToolStripMenuItem miutf8 = new ToolStripMenuItem();
             miutf8.Text = utf8Converter.ToString();
             miutf8.Tag = utf8Converter;
@@ -88,7 +88,7 @@ namespace Be.HexEditor
 
         void encodingMenuItem_Clicked(object sender, EventArgs e)
         {
-            var converter = ((ToolStripMenuItem)sender).Tag;
+            object converter = ((ToolStripMenuItem)sender).Tag;
             encodingToolStripComboBox.SelectedItem = converter;
         }
 
@@ -541,7 +541,7 @@ namespace Be.HexEditor
 
         void FormHexEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = CloseFile();
+            DialogResult result = CloseFile();
             if (result == DialogResult.Cancel)
                 e.Cancel = true;
         }

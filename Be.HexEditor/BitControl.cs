@@ -127,12 +127,12 @@ namespace Be.HexEditor
 
         private void UpdateView()
         {
-            foreach (var txt in _txtBits)
+            foreach (RichTextBox txt in _txtBits)
                 txt.TextChanged -= new EventHandler(txt_TextChanged);
 
             if (_bitInfo == null)
             {
-                foreach (var txt in _txtBits)
+                foreach (RichTextBox txt in _txtBits)
                 {
                     txt.Text = string.Empty;
                 }
@@ -142,18 +142,18 @@ namespace Be.HexEditor
             }
             else
             {
-                foreach (var txt in _txtBits)
+                foreach (RichTextBox txt in _txtBits)
                     txt.Visible = true;
                 pnBitsEditor.Visible = lblValue.Visible = lblBit.Visible = pnBitsHeader.Visible = true;
             }
 
-            foreach (var txt in _txtBits)
+            foreach (RichTextBox txt in _txtBits)
             {
                 int bit = (int)txt.Tag;
                 txt.Text = _bitInfo.GetBitAsString(bit);
             }
 
-            foreach (var txt in _txtBits)
+            foreach (RichTextBox txt in _txtBits)
                 txt.TextChanged += new EventHandler(txt_TextChanged);
         }
 
@@ -186,9 +186,9 @@ namespace Be.HexEditor
 
         void txt_TextChanged(object sender, EventArgs e)
         {
-            var txt = (RichTextBox)sender;
-            var index = (int)txt.Tag;
-            var value = txt.Text != "0";
+            RichTextBox txt = (RichTextBox)sender;
+            int index = (int)txt.Tag;
+            bool value = txt.Text != "0";
             BitInfo[index] = value;
             OnBitChanged(EventArgs.Empty);
 
@@ -197,14 +197,14 @@ namespace Be.HexEditor
 
         void NavigateLeft(RichTextBox txt)
         {
-            var indexOf = _txtBits.IndexOf(txt);
+            int indexOf = _txtBits.IndexOf(txt);
 
             NavigateTo(indexOf - 1);
         }
 
         void NavigateRight(RichTextBox txt)
         {
-            var indexOf = _txtBits.IndexOf(txt);
+            int indexOf = _txtBits.IndexOf(txt);
 
             NavigateTo(indexOf + 1);
         }
@@ -214,8 +214,8 @@ namespace Be.HexEditor
             if (indexOf > _txtBits.Count - 1 || indexOf < 0)
                 return;
 
-            var txtFocus = false;
-            foreach (var txt in _txtBits)
+            bool txtFocus = false;
+            foreach (RichTextBox txt in _txtBits)
             {
                 if (txt.Focused)
                 {
@@ -227,22 +227,22 @@ namespace Be.HexEditor
             if (!txtFocus)
                 return;
 
-            var selectBox = _txtBits[indexOf];
+            RichTextBox selectBox = _txtBits[indexOf];
             selectBox.Focus();
         }
 
         void txt_KeyDown(object sender, KeyEventArgs e)
         {
-            var txt = (RichTextBox)sender;
+            RichTextBox txt = (RichTextBox)sender;
 
             List<Keys> bitKeys = new List<Keys>() { Keys.D0, Keys.D1 };
 
-            var txt7 = _txtBits[0];
+            RichTextBox txt7 = _txtBits[0];
             if (txt7.SelectionLength > 1)
                 txt7.SelectionLength = 1;
 
-            var modifiersNone = e.Modifiers == Keys.None;
-            var updateBit = modifiersNone && bitKeys.Contains(e.KeyCode);
+            bool modifiersNone = e.Modifiers == Keys.None;
+            bool updateBit = modifiersNone && bitKeys.Contains(e.KeyCode);
 
             e.Handled = e.SuppressKeyPress = !updateBit;
 
@@ -268,7 +268,7 @@ namespace Be.HexEditor
 
         void txt_SelectionChanged(object sender, EventArgs e)
         {
-            var txt = (RichTextBox)sender;
+            RichTextBox txt = (RichTextBox)sender;
             UpdateSelection(txt);
         }
 
@@ -281,7 +281,7 @@ namespace Be.HexEditor
 
         void txt_Enter(object sender, EventArgs e)
         {
-            var txt = (RichTextBox)sender;
+            RichTextBox txt = (RichTextBox)sender;
             UpdateSelection(txt);
         }
     }

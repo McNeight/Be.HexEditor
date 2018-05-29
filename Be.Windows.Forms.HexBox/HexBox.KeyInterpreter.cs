@@ -140,7 +140,7 @@ namespace Be.Windows.Forms
                 Keys keyData = vc | Control.ModifierKeys;
 
                 // detect whether key down event should be raised
-                var hasMessageHandler = MessageHandlers.ContainsKey(keyData);
+                bool hasMessageHandler = MessageHandlers.ContainsKey(keyData);
                 if (hasMessageHandler && RaiseKeyDown(keyData))
                     return true;
 

@@ -18,7 +18,7 @@ namespace Be.Byte
 
         public override string ToString()
         {
-            var result = string.Format("{0}{1}{2}{3}{4}{5}{6}{7}"
+            string result = string.Format("{0}{1}{2}{3}{4}{5}{6}{7}"
                 , GetBitAsString(7)
                 , GetBitAsString(6)
                 , GetBitAsString(5)

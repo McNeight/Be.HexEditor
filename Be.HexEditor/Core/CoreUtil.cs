@@ -18,7 +18,7 @@ namespace Be.HexEditor.Core
                 return;
 
             //var newDpi = _form.DpiNew;
-            var factor = dpiNew / dpiOld;
+            float factor = dpiNew / dpiOld;
 
             //MessageBox.Show(factor.ToString());
 
@@ -34,7 +34,7 @@ namespace Be.HexEditor.Core
             toolStrip.ImageScalingSize = new System.Drawing.Size((int)(toolStrip.ImageScalingSize.Width * factor), (int)(toolStrip.ImageScalingSize.Height * factor));
             //MessageBox.Show(toolStrip.ImageScalingSize.Width.ToString());
 
-            var width = toolStrip.ImageScalingSize.Width;
+            int width = toolStrip.ImageScalingSize.Width;
 
             foreach (ToolStripItem item in toolStrip.Items)
             {
@@ -55,7 +55,7 @@ namespace Be.HexEditor.Core
             if (c == null)
                 return default(T);
 
-            var parent = c.Parent;
+            Control parent = c.Parent;
 
             if (parent is T found)
                 return found;

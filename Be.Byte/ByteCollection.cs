@@ -116,7 +116,7 @@ namespace Be.Byte
             CheckReentrancy();
 
             //expand the following couple of lines when adding more constructors.
-            var target = (List<byte>)Items;
+            List<byte> target = (List<byte>)Items;
             target.InsertRange(index, collection);
 
             OnEssentialPropertiesChanged();
@@ -161,12 +161,12 @@ namespace Be.Byte
 
             CheckReentrancy();
 
-            var clusters = new Dictionary<int, List<byte>>();
-            var lastIndex = -1;
+            Dictionary<int, List<byte>> clusters = new Dictionary<int, List<byte>>();
+            int lastIndex = -1;
             List<byte> lastCluster = null;
             foreach (byte item in collection)
             {
-                var index = IndexOf(item);
+                int index = IndexOf(item);
                 if (index < 0)
                 {
                     continue;
@@ -232,13 +232,13 @@ namespace Be.Byte
                 return 0;
 
             List<byte> cluster = null;
-            var clusterIndex = -1;
-            var removedCount = 0;
+            int clusterIndex = -1;
+            int removedCount = 0;
 
             using (BlockReentrancy())
             using (DeferEvents())
             {
-                for (var i = 0; i < count; i++, index++)
+                for (int i = 0; i < count; i++, index++)
                 {
                     byte item = Items[index];
                     if (match(item))
@@ -302,7 +302,7 @@ namespace Be.Byte
             }
 
             //Items will always be List<byte>, see constructors
-            var items = (List<byte>)Items;
+            List<byte> items = (List<byte>)Items;
             List<byte> removedItems = items.GetRange(index, count);
 
             CheckReentrancy();
@@ -409,10 +409,10 @@ namespace Be.Byte
             using (BlockReentrancy())
             using (DeferEvents())
             {
-                var rangeCount = index + count;
-                var addedCount = list.Count;
+                int rangeCount = index + count;
+                int addedCount = list.Count;
 
-                var changesMade = false;
+                bool changesMade = false;
                 List<byte>
                     newCluster = null,
                     oldCluster = null;
@@ -453,10 +453,10 @@ namespace Be.Byte
                 //exceeding position
                 if (count != addedCount)
                 {
-                    var items = (List<byte>)Items;
+                    List<byte> items = (List<byte>)Items;
                     if (count > addedCount)
                     {
-                        var removedCount = rangeCount - addedCount;
+                        int removedCount = rangeCount - addedCount;
                         byte[] removed = new byte[removedCount];
                         items.CopyTo(i, removed, 0, removed.Length);
                         items.RemoveRange(i, removedCount);
@@ -464,7 +464,7 @@ namespace Be.Byte
                     }
                     else
                     {
-                        var k = i - index;
+                        int k = i - index;
                         byte[] added = new byte[addedCount - k];
                         for (int j = k; j < addedCount; j++)
                         {
@@ -656,7 +656,7 @@ namespace Be.Byte
             public void Dispose()
             {
                 _collection._deferredEvents = null;
-                foreach (var args in this)
+                foreach (NotifyCollectionChangedEventArgs args in this)
                     _collection.OnCollectionChanged(args);
             }
         }

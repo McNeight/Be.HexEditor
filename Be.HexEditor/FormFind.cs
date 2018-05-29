@@ -58,7 +58,7 @@ namespace Be.HexEditor
             if (hexFind.ByteProvider != null)
                 hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
 
-            var hex = _findOptions.Hex != null ? _findOptions.Hex : new byte[0];
+            byte[] hex = _findOptions.Hex != null ? _findOptions.Hex : new byte[0];
             hexFind.ByteProvider = new DynamicByteProvider(hex);
             hexFind.ByteProvider.Changed += new EventHandler(ByteProvider_Changed);
         }
@@ -96,7 +96,7 @@ namespace Be.HexEditor
         {
             _findOptions.MatchCase = chkMatchCase.Checked;
 
-            var provider = hexFind.ByteProvider as DynamicByteProvider;
+            DynamicByteProvider provider = hexFind.ByteProvider as DynamicByteProvider;
             _findOptions.Hex = provider.Bytes.ToArray();
             _findOptions.Text = txtFind.Text;
             _findOptions.FindType = rbHex.Checked ? FindType.Hex : FindType.Text;
@@ -175,7 +175,7 @@ namespace Be.HexEditor
 
         private void ValidateFind()
         {
-            var isValid = false;
+            bool isValid = false;
             if (rbString.Checked && txtFind.Text.Length > 0)
                 isValid = true;
             if (rbHex.Checked && hexFind.ByteProvider.Length > 0)

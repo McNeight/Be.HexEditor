@@ -310,11 +310,11 @@ namespace Be.HexEditor.Core
             if (Util.DesignMode)
                 return;
 
-            var dic = GetChildControlFontSizes(this);
+            Dictionary<Control, float> dic = GetChildControlFontSizes(this);
 
             CoreUtil.ScaleFont(this, factor);
 
-            foreach (var item in dic)
+            foreach (KeyValuePair<Control, float> item in dic)
             {
                 // not affected by parent font?
                 if (item.Key.Font.Size == item.Value)
@@ -328,7 +328,7 @@ namespace Be.HexEditor.Core
         // Get child Controls in a specified Control.
         Dictionary<Control, float> GetChildControlFontSizes(Control parent)
         {
-            var dic = new Dictionary<Control, float>();
+            Dictionary<Control, float> dic = new Dictionary<Control, float>();
             FillChildControlFontSizes(dic, parent);
             return dic;
         }
