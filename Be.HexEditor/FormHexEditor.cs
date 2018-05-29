@@ -69,9 +69,11 @@ namespace Be.HexEditor
             miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
 
             UTF8ByteCharProvider utf8Converter = new UTF8ByteCharProvider();
-            ToolStripMenuItem miutf8 = new ToolStripMenuItem();
-            miutf8.Text = utf8Converter.ToString();
-            miutf8.Tag = utf8Converter;
+            ToolStripMenuItem miutf8 = new ToolStripMenuItem
+            {
+                Text = utf8Converter.ToString(),
+                Tag = utf8Converter
+            };
             miutf8.Click += new EventHandler(encodingMenuItem_Clicked);
 
             encodingToolStripComboBox.Items.Add(defConverter);
