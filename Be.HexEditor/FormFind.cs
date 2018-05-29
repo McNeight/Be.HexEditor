@@ -37,10 +37,7 @@ namespace Be.HexEditor
 
         public FindOptions FindOptions
         {
-            get
-            {
-                return _findOptions;
-            }
+            get => _findOptions;
             set
             {
                 _findOptions = value;

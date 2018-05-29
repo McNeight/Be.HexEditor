@@ -48,7 +48,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public bool MatchCase
         {
-            get { return _matchCase; }
+            get => _matchCase;
             set
             {
                 _matchCase = value;
@@ -64,7 +64,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public string Text
         {
-            get { return _text; }
+            get => _text;
             set
             {
                 _text = value;

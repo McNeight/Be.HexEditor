@@ -112,7 +112,7 @@ namespace Be.HexEditor
 
         public ToolStripMenuItem RecentFileToolStripItem
         {
-            get { return recentFileToolStripItem; }
+            get => recentFileToolStripItem;
             set
             {
                 if (recentFileToolStripItem == value)

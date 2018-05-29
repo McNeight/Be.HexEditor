@@ -1839,14 +1839,8 @@ namespace Be.Windows.Forms
         [DefaultValue(typeof(Color), "White")]
         public override Color BackColor
         {
-            get
-            {
-                return base.BackColor;
-            }
-            set
-            {
-                base.BackColor = value;
-            }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         /// <summary>
@@ -1854,10 +1848,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public override Font Font
         {
-            get
-            {
-                return base.Font;
-            }
+            get => base.Font;
             set
             {
                 if (value == null)
@@ -1875,14 +1866,8 @@ namespace Be.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never), Bindable(false)]
         public override string Text
         {
-            get
-            {
-                return base.Text;
-            }
-            set
-            {
-                base.Text = value;
-            }
+            get => base.Text;
+            set => base.Text = value;
         }
 
         /// <summary>
@@ -1891,14 +1876,8 @@ namespace Be.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Never), Bindable(false)]
         public override RightToLeft RightToLeft
         {
-            get
-            {
-                return base.RightToLeft;
-            }
-            set
-            {
-                base.RightToLeft = value;
-            }
+            get => base.RightToLeft;
+            set => base.RightToLeft = value;
         }
         #endregion
 
@@ -1918,7 +1897,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets if the count of bytes in one line is fix.")]
         public bool ReadOnly
         {
-            get { return _readOnly; }
+            get => _readOnly;
             set
             {
                 if (_readOnly == value)
@@ -1940,7 +1919,7 @@ namespace Be.Windows.Forms
         [DefaultValue(16), Category("Hex"), Description("Gets or sets the maximum count of bytes in one line.")]
         public int BytesPerLine
         {
-            get { return _bytesPerLine; }
+            get => _bytesPerLine;
             set
             {
                 if (_bytesPerLine == value)
@@ -1964,7 +1943,7 @@ namespace Be.Windows.Forms
         [DefaultValue(4), Category("Hex"), Description("Gets or sets the byte-count between group separators (if visible).")]
         public int GroupSize
         {
-            get { return _groupSize; }
+            get => _groupSize;
             set
             {
                 if (_groupSize == value)
@@ -1987,7 +1966,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets if the count of bytes in one line is fix.")]
         public bool UseFixedBytesPerLine
         {
-            get { return _useFixedBytesPerLine; }
+            get => _useFixedBytesPerLine;
             set
             {
                 if (_useFixedBytesPerLine == value)
@@ -2008,7 +1987,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets the visibility of a vertical scroll bar.")]
         public bool VScrollBarVisible
         {
-            get { return this._vScrollBarVisible; }
+            get => this._vScrollBarVisible;
             set
             {
                 if (_vScrollBarVisible == value)
@@ -2035,7 +2014,7 @@ namespace Be.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IByteProvider ByteProvider
         {
-            get { return _byteProvider; }
+            get => _byteProvider;
             set
             {
                 if (_byteProvider == value)
@@ -2093,7 +2072,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets the visibility of a separator vertical line.")]
         public bool GroupSeparatorVisible
         {
-            get { return _groupSeparatorVisible; }
+            get => _groupSeparatorVisible;
             set
             {
                 if (_groupSeparatorVisible == value)
@@ -2114,7 +2093,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets the visibility of header row.")]
         public bool ColumnInfoVisible
         {
-            get { return _columnInfoVisible; }
+            get => _columnInfoVisible;
             set
             {
                 if (_columnInfoVisible == value)
@@ -2135,7 +2114,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets the visibility of a line info.")]
         public bool LineInfoVisible
         {
-            get { return _lineInfoVisible; }
+            get => _lineInfoVisible;
             set
             {
                 if (_lineInfoVisible == value)
@@ -2156,7 +2135,7 @@ namespace Be.Windows.Forms
         [DefaultValue((long)0), Category("Hex"), Description("Gets or sets the offset of the line info.")]
         public long LineInfoOffset
         {
-            get { return _lineInfoOffset; }
+            get => _lineInfoOffset;
             set
             {
                 if (_lineInfoOffset == value)
@@ -2175,7 +2154,7 @@ namespace Be.Windows.Forms
         [DefaultValue(typeof(BorderStyle), "Fixed3D"), Category("Appearance"), Description("Gets or sets the hex box´s border style.")]
         public BorderStyle BorderStyle
         {
-            get { return _borderStyle; }
+            get => _borderStyle;
             set
             {
                 if (_borderStyle == value)
@@ -2210,7 +2189,7 @@ namespace Be.Windows.Forms
         [DefaultValue(false), Category("Hex"), Description("Gets or sets the visibility of the string view.")]
         public bool StringViewVisible
         {
-            get { return _stringViewVisible; }
+            get => _stringViewVisible;
             set
             {
                 if (_stringViewVisible == value)
@@ -2262,7 +2241,7 @@ namespace Be.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public long SelectionStart
         {
-            get { return _bytePos; }
+            get => _bytePos;
             set
             {
                 SetPosition(value, 0);
@@ -2277,7 +2256,7 @@ namespace Be.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public long SelectionLength
         {
-            get { return _selectionLength; }
+            get => _selectionLength;
             set
             {
                 SetSelectionLength(value);
@@ -2294,7 +2273,7 @@ namespace Be.Windows.Forms
         [DefaultValue(typeof(Color), "Gray"), Category("Hex"), Description("Gets or sets the line info color. When this property is null, then ForeColor property is used.")]
         public Color InfoForeColor
         {
-            get { return _infoForeColor; }
+            get => _infoForeColor;
             set { _infoForeColor = value; Invalidate(); }
         }
         Color _infoForeColor = Color.Gray;
@@ -2305,7 +2284,7 @@ namespace Be.Windows.Forms
         [DefaultValue(typeof(Color), "Blue"), Category("Hex"), Description("Gets or sets the background color for the selected bytes.")]
         public Color SelectionBackColor
         {
-            get { return _selectionBackColor; }
+            get => _selectionBackColor;
             set { _selectionBackColor = value; Invalidate(); }
         }
         Color _selectionBackColor = Color.Blue;
@@ -2316,7 +2295,7 @@ namespace Be.Windows.Forms
         [DefaultValue(typeof(Color), "White"), Category("Hex"), Description("Gets or sets the foreground color for the selected bytes.")]
         public Color SelectionForeColor
         {
-            get { return _selectionForeColor; }
+            get => _selectionForeColor;
             set { _selectionForeColor = value; Invalidate(); }
         }
         Color _selectionForeColor = Color.White;
@@ -2327,7 +2306,7 @@ namespace Be.Windows.Forms
         [DefaultValue(true), Category("Hex"), Description("Gets or sets the visibility of a shadow selection.")]
         public bool ShadowSelectionVisible
         {
-            get { return _shadowSelectionVisible; }
+            get => _shadowSelectionVisible;
             set
             {
                 if (_shadowSelectionVisible == value)
@@ -2348,7 +2327,7 @@ namespace Be.Windows.Forms
         [Category("Hex"), Description("Gets or sets the color of the shadow selection.")]
         public Color ShadowSelectionColor
         {
-            get { return _shadowSelectionColor; }
+            get => _shadowSelectionColor;
             set { _shadowSelectionColor = value; Invalidate(); }
         }
         Color _shadowSelectionColor = Color.FromArgb(100, 60, 188, 255);
@@ -2359,7 +2338,7 @@ namespace Be.Windows.Forms
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SizeF CharSize
         {
-            get { return _charSize; }
+            get => _charSize;
             private set
             {
                 if (_charSize == value)
@@ -2376,7 +2355,7 @@ namespace Be.Windows.Forms
         [DefaultValue(0), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int RequiredWidth
         {
-            get { return _requiredWidth; }
+            get => _requiredWidth;
             private set
             {
                 if (_requiredWidth == value)
@@ -2423,7 +2402,7 @@ namespace Be.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool InsertActive
         {
-            get { return _insertActive; }
+            get => _insertActive;
             set
             {
                 if (_insertActive == value)

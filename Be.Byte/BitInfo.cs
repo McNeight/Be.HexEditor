@@ -41,10 +41,7 @@ namespace Be.Byte
 
         public bool this[int index]
         {
-            get
-            {
-                return (Value & (1 << index)) != 0;
-            }
+            get => (Value & (1 << index)) != 0;
             set
             {
                 if (value)

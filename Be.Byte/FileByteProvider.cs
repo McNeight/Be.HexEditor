@@ -20,8 +20,8 @@ namespace Be.Byte
             /// </summary>
             public byte this[long index]
             {
-                get { return (byte)this.Dictionary[index]; }
-                set { Dictionary[index] = value; }
+                get => (byte)this.Dictionary[index];
+                set => Dictionary[index] = value;
             }
 
             /// <summary>

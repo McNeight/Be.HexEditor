@@ -270,7 +270,7 @@ namespace Be.HexEditor.Core
         [DefaultValue(1), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float Factor
         {
-            get { return _factor; }
+            get => _factor;
             private set
             {
                 if (_factor == value)

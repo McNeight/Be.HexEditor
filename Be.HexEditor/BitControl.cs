@@ -117,7 +117,7 @@ namespace Be.HexEditor
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public BitInfo BitInfo
         {
-            get { return _bitInfo; }
+            get => _bitInfo;
             set
             {
                 _bitInfo = value;

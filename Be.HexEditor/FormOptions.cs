@@ -13,7 +13,7 @@ namespace Be.HexEditor
 
         public int RecentFilesMax
         {
-            get { return recentFilesMax; }
+            get => recentFilesMax;
             set
             {
                 if (recentFilesMax == value)
