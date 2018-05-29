@@ -148,19 +148,19 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Gets the text of the "Cut" ContextMenuStrip item.
         /// </summary>
-        internal string CutMenuItemTextInternal { get { return !string.IsNullOrEmpty(CutMenuItemText) ? CutMenuItemText : "Cut"; } }
+        internal string CutMenuItemTextInternal => !string.IsNullOrEmpty(CutMenuItemText) ? CutMenuItemText : "Cut";
         /// <summary>
         /// Gets the text of the "Copy" ContextMenuStrip item.
         /// </summary>
-        internal string CopyMenuItemTextInternal { get { return !string.IsNullOrEmpty(CopyMenuItemText) ? CopyMenuItemText : "Copy"; } }
+        internal string CopyMenuItemTextInternal => !string.IsNullOrEmpty(CopyMenuItemText) ? CopyMenuItemText : "Copy";
         /// <summary>
         /// Gets the text of the "Paste" ContextMenuStrip item.
         /// </summary>
-        internal string PasteMenuItemTextInternal { get { return !string.IsNullOrEmpty(PasteMenuItemText) ? PasteMenuItemText : "Paste"; } }
+        internal string PasteMenuItemTextInternal => !string.IsNullOrEmpty(PasteMenuItemText) ? PasteMenuItemText : "Paste";
         /// <summary>
         /// Gets the text of the "Select All" ContextMenuStrip item.
         /// </summary>
-        internal string SelectAllMenuItemTextInternal { get { return !string.IsNullOrEmpty(SelectAllMenuItemText) ? SelectAllMenuItemText : "SelectAll"; } }
+        internal string SelectAllMenuItemTextInternal => !string.IsNullOrEmpty(SelectAllMenuItemText) ? SelectAllMenuItemText : "SelectAll";
 
         /// <summary>
         /// Gets or sets the image of the "Cut" ContextMenuStrip item.

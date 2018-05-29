@@ -2390,10 +2390,7 @@ namespace Be.Windows.Forms
         /// Gets the current position in the current line
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public long CurrentPositionInLine
-        {
-            get { return _currentPositionInLine; }
-        }
+        public long CurrentPositionInLine => _currentPositionInLine;
         int _currentPositionInLine;
 
         /// <summary>

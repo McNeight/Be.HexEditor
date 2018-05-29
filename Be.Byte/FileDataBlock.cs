@@ -14,13 +14,7 @@ namespace Be.Byte
 
         public long FileOffset { get; private set; }
 
-        public override long Length
-        {
-            get
-            {
-                return _length;
-            }
-        }
+        public override long Length => _length;
 
         public void SetFileOffset(long value)
         {

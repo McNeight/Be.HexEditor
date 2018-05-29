@@ -26,13 +26,7 @@ namespace Be.Byte
             }
         }
 
-        public DataBlock FirstBlock
-        {
-            get
-            {
-                return _firstBlock;
-            }
-        }
+        public DataBlock FirstBlock => _firstBlock;
 
         public void AddAfter(DataBlock block, DataBlock newBlock)
         {
@@ -212,21 +206,9 @@ namespace Be.Byte
             }
         }
 
-        public int Count
-        {
-            get
-            {
-                return _count;
-            }
-        }
+        public int Count => _count;
 
-        public bool IsSynchronized
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public bool IsSynchronized => false;
 
         public object SyncRoot { get; } = new object();
         #endregion

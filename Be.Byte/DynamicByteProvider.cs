@@ -128,13 +128,7 @@ namespace Be.Byte
         /// <summary>
         /// Gets the length of the bytes in the byte collection.
         /// </summary>
-        public long Length
-        {
-            get
-            {
-                return Bytes.Count;
-            }
-        }
+        public long Length => Bytes.Count;
 
         /// <summary>
         /// Returns true

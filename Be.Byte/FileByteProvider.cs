@@ -181,13 +181,7 @@ namespace Be.Byte
         /// <summary>
         /// Gets the length of the file.
         /// </summary>
-        public long Length
-        {
-            get
-            {
-                return _fileStream.Length;
-            }
-        }
+        public long Length => _fileStream.Length;
 
         /// <summary>
         /// Writes a byte into write buffer

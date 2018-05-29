@@ -16,13 +16,7 @@ namespace Be.Byte
             Data = (byte[])data.Clone();
         }
 
-        public override long Length
-        {
-            get
-            {
-                return Data.LongLength;
-            }
-        }
+        public override long Length => Data.LongLength;
 
         public byte[] Data { get; private set; }
 
